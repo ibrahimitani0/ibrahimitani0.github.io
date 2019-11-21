@@ -242,7 +242,8 @@ img {
 }
 
 a {
-    color: inherit
+    color: inherit;
+    text-decoration: none;
 }
 
 .w3-table, .w3-table-all {
