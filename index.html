@@ -200,7 +200,7 @@
                 <div class="w3-container">
                     <h5 class="w3-opacity"><b>PokemonPokedex</b></h5>
                     <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2019</h6>
-                    <img class="myImg" src="images/index.png" alt="PokemonPokedex sample">
+                    <img class="myImg" onclick="onClick(this)" src="images/index.png" alt="PokemonPokedex sample">
                     <p><span class="w3-tag w3-green w3-round">Description:</span> A WebApp developed using HTML, CSS, BootStrap, PHP, MYSLQ, JavaScript, NodeJs, Amazon Web Services</p>
                     <p>Check out the repository:<a href="https://github.com/ibrahimitani0/PokemonPokedex"> <span class="w3-text-blue">PokemonPokedex</span></a></p>
                     <hr>
@@ -208,7 +208,7 @@
                 <div class="w3-container">
                     <h5 class="w3-opacity"><b>PokeLookUp</b></h5>
                     <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2018</h6>
-                    <img class="myImg" src="images/PokeProfile.png" alt="PokeLookUp sample">
+                    <img class="myImg" onclick="onClick(this)" src="images/PokeProfile.png" alt="PokeLookUp sample">
                     <p><span class="w3-tag w3-green w3-round">Description:</span> A WebApp developed using HTML, CSS, BootStrap, PHP, MYSLQ, JavaScript</p>
                     <p>Check out the repository:<a href="https://github.com/ibrahimitani0/PokeLookUp"> <span class="w3-text-blue">PokeLookUp</span></a></p>
                     <hr>
@@ -216,7 +216,7 @@
                 <div class="w3-container">
                     <h5 class="w3-opacity"><b>Oracle Online Store</b></h5>
                     <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017</h6>
-                    <img class="myImg" src="images/store.png" alt="store sample">
+                    <img class="myImg" onclick="onClick(this)" src="images/store.png" alt="Oracle Online Store sample">
                     <p><span class="w3-tag w3-green w3-round">Description:</span> A WebApp developed using HTML, CSS, BootStrap, PHP, MYSLQ, JavaScript</p>
                     <p>Check out the repository:<a href="https://github.com/ibrahimitani0/OnlineStore"> <span class="w3-text-blue">Oracle Online Store</span></a></p>
                     <hr>
@@ -232,12 +232,26 @@
     <!-- End Page Container -->
 </div>
 
+<div id="modal" class="w3-modal" onclick="this.style.display='none'">
+    <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom">
+        <img id="img01" style="width:100%">
+    </div>
+</div>
+
 <footer class="w3-container w3-blue w3-center w3-margin-top">
     <p>External Links.</p>
     <a class="" href="https://www.linkedin.com/in/ibrahimitani0/" style="padding-right: 10px"><i class="fa fa-linkedin w3-hover-opacity"></i> - Linkedin</a>
     <a href="https://github.com/ibrahimitani0?tab=repositories"><i class="fa fa-github w3-hover-opacity"></i> - GitHub</a>
     <p>&copy; 2019 - Ibrahim Itani</p>
 </footer>
+
+<script>
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal").style.display = "block";
+    }
+</script>
 
 </body>
 </html>
