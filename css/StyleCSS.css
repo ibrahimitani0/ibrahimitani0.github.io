@@ -41,6 +41,9 @@
     color: #60a5fa;
     margin-top: 1.25rem;
   }
+  h5 {
+    color: #60a5fa;
+  }
   p {
     color: #cbd5e1;
     margin-bottom: 1rem;
@@ -399,3 +402,27 @@
     transform: translateX(100px);
   }
   
+  .angular {
+    font-size: 15px;
+    color: rgb(221, 55, 55)
+  }
+  .html {
+    font-size: 15px;
+    color: rgb(255, 106, 51);
+  }
+  .css {
+    font-size: 15px;
+    color: rgb(153, 77, 174);
+  }
+  .firebase {
+    font-size: 15px;
+    color: orange;
+  }
+   .aws {
+    font-size: 15px;
+    color: rgb(255, 174, 24);
+  }
+  .js{
+    font-size: 15px;
+    color: rgb(228, 222, 46);
+  }
