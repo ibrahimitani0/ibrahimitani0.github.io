@@ -21,7 +21,7 @@
     padding: 2rem 1rem;
   }
   h1, h2, h3 {
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
   }
   h1 {
@@ -413,6 +413,10 @@
   .css {
     font-size: 15px;
     color: rgb(153, 77, 174);
+  }
+   .docker {
+    font-size: 15px;
+    color: orange;
   }
   .firebase {
     font-size: 15px;
