@@ -1,29 +1,53 @@
-## Hello welcome to my github page
-```markdown
+# 👋 Hi, I'm Ibrahim Itani
 
-[[https://github.com/ibrahimitani0/ibrahimitani0.github.io/blob/master/pic.jpeg]]
+* 💻 Software Engineer focused on building modern web applications
+* 🚀 Passionate about Angular, Java, backend development, and scalable systems
 
-I am a Software Developer that loves a chellenge, and building websites and webApps
-```
+---
 
-### Some of my projects
+## 👨‍💻 About Me
 
+* 🧠 Background in Computer Science and Finance
+* 💼 4+ years of experience as a Software Engineer and 1+ years in Finance
+* 🔍 Currently deepening my expertise in **Angular, React, and Java Spring**
+* 🏗️ Interested in building full-stack web applications and enterprise systems
+* 🤝 Open to collaborating on web development projects and innovative ideas
 
-```markdown
-Project 1:
+---
 
-# PokemonPokedex
+## 🛠️ Tech Stack
 
-**https://github.com/ibrahimitani0/PokemonPokedex**
+* Programming Languages:
+  Java, JavaScript, TypeScript, C#, Python, PHP
+* Frontend:
+  Angular, HTML5, CSS3, SCSS, React
+* Backend & Frameworks:
+  Spring, Spring Boot, Node.js, ASP.NET Core, .NET
+* Databases:
+  MySQL, Microsoft SQL Server, Oracle Database, MongoDB
+* Cloud Platforms:
+  AWS, Google Cloud Platform (GCP), Firebase
+* DevOps & Build Tools:
+  Docker, Azure DevOps, GitHub Actions, Maven, npm
+* API Design & Integration:
+  RESTful APIs, GraphQL, Postman
+* Version Control & Servers:
+  Git, GitHub, Apache Tomcat, XAMPP
+* Other Platforms:
+  Mendix, SharePoint, Unity Engine
 
-```
+---
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## 📈 What I'm Working On
 
-### Jekyll Themes
+* Building real-world Angular applications
+* Strengthening backend API design skills
+* Improving system architecture knowledge
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ibrahimitani0/ibrahimitani0.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+---
 
-### Support or Contact
+## 📫 Let's Connect
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* GitHub: https://github.com/ibrahimitani0
+* Portfolio: https://ibrahimitani0.github.io/
+* LinkedIn: https://www.linkedin.com/in/ibrahimitani0/
