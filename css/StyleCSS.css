@@ -26,6 +26,7 @@ main {
 
 h1, h2, h3 {
   font-weight: 600;
+  text-align: left;
 }
 
 h1 {
@@ -183,7 +184,7 @@ section {
   transform: translateY(30px);
 }
 
-.project h1, h2, h3, h5 {
+.project-title {
   text-align: center;
 }
 
