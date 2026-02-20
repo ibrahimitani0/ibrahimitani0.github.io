@@ -4,59 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/StyleCSS.css">
-  <script src="/js/scripts.js"></script>
+  <script defer src="js/scripts.js"></script>
   <title>Ibrahim Itani | Portfolio</title>
 </head>
 <body class="loaded">
-    <section id="hero">
-        <div class="hero-container">
-          <img src="/images/pic.jpeg" alt="Ibrahim Itani" class="hero-photo" />
-          <h1 class="hero-name-typing">
-            <span id="typed-name"></span><span class="cursor">|</span>
-          </h1>          
-          <p>Software Engineer</p>
-          <nav>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-          </nav>
-        </div>
-      </section>
-  <main>
+  
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-container">
+      <img src="/images/pic.jpeg" alt="Ibrahim Itani" class="hero-photo" />
+      <h1 class="hero-name-typing">
+        <span id="typed-name"></span><span class="cursor">|</span>
+      </h1>
+      <p>Software Engineer</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+      </nav>
+    </div>
+  </section>
 
+  <main>
+    <!-- About -->
     <section id="about" class="fade-section">
-        <h2>About Me</h2>
-        <p>Software Engineer with experience in designing and implementing scalable web applications using several technologies and frameworks. 
-          Skilled in developing RESTful APIs and integrating front-end and back-end systems to deliver seamless user experiences. 
-          Experienced working with cross functional teams such as business analysts, QA, Devops teams, and end users in Agile environments, 
-          translating business needs into scalable system solutions and user-friendly features. Strong team player with a commitment to clean code, 
-          timely delivery, and continuous improvement.</p>
+      <h2>About Me</h2>
+      <p>Software Engineer with experience in designing and implementing scalable web applications using several technologies and frameworks. Skilled in developing RESTful APIs and integrating front-end and back-end systems to deliver seamless user experiences. Experienced working with cross functional teams such as business analysts, QA, Devops teams, and end users in Agile environments, translating business needs into scalable system solutions and user-friendly features. Strong team player with a commitment to clean code, timely delivery, and continuous improvement.</p>
     </section>
 
+    <!-- Experience -->
     <section id="experience" class="fade-section">
-        <h2>Experience</h2>
-        <h3>Tata Consultancy Services – Software Engineer (Jan 2021–Apr 2025)</h3>
-        <ul>
-          <li>Migrated multiple web applications from legacy systems to AWS, modernizing CI/CD pipelines and improving deployment efficiency.</li>
-          <li>Developed full-stack applications using Angular, Java, Spring, GraphQL, and OracleSQL, enhancing data visualization and financial reporting features.</li>
-          <li>Wrote SQL queries to retrieve, insert, and update application data, supporting reporting features, troubleshooting, and data validation within Oracle database environments.</li>
-          <li>Built dynamic Reactive Forms and implemented custom validators for better user input validation.</li>
-          <li>Designed Angular Services leveraging RxJs Observables to handle asynchronous API calls and improve data responsiveness.</li>
-          <li>Implemented Chart.js for interactive graphing and data visualization in financial dashboards.</li>
-          <li>Optimized performance for large datasets using lazy loading, sorting and custom search filters (e.g., by date, price, ID).</li>
-          <li>Designed and implemented JPA Entity models aligned with Oracle database schemas to ensure data integrity and scalability.</li>
-          <li>Developed RESTful controllers and service layer components to manage functions, logic, transactions, and data flow between repositories and client endpoints.</li>
-          <li>Integrated responsive UI elements with Angular Material and custom CSS, ensuring accessibility and adherence to client branding through custom theming and typography.</li>
-          <li>Implemented automated email notification functionality using Java Servlets and SMTP integration, enabling dynamic user alerts and workflow triggers.</li>
-          <li>Managed development tasks through Azure DevOps Boards, prioritizing sprint goals and coordinating feature delivery.</li>
-          <li>Maintained code quality through unit testing, peer code reviews, and continuous integration via Azure Pipelines.</li>
-          <li>Collaborated with business analysts and QA teams throughout the software development life cycle following agile methodologies.</li>
-        </ul>
+      <h2>Experience</h2>
 
-        <h3>Ameriprise Financial Services – Financial Operations Assistant (Aug 2016–Sep 2017)</h3>
-       <ul>
+      <h3>Tata Consultancy Services – Software Engineer (Jan 2021–Apr 2025)</h3>
+      <ul>
+        <li>Migrated multiple web applications from legacy systems to AWS, modernizing CI/CD pipelines and improving deployment efficiency.</li>
+        <li>Developed full-stack applications using Angular, Java, Spring, GraphQL, and OracleSQL, enhancing data visualization and financial reporting features.</li>
+        <li>Wrote SQL queries to retrieve, insert, and update application data, supporting reporting features, troubleshooting, and data validation within Oracle database environments.</li>
+        <li>Built dynamic Reactive Forms and implemented custom validators for better user input validation.</li>
+        <li>Designed Angular Services leveraging RxJs Observables to handle asynchronous API calls and improve data responsiveness.</li>
+        <li>Implemented Chart.js for interactive graphing and data visualization in financial dashboards.</li>
+        <li>Optimized performance for large datasets using lazy loading, sorting and custom search filters (e.g., by date, price, ID).</li>
+        <li>Designed and implemented JPA Entity models aligned with Oracle database schemas to ensure data integrity and scalability.</li>
+        <li>Developed RESTful controllers and service layer components to manage functions, logic, transactions, and data flow between repositories and client endpoints.</li>
+        <li>Integrated responsive UI elements with Angular Material and custom CSS, ensuring accessibility and adherence to client branding through custom theming and typography.</li>
+        <li>Implemented automated email notification functionality using Java Servlets and SMTP integration, enabling dynamic user alerts and workflow triggers.</li>
+        <li>Managed development tasks through Azure DevOps Boards, prioritizing sprint goals and coordinating feature delivery.</li>
+        <li>Maintained code quality through unit testing, peer code reviews, and continuous integration via Azure Pipelines.</li>
+        <li>Collaborated with business analysts and QA teams throughout the software development life cycle following agile methodologies.</li>
+      </ul>
+
+      <h3>Ameriprise Financial Services – Financial Operations Assistant (Aug 2016–Sep 2017)</h3>
+      <ul>
         <li>Conducted quantitative research on equities and market trends to assist advisors in preparing investment recommendations.</li>
         <li>Entered and validated client financial data within internal systems, ensuring record accuracy and completeness.</li>
         <li>Maintained and organized investment portfolio records, supporting timely account updates and operational processing.</li>
@@ -64,204 +65,140 @@
         <li>Prepared client documentation, reports, and meeting materials while coordinating with advisors to ensure readiness and compliance.</li>
         <li>Utilized Microsoft Excel (formulas, sorting/filtering, and basic functions such as VLOOKUP and SUMIF) to organize financial data, reconcile records, and support report preparation.</li>
       </ul>
+    </section>
 
-
-      </section>
-
-      <section id="education" class="fade-section">
-        <h2>Education</h2>
-        <div>
-            <p>Western Michigan University – B.S. in Computer Science (2017–2020)</p>
-        </div>
-        <div>
-            <p>Lebanese American University – B.S. Finance & International Business (2010–2015)</p>
-        </div>
-      </section>
+    <!-- Education -->
+    <section id="education" class="fade-section">
+      <h2>Education</h2>
+      <p>Western Michigan University – B.S. in Computer Science (2017–2020)</p>
+      <p>Lebanese American University – B.S. Finance & International Business (2010–2015)</p>
+    </section>
 
     <!-- Projects -->
     <section id="projects" class="fade-section">
       <h2>Personal Projects</h2>
       <div class="grid">
         <div class="project">
-            <img height="250px" src="/images/PokdeCenter.png" alt="Project 1 Screenshot" />
-            <div class="project-content">
-              <h3>PokeCenter</h3>
-              <p>PokeCenter is a modern, responsive Pokédex built using Angular, designed to let users browse, search, and filter Pokémon with a clean and interactive UI.
-                 It leverages Firebase database to fetch real-time data, and provides features like type-based filtering, dynamic search, and detailed Pokémon profiles. 
-                The app demonstrates Angular best practices including component-based architecture, custom pipes, and reactive forms.</p>
-              <div>
-                <h5>Technologies</h5>
-                <span class="angular">#Angular</span>
-                <span class="html"> #HTML</span>
-                <span class="css"> #CSS</span>
-                <span class="firebase"> #Firebase</span>
-                <span class="docker"> #Docker</span>
-              </div>
+          <div class="project-image">
+            <img src="/images/PokdeCenter.png" alt="Screenshot of PokeCenter Angular App" />
+            <a href="https://github.com/ibrahimitani0/PokeCenter" class="view-btn" target="_blank" rel="noopener noreferrer">View Project</a>
+          </div>
+          <div class="project-content">
+            <h3>PokeCenter</h3>
+            <p>A modern, responsive Pokédex built with Angular, Firebase, and interactive UI features including dynamic search, type filtering, and detailed Pokémon profiles.</p>
+            <div class="tech-tags">
+              <span class="angular">Angular</span>
+              <span class="html">HTML</span>
+              <span class="css">CSS</span>
+              <span class="firebase">Firebase</span>
+              <span class="docker">Docker</span>
             </div>
           </div>
+        </div>
+
         <div class="project">
-          <img src="/images/owangular.png" alt="Project 2 Screenshot" />
+          <div class="project-image">
+            <img src="/images/owangular.png" alt="Screenshot of Overwatch Central Angular App" />
+            <!-- <a href="#" class="view-btn">View Project</a> -->
+          </div>
           <div class="project-content">
             <h3>Overwatch Central</h3>
-            <p>Overwatch Central is a sleek Angular web application that provides comprehensive details about Overwatch heroes. Users can explore heroes’ abilities, lore, skins, voice lines, and unlockables through an intuitive interface.
-                 The app showcases effective use of Angular components, routing, and API integration to deliver a rich, organized gaming reference.</p>
-              <div>
-                <h5>Technologies</h5>
-                <span class="angular">#Angular</span>
-                <span class="html"> #HTML</span>
-                <span class="css"> #CSS</span>
-                <span class="firebase"> #Firebase</span>
-              </div>
+            <p>A sleek Angular app providing details on Overwatch heroes, including abilities, skins, and voice lines, with intuitive navigation and API integration.</p>
+            <div class="tech-tags">
+              <span class="angular">Angular</span>
+              <span class="html">HTML</span>
+              <span class="css">CSS</span>
+              <span class="firebase">Firebase</span>
+            </div>
           </div>
         </div>
+
         <div class="project">
-          <img src="/images/store.png" alt="Project 3 Screenshot" />
+          <div class="project-image">
+            <img src="/images/store.png" alt="Screenshot of E-Commerce Web App" />
+            <!-- <a href="#" class="view-btn">View Project</a> -->
+          </div>
           <div class="project-content">
             <h3>E-Commerce Web Application</h3>
-            <p>Developed a full-featured online store inspired by Amazon.com. The platform allows users to register and create personal accounts, 
-                browse and search for items, add products to their cart or favorites, and make purchases using a virtual currency system ("coins").</p>
-              <div>
-                <h5>Technologies</h5>
-                <span class="js">#JavaScript</span>
-                <span class="html"> #HTML</span>
-                <span class="css"> #CSS</span>
-                <span class="aws"> #AWS</span>
-              </div>
+            <p>Full-featured online store inspired by Amazon, with user accounts, product search, cart functionality, and virtual currency system.</p>
+            <div class="tech-tags">
+              <span class="js">JavaScript</span>
+              <span class="html">HTML</span>
+              <span class="css">CSS</span>
+              <span class="aws">AWS</span>
+            </div>
           </div>
         </div>
-          <div class="project">
-          <img src="/images/todolistProject.png" alt="Project 3 Screenshot" />
+
+        <div class="project">
+          <div class="project-image">
+            <img src="/images/todolistProject.png" alt="Screenshot of To-Do List App" />
+            <!-- <a href="#" class="view-btn">View Project</a> -->
+          </div>
           <div class="project-content">
             <h3>To-Do List App</h3>
-            <p>Created a fully responsive To-Do list app that allows users to add tasks, edit and delete individual or multi-select bulk delete tasks, users can complete a task clicking on it, completed tasks are shown in a tracker. The App also includes Light and Dark mode slider toggle.</p>
-              <div>
-                <h5>Technologies</h5>
-                <span class="js">#JavaScript</span>
-                <span class="html"> #HTML</span>
-                <span class="css"> #CSS</span>
-              </div>
+            <p>A responsive To-Do list app with add, edit, delete, bulk delete, complete tracking, and light/dark mode toggle.</p>
+            <div class="tech-tags">
+              <span class="js">JavaScript</span>
+              <span class="html">HTML</span>
+              <span class="css">CSS</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
     <!-- Skills -->
     <section id="skills" class="fade-section">
-        <h2>Skills & Technologies</h2>
-      
-        <h3>Technical Languages</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
-            <span>Java</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
-            <span>JavaScript</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
-            <span>TypeScript</span>
-          </div>          
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
-            <span>PHP</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
-            <span>C#</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
-            <span>HTML</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
-            <span>CSS</span>
-          </div>
-          <div class="skill">
-            <img src="/images/sql-d770f38c.png" alt="SQL" class="sql-icon"/>
-            <span>SQL</span>
-          </div>          
-        </div>
-        
-        <h3>Databases</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle DB" />
-            <span>OracleDB</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-            <span>MySQL</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
-            <span>MongoDB</span>
-          </div>
-          <div class="skill">
-             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg" alt="Microsoft SQL Server"/>
-            <span>MSSQL</span>
-          </div>          
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" />
-            <span>Firebase</span>
-          </div>    
-        </div>
-      
-        <h3>Frameworks</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring" />
-            <span>Spring</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" />
-            <span>Angular</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
-            <span>NodeJs</span>
-          </div>
-          <div class="skill">
-           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" />
-            <span>Bootstrap</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt="ASP.NET" />
-            <span>ASP.NET</span>
-          </div>
-        </div>
+      <h2>Skills & Technologies</h2>
+      <!-- Technical Languages -->
+      <h3>Technical Languages</h3>
+      <div class="skills-list">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" /><span>Java</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" /><span>JavaScript</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" /><span>TypeScript</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" /><span>PHP</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" /><span>C#</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" /><span>HTML</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" /><span>CSS</span></div>
+        <div class="skill"><img src="/images/sql-d770f38c.png" alt="SQL" class="sql-icon"/><span>SQL</span></div>
+      </div>
 
-         <h3>Tools & Platforms</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
-            <span>Git</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
-            <span>GitHub</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud Platform" />
-            <span>GCP</span>
-          </div>
-          <div class="skill" >
-            <img src="/images/aws.svg" alt="AWS"/>
-            <span>AWS</span>
-          </div>
-          <div class="skill">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity" />
-            <span>Unity</span>    
-        </div>
-        </div>
+      <!-- Databases -->
+      <h3>Databases</h3>
+      <div class="skills-list">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle DB" /><span>OracleDB</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" /><span>MySQL</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" /><span>MongoDB</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg" alt="MSSQL" /><span>MSSQL</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" /><span>Firebase</span></div>
+      </div>
 
+      <!-- Frameworks -->
+      <h3>Frameworks</h3>
+      <div class="skills-list">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring" /><span>Spring</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" /><span>Angular</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" /><span>NodeJs</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" /><span>Bootstrap</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt="ASP.NET" /><span>ASP.NET</span></div>
+      </div>
 
-      </section>
-      
+      <!-- Tools -->
+      <h3>Tools & Platforms</h3>
+      <div class="skills-list">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /><span>Git</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" /><span>GitHub</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" /><span>GCP</span></div>
+        <div class="skill"><img src="/images/aws.svg" alt="AWS"/><span>AWS</span></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity" /><span>Unity</span></div>
+      </div>
+    </section>
+
   </main>
 
-  <footer >
+  <!-- Footer -->
+  <footer>
     <div class="footer-links">
       <a href="mailto:ibrahimitani0@gmail.com">ibrahimitani0@gmail.com</a>
       <a href="https://www.linkedin.com/in/ibrahimitani0/" target="_blank">LinkedIn</a>
