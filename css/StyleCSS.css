@@ -24,7 +24,9 @@ main {
   padding: 2rem 1rem;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 600;
 }
 
@@ -87,7 +89,7 @@ ul li {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #3b82f6;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   margin-bottom: 1rem;
   animation: dropIn 0.8s ease-out 0s;
 }
@@ -149,7 +151,9 @@ section {
 .fade-section {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .fade-section.visible {
@@ -175,10 +179,12 @@ section {
   background-color: #1e293b;
   border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
 }
@@ -194,7 +200,7 @@ section {
 
 .project:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(59,130,246,0.5);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.5);
 }
 
 .project-image {
@@ -224,7 +230,9 @@ section {
   text-decoration: none;
   font-weight: 600;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .project:hover .view-btn {
@@ -262,16 +270,43 @@ section {
   font-size: 0.75rem;
   font-weight: 500;
   color: #e5e7eb;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
-.tech-tags span.angular { background-color: #dd3737; }
-.tech-tags span.html { background-color: #ff6a33; }
-.tech-tags span.css { background-color: #994daa; }
-.tech-tags span.js { background-color: #e4de2e; color: #111827; }
-.tech-tags span.firebase { background-color: orange; }
-.tech-tags span.docker { background-color: #2496ed; }
-.tech-tags span.aws { background-color: #ffae18; color: #111827; }
+.tech-tags span.angular {
+  background-color: #dd3737;
+}
+.tech-tags span.html {
+  background-color: #ff6a33;
+}
+.tech-tags span.css {
+  background-color: #994daa;
+}
+.tech-tags span.js {
+  background-color: #e4de2e;
+  color: #111827;
+}
+.tech-tags span.firebase {
+  background-color: orange;
+}
+.tech-tags span.docker {
+  background-color: #2496ed;
+}
+.tech-tags span.aws {
+  background-color: #ffae18;
+  color: #111827;
+}
+.tech-tags span.mysql {
+  background-color: #00618a;
+}
+.tech-tags span.springboot {
+  background-color: #6db33f;
+}
+.tech-tags span.java {
+  background-color: #f89820;
+}
 
 /* =======================
    Skills
@@ -299,7 +334,9 @@ section {
   font-size: 0.95rem;
   width: 40px;
   text-align: center;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
 .skill:hover {
@@ -373,35 +410,69 @@ footer small {
    Animations
 ======================= */
 @keyframes dropIn {
-  0% { opacity: 0; transform: translateY(-40px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes bounceInRight {
-  0% { opacity: 0; transform: translateX(100px) scale(0.95); }
-  60% { opacity: 1; transform: translateX(-10px) scale(1.02); }
-  80% { transform: translateX(5px) scale(0.98); }
-  100% { transform: translateX(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10px) scale(1.02);
+  }
+  80% {
+    transform: translateX(5px) scale(0.98);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
 }
 
 /* =======================
    Responsive
 ======================= */
 @media (max-width: 600px) {
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.5rem; }
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
 
-  .project-image img { height: 150px; }
+  .project-image img {
+    height: 150px;
+  }
 
   .tech-tags span {
     font-size: 0.65rem;
