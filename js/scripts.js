@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "&&",
         "#",
         "0",
+        "1",
         "2",
         "3",
         "4",
@@ -166,7 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "7",
         "8",
         "9",
-        "9",
+        "@",
+        ":)",
+        ":D",
       ];
       this.char = this.chars[Math.floor(Math.random() * this.chars.length)];
     }
@@ -263,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "&&",
         "#",
         "0",
+        "1",
         "2",
         "3",
         "4",
@@ -270,7 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "6",
         "7",
         "8",
-        "9",
         "9",
       ];
       this.char = this.chars[Math.floor(Math.random() * this.chars.length)];
