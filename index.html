@@ -3,174 +3,364 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/StyleCSS.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script defer src="js/scripts.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-G69PD2Q3WQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-G69PD2Q3WQ");
+    </script>
     <title>Ibrahim Itani | Portfolio</title>
   </head>
+
   <body class="loaded">
+    <div id="scroll-progress">
+      <div class="progress-dot" data-section="hero"></div>
+      <div class="progress-dot" data-section="about"></div>
+      <div class="progress-dot" data-section="experience"></div>
+      <div class="progress-dot" data-section="education"></div>
+      <div class="progress-dot" data-section="projects"></div>
+      <div class="progress-dot" data-section="skills"></div>
+    </div>
     <!-- Hero Section -->
     <section id="hero">
+      <canvas id="hero-canvas"></canvas>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+      </nav>
       <div class="hero-container">
-        <img
-          src="/images/ProfilePic.jpg"
-          alt="Ibrahim Itani"
-          class="hero-photo" />
-        <h1 class="hero-name-typing">
-          <span id="typed-name"></span><span class="cursor">|</span>
+        <div class="hero-image-wrapper">
+          <div class="hero-image-container">
+            <div class="profile-image-glow"></div>
+
+            <div class="profile-image-frame">
+              <div class="profile-image" id="profileImage">
+                <img src="/images/ProfilePic.jpg" alt="Ibrahim Itani" />
+              </div>
+            </div>
+
+            <!-- Floating Badges -->
+            <div class="floating-badge badge-1">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                alt="Angular" />
+              <div class="badge-content">
+                <span class="badge-title">Angular</span>
+                <span class="badge-libs">RxJs, Angular Material</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-2">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                alt="Java" />
+              <div class="badge-content">
+                <span class="badge-title">Java</span>
+                <span class="badge-libs">Core, Collections, JUnit</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                alt="MySQL" />
+              <div class="badge-content">
+                <span class="badge-title">MySQL</span>
+                <span class="badge-libs">Queries, Joins, Transactions</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-4">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                alt="Spring Boot" />
+              <div class="badge-content">
+                <span class="badge-title">Spring Boot</span>
+                <span class="badge-libs">REST API, Microservices</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="name-wrapper">
+          <h1 class="hero-name-typing">
+            <span id="typed-name"></span><span class="cursor">|</span>
+          </h1>
+        </div>
+        <h1 class="hero-title">
+          <span class="bounce-up">Software</span>
+          <span class="bounce-down">Engineer</span>
         </h1>
-        <p>Software Engineer</p>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-        </nav>
       </div>
     </section>
 
     <main>
       <!-- About -->
       <section id="about" class="fade-section">
-        <h2>About Me</h2>
-        <p>
-          Software Engineer with 4+ years of experience, specializing in
-          developing Web Applications, REST APIs, Microservices, and Backend
-          Systems using Java, Spring Boot, Angular, SQL, and Python. Experienced
-          in building Financial dashboards, and data visualization systems that
-          enhance user experiences, and support businesses with analytical and
-          data-driven digital solutions. I am passionate about optimizing
-          application performance, creating intuitive and user-friendly
-          front-end interfaces, and developing maintainable, scalable backend
-          architectures.
-        </p>
+        <h2 class="title-h2">About Me</h2>
+        <div class="about-container">
+          <!-- Main Mac Window -->
+          <div class="about-window">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
+
+            <div class="window-content">
+              <h3>Prossional Summary</h3>
+              <p>
+                Software Engineer with 4+ years of experience, specializing in
+                developing Web Applications, REST APIs, Microservices, and
+                Backend Systems using Java, Spring Boot, Angular, SQL, and
+                Python. Experienced in building Financial dashboards, and data
+                visualization systems that enhance user experiences, and support
+                businesses with analytical and data-driven digital solutions. I
+                am passionate about optimizing application performance, creating
+                intuitive and user-friendly front-end interfaces, and developing
+                maintainable, scalable backend architectures.
+              </p>
+            </div>
+          </div>
+
+          <!-- Vertical Mini Windows -->
+          <div class="mini-windows">
+            <div class="about-window mini-window">
+              <div class="window-header">
+                <span class="window-btn close-btn"></span>
+                <span class="window-btn min-btn"></span>
+                <span class="window-btn max-btn"></span>
+              </div>
+              <div class="window-content stats">
+                <h3 class="stat-number">4+</h3>
+                <p class="stat-label">Years of Experience</p>
+              </div>
+            </div>
+
+            <div class="about-window mini-window">
+              <div class="window-header">
+                <span class="window-btn close-btn"></span>
+                <span class="window-btn min-btn"></span>
+                <span class="window-btn max-btn"></span>
+              </div>
+              <div class="window-content stats">
+                <h3>6+</h3>
+                <p>Projects Completed</p>
+              </div>
+            </div>
+
+            <div class="about-window mini-window">
+              <div class="window-header">
+                <span class="window-btn close-btn"></span>
+                <span class="window-btn min-btn"></span>
+                <span class="window-btn max-btn"></span>
+              </div>
+              <div class="window-content stats">
+                <h3>8+</h3>
+                <p>Technologies</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Experience -->
+
       <section id="experience" class="fade-section">
-        <h2>Experience</h2>
+        <h2 class="title-h2">Experience</h2>
+        <div class="mac-window experience-window">
+          <!-- Window header -->
+          <div class="window-header">
+            <span class="window-btn close-btn"></span>
+            <span class="window-btn min-btn"></span>
+            <span class="window-btn max-btn"></span>
+          </div>
 
-        <h3>
-          Tata Consultancy Services – Software Engineer (Jan 2021–Apr 2025)
-        </h3>
-        <ul>
-          <li>
-            Migrated multiple web applications from legacy systems to AWS,
-            modernizing CI/CD pipelines and improving deployment efficiency.
-          </li>
-          <li>
-            Developed full-stack applications using Angular, Java, Spring,
-            GraphQL, and OracleSQL, enhancing data visualization and financial
-            reporting features.
-          </li>
-          <li>
-            Wrote SQL queries to retrieve, insert, and update application data,
-            supporting reporting features, troubleshooting, and data validation
-            within Oracle database environments.
-          </li>
-          <li>
-            Built dynamic Reactive Forms and implemented custom validators for
-            better user input validation.
-          </li>
-          <li>
-            Designed Angular Services leveraging RxJs Observables to handle
-            asynchronous API calls and improve data responsiveness.
-          </li>
-          <li>
-            Implemented Chart.js for interactive graphing and data visualization
-            in financial dashboards.
-          </li>
-          <li>
-            Optimized performance for large datasets using lazy loading, sorting
-            and custom search filters (e.g., by date, price, ID).
-          </li>
-          <li>
-            Designed and implemented JPA Entity models aligned with Oracle
-            database schemas to ensure data integrity and scalability.
-          </li>
-          <li>
-            Developed RESTful controllers and service layer components to manage
-            functions, logic, transactions, and data flow between repositories
-            and client endpoints.
-          </li>
-          <li>
-            Integrated responsive UI elements with Angular Material and custom
-            CSS, ensuring accessibility and adherence to client branding through
-            custom theming and typography.
-          </li>
-          <li>
-            Implemented automated email notification functionality using Java
-            Servlets and SMTP integration, enabling dynamic user alerts and
-            workflow triggers.
-          </li>
-          <li>
-            Managed development tasks through Azure DevOps Boards, prioritizing
-            sprint goals and coordinating feature delivery.
-          </li>
-          <li>
-            Maintained code quality through unit testing, peer code reviews, and
-            continuous integration via Azure Pipelines.
-          </li>
-          <li>
-            Collaborated with business analysts and QA teams throughout the
-            software development life cycle following agile methodologies.
-          </li>
-        </ul>
+          <!-- Window content -->
+          <div class="window-content">
+            <h3>
+              Tata Consultancy Services – Software Engineer (Jan 2021–Apr 2025)
+            </h3>
+            <ul class="terminal-list">
+              <li>
+                Optimized Angular applications for large datasets, and
+                financial/manufacturing dashboards using lazy loading, sorting,
+                and custom search filters, improving performance and experience
+                for 10,000+ users.
+              </li>
+              <li>
+                Designed modern, responsive user interfaces with Angular
+                reactive forms and RxJS for data handling, implementing
+                validations that reduced input errors, cutting manual work by
+                2-3 hours per week for analysts.
+              </li>
+              <li>
+                Created Java/Angular components to process and validate CSV
+                files, efficiently storing data in Oracle SQL and streamlining
+                approximately 7+ major business and financial workflows across
+                North America and Europe.
+              </li>
+              <li>
+                Built REST APIs and JPA entity models aligned with Oracle
+                schemas and optimized SQL queries to ensure data integrity,
+                transaction efficiency, and scalability, serving 2 microservices
+                for cross-functional operations.
+              </li>
+              <li>
+                Implemented automated event-triggered email notifications using
+                Java Servlets and SMTP, enhancing workflow efficiency and team
+                communication across departments and manufacturing sites
+                worldwide.
+              </li>
+              <li>
+                Led the migration of six legacy applications from on-prem
+                servers to AWS using Maven and Azure DevOps CI/CD pipelines,
+                improving deployment reliability and reducing downtime.
+              </li>
+              <li>
+                Rebuilt and migrated a legacy Angular/Spring application to
+                Mendix, integrating SQL Server and automating SharePoint
+                document synchronization, increasing efficiency for 50+ users
+                across Business, Product, and Finance teams.
+              </li>
+              <li>
+                Handled user support tickets, addressing bug reports and fixing
+                production issues to maintain operational continuity and a high
+                client satisfaction index, earning the Service & Commitment
+                Award (Jan 2024).
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mac-window experience-window">
+          <!-- Window header -->
+          <div class="window-header">
+            <span class="window-btn close-btn"></span>
+            <span class="window-btn min-btn"></span>
+            <span class="window-btn max-btn"></span>
+          </div>
 
-        <h3>
-          Ameriprise Financial Services – Financial Operations Assistant (Aug
-          2016–Sep 2017)
-        </h3>
-        <ul>
-          <li>
-            Conducted quantitative research on equities and market trends to
-            assist advisors in preparing investment recommendations.
-          </li>
-          <li>
-            Entered and validated client financial data within internal systems,
-            ensuring record accuracy and completeness.
-          </li>
-          <li>
-            Maintained and organized investment portfolio records, supporting
-            timely account updates and operational processing.
-          </li>
-          <li>
-            Participated in client and advisor meetings to capture requirements,
-            document updates, and support follow-up actions.
-          </li>
-          <li>
-            Prepared client documentation, reports, and meeting materials while
-            coordinating with advisors to ensure readiness and compliance.
-          </li>
-          <li>
-            Utilized Microsoft Excel (formulas, sorting/filtering, and basic
-            functions such as VLOOKUP and SUMIF) to organize financial data,
-            reconcile records, and support report preparation.
-          </li>
-        </ul>
+          <!-- Window content -->
+          <div class="window-content">
+            <h3>
+              Ameriprise Financial Services – Financial Operations Assistant
+              (Aug 2016–Sep 2017)
+            </h3>
+            <ul class="terminal-list">
+              <li>
+                Conducted quantitative research on equities and market trends to
+                assist advisors in preparing investment recommendations.
+              </li>
+              <li>
+                Entered and validated client financial data within internal
+                systems, ensuring record accuracy and completeness.
+              </li>
+              <li>
+                Maintained and organized investment portfolio records,
+                supporting timely account updates and operational processing.
+              </li>
+              <li>
+                Participated in client and advisor meetings to capture
+                requirements, document updates, and support follow-up actions.
+              </li>
+              <li>
+                Prepared client documentation, reports, and meeting materials
+                while coordinating with advisors to ensure readiness and
+                compliance.
+              </li>
+              <li>
+                Utilized Microsoft Excel (formulas, sorting/filtering, and basic
+                functions such as VLOOKUP and SUMIF) to organize financial data,
+                reconcile records, and support report preparation.
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- Education -->
       <section id="education" class="fade-section">
-        <h2>Education</h2>
-        <p>
-          Western Michigan University – B.S. in Computer Science (2017–2020)
-        </p>
-        <p>
-          Lebanese American University – B.S. Finance & International Business
-          (2010–2015)
-        </p>
+        <h2 class="title-h2">Education</h2>
+        <div class="education-wrapper">
+          <div class="education-window">
+            <!-- Window header -->
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
+
+            <!-- Calendar year -->
+            <span class="edu-year">2017 – 2020</span>
+
+            <!-- Window content -->
+            <div class="window-content">
+              <ul class="terminal-list">
+                <img class="edu-logo" src="/images/wmu.png" alt="wmu" />
+                <h3>Western Michigan University</h3>
+                <li>B.S Computer Science</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="education-window">
+            <!-- Window header -->
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
+            <span class="edu-year">(2010 – 2015)</span>
+            <!-- Window content -->
+            <div class="window-content">
+              <ul class="terminal-list">
+                <img class="edu-logo" src="/images/lau.png" alt="wmu" />
+                <h3>Lebanese American University</h3>
+                <li>B.S Finance & International Business</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- Projects -->
       <section id="projects" class="fade-section">
-        <h2>Personal Projects</h2>
+        <h2 class="title-h2">Personal Projects</h2>
         <div class="grid">
-          <div class="project">
+          <!-- Project 1 -->
+          <div class="project card-3d">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
             <div class="project-image">
-              <img
-                src="/images/PageFlipper.png"
-                alt="Screenshot of PageFlipper App" />
+              <img src="/images/PageFlipper.png" alt="PageFlipper App" />
+            </div>
+            <canvas class="card-sparks"></canvas>
+            <div class="project-overlay">
+              <h3>PageFlipper</h3>
+              <p>
+                Full-stack Library Management App with Angular, Spring Boot &
+                MySQL. Explore books, manage orders, and interact with
+                community-driven posts.
+              </p>
+              <div class="tech-tags">
+                <span class="angular">Angular</span>
+                <span class="java">Java</span>
+                <span class="springboot">Spring Boot</span>
+                <span class="mysql">MySQL</span>
+              </div>
               <a
                 href="https://github.com/ibrahimitani0/Library-Management-System"
                 class="view-btn"
@@ -179,34 +369,31 @@
                 >View Project</a
               >
             </div>
-            <div class="project-content">
-              <h3 class="project-title">PageFlipper</h3>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project card-3d">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
+            <div class="project-image">
+              <img src="/images/PokdeCenter.png" alt="PokeCenter App" />
+            </div>
+            <canvas class="card-sparks"></canvas>
+            <div class="project-overlay">
+              <h3>PokeCenter</h3>
               <p>
-                PageFlipper is a full-stack Library Management Web Application
-                built with Angular, Java, Spring Boot, and MySQL. The platform
-                enables users to discover and explore books, place and manage
-                orders, and engage with a dynamic, community-driven environment
-                through posts and book reviews. It also features a virtual
-                assistant chatbot to enhance user interaction and support.
-                Administrators and librarians are equipped with various tools to
-                manage inventory, oversee user activity, and access analytics
-                for better decision-making.
+                Modern, responsive Pokédex with dynamic search, type filtering,
+                and detailed Pokémon profiles using Angular & Firebase.
               </p>
               <div class="tech-tags">
                 <span class="angular">Angular</span>
-                <span class="html">HTML</span>
-                <span class="css">SCSS</span>
-                <span class="java">Java</span>
-                <span class="springboot">Spring Boot</span>
-                <span class="mysql">MySQL</span>
+                <span class="python">Python</span>
+                <span class="mongodb">MongoDB</span>
+                <span class="docker">Docker</span>
               </div>
-            </div>
-          </div>
-          <div class="project">
-            <div class="project-image">
-              <img
-                src="/images/PokdeCenter.png"
-                alt="Screenshot of PokeCenter Angular App" />
               <a
                 href="https://github.com/ibrahimitani0/PokeCenter"
                 class="view-btn"
@@ -215,87 +402,135 @@
                 >View Project</a
               >
             </div>
-            <div class="project-content">
-              <h3 class="project-title">PokeCenter</h3>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project card-3d">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
+            <div class="project-image">
+              <img src="/images/owangular.png" alt="Overwatch Central App" />
+            </div>
+            <canvas class="card-sparks"></canvas>
+            <div class="project-overlay">
+              <h3>Overwatch Central</h3>
               <p>
-                A modern, responsive Pokédex built with Angular, Firebase, and
-                interactive UI features including dynamic search, type
-                filtering, and detailed Pokémon profiles.
+                Angular app with detailed info on Overwatch heroes, abilities,
+                skins, and voice lines. Intuitive UI and API integration.
               </p>
               <div class="tech-tags">
                 <span class="angular">Angular</span>
-                <span class="html">HTML</span>
-                <span class="css">CSS</span>
                 <span class="firebase">Firebase</span>
-                <span class="docker">Docker</span>
               </div>
+              <a
+                href="#"
+                class="view-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Project</a
+              >
             </div>
           </div>
 
-          <div class="project">
+          <!-- Project 4 -->
+          <div class="project card-3d">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
             <div class="project-image">
-              <img
-                src="/images/owangular.png"
-                alt="Screenshot of Overwatch Central Angular App" />
-              <!-- <a href="#" class="view-btn">View Project</a> -->
+              <img src="/images/store.png" alt="E-Commerce App" />
             </div>
-            <div class="project-content">
-              <h3 class="project-title">Overwatch Central</h3>
-              <p>
-                A sleek Angular app providing details on Overwatch heroes,
-                including abilities, skins, and voice lines, with intuitive
-                navigation and API integration.
-              </p>
-              <div class="tech-tags">
-                <span class="angular">Angular</span>
-                <span class="html">HTML</span>
-                <span class="css">CSS</span>
-                <span class="firebase">Firebase</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project">
-            <div class="project-image">
-              <img
-                src="/images/store.png"
-                alt="Screenshot of E-Commerce Web App" />
-              <!-- <a href="#" class="view-btn">View Project</a> -->
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">E-Commerce Web Application</h3>
+            <canvas class="card-sparks"></canvas>
+            <div class="project-overlay">
+              <h3>E-Commerce Web App</h3>
               <p>
                 Full-featured online store inspired by Amazon, with user
-                accounts, product search, cart functionality, and virtual
-                currency system.
+                accounts, cart, search, and virtual currency.
               </p>
               <div class="tech-tags">
                 <span class="js">JavaScript</span>
+                <span class="aws">AWS</span>
                 <span class="html">HTML</span>
                 <span class="css">CSS</span>
-                <span class="aws">AWS</span>
               </div>
+              <a
+                href="#"
+                class="view-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Project</a
+              >
             </div>
           </div>
 
-          <div class="project">
-            <div class="project-image">
-              <img
-                src="/images/todolistProject.png"
-                alt="Screenshot of To-Do List App" />
-              <!-- <a href="#" class="view-btn">View Project</a> -->
+          <!-- Project 5 -->
+          <div class="project card-3d">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
             </div>
-            <div class="project-content">
-              <h3 class="project-title">To-Do List App</h3>
+            <div class="project-image">
+              <img src="/images/todolistProject.png" alt="To-Do List App" />
+            </div>
+            <canvas class="card-sparks"></canvas>
+            <div class="project-overlay">
+              <h3>To-Do List App</h3>
               <p>
-                A responsive To-Do list app with add, edit, delete, bulk delete,
-                complete tracking, and light/dark mode toggle.
+                Responsive To-Do app with add, edit, delete, bulk delete,
+                completion tracking, and dark/light mode toggle.
               </p>
               <div class="tech-tags">
                 <span class="js">JavaScript</span>
                 <span class="html">HTML</span>
                 <span class="css">CSS</span>
               </div>
+              <a
+                href="#"
+                class="view-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Project</a
+              >
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project card-3d">
+            <div class="window-header">
+              <span class="window-btn close-btn"></span>
+              <span class="window-btn min-btn"></span>
+              <span class="window-btn max-btn"></span>
+            </div>
+            <div class="project-image">
+              <img src="/images/WeatherApp.png" alt="Weather App" />
+            </div>
+            <canvas class="card-sparks"></canvas>
+            <div class="project-overlay">
+              <h3>Weather App</h3>
+              <p>
+                Weather app with current conditions, and location search using
+                OpenWeatherMap API, with responsive design and dark/light mode
+                toggle.
+              </p>
+              <div class="tech-tags">
+                <span class="js">JavaScript</span>
+                <span class="html">HTML</span>
+                <span class="css">CSS</span>
+                <span class="weatherAPI">Weather API</span>
+              </div>
+              <a
+                href="#"
+                class="view-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View Project</a
+              >
             </div>
           </div>
         </div>
@@ -303,138 +538,186 @@
 
       <!-- Skills -->
       <section id="skills" class="fade-section">
-        <h2>Skills & Technologies</h2>
+        <h2 class="title-h2">Skills & Technologies</h2>
         <!-- Technical Languages -->
-        <h3>Technical Languages</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-              alt="Java" /><span>Java</span>
+
+        <div class="mac-window skills-window">
+          <div class="window-header">
+            <span class="window-btn close-btn"></span>
+            <span class="window-btn min-btn"></span>
+            <span class="window-btn max-btn"></span>
           </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              alt="JavaScript" /><span>JavaScript</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-              alt="TypeScript" /><span>TypeScript</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-              alt="PHP" /><span>PHP</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-              alt="C#" /><span>C#</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              alt="HTML5" /><span>HTML</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-              alt="CSS3" /><span>CSS</span>
-          </div>
-          <div class="skill">
-            <img
-              src="/images/sql-d770f38c.png"
-              alt="SQL"
-              class="sql-icon" /><span>SQL</span>
+          <div class="window-content">
+            <h3 class="title">Programming Languages</h3>
+            <div class="skills-list">
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                  alt="Java" /><span>Java</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="JavaScript" /><span>JavaScript</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                  alt="TypeScript" /><span>TypeScript</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+                  alt="PHP" /><span>PHP</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+                  alt="C#" /><span>C#</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                  alt="HTML5" /><span>HTML</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                  alt="CSS3" /><span>CSS</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/sass.svg"
+                  alt="SCSS" />
+                <span>SCSS</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="/images/sql-d770f38c.png"
+                  alt="SQL"
+                  class="sql-icon" /><span>SQL</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Databases -->
         <h3>Databases</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
-              alt="Oracle DB" /><span>OracleDB</span>
+        <div class="mac-window skills-window">
+          <div class="window-header">
+            <span class="window-btn close-btn"></span>
+            <span class="window-btn min-btn"></span>
+            <span class="window-btn max-btn"></span>
           </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-              alt="MySQL" /><span>MySQL</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-              alt="MongoDB" /><span>MongoDB</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg"
-              alt="MSSQL" /><span>MSSQL</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-              alt="Firebase" /><span>Firebase</span>
+          <div class="window-content">
+            <div class="skills-list">
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
+                  alt="Oracle DB" /><span>OracleDB</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                  alt="MySQL" /><span>MySQL</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                  alt="MongoDB" /><span>MongoDB</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg"
+                  alt="MSSQL" /><span>MSSQL</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                  alt="PostgreSQL" />
+                <span>PostgreSQL</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                  alt="Firebase" /><span>Firebase</span>
+              </div>
+            </div>
           </div>
         </div>
-
         <!-- Frameworks -->
         <h3>Frameworks</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
-              alt="Spring" /><span>Spring</span>
+        <div class="mac-window skills-window">
+          <div class="window-header">
+            <span class="window-btn close-btn"></span>
+            <span class="window-btn min-btn"></span>
+            <span class="window-btn max-btn"></span>
           </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-              alt="Angular" /><span>Angular</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-              alt="Node.js" /><span>NodeJs</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-              alt="Bootstrap" /><span>Bootstrap</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
-              alt="ASP.NET" /><span>ASP.NET</span>
+          <div class="window-content">
+            <div class="skills-list">
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                  alt="Spring" /><span>Spring</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+                  alt="Angular" /><span>Angular</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                  alt="Node.js" /><span>NodeJs</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                  alt="Bootstrap" /><span>Bootstrap</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
+                  alt="ASP.NET" /><span>ASP.NET</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Tools -->
         <h3>Tools & Platforms</h3>
-        <div class="skills-list">
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-              alt="Git" /><span>Git</span>
+        <div class="mac-window skills-window">
+          <div class="window-header">
+            <span class="window-btn close-btn"></span>
+            <span class="window-btn min-btn"></span>
+            <span class="window-btn max-btn"></span>
           </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-              alt="GitHub" /><span>GitHub</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
-              alt="GCP" /><span>GCP</span>
-          </div>
-          <div class="skill">
-            <img src="/images/aws.svg" alt="AWS" /><span>AWS</span>
-          </div>
-          <div class="skill">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
-              alt="Unity" /><span>Unity</span>
+          <div class="window-content">
+            <div class="skills-list">
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                  alt="Git" /><span>Git</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                  alt="GitHub" /><span>GitHub</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                  alt="GCP" /><span>GCP</span>
+              </div>
+              <div class="skill">
+                <img src="/images/aws.svg" alt="AWS" /><span>AWS</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
+                  alt="Unity" /><span>Unity</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -442,6 +725,7 @@
 
     <!-- Footer -->
     <footer>
+      <canvas id="footer-canvas"></canvas>
       <div class="footer-links">
         <a href="mailto:ibrahimitani0@gmail.com">ibrahimitani0@gmail.com</a>
         <a href="https://www.linkedin.com/in/ibrahimitani0/" target="_blank"
@@ -454,5 +738,6 @@
         reserved.</small
       >
     </footer>
+    <canvas id="hex-canvas"></canvas>
   </body>
 </html>

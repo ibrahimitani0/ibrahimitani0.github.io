@@ -1,0 +1,1354 @@
+:root {
+  --primary: #1a1a1a; /* Umbreon body black */
+  --secondary: #ffdd00; /* Umbreon rings yellow */
+  --accent: #ffdd00; /* accent same as rings */
+  --dark-grey: #a55656; /* subtle dark grey contrast */
+  --deep-purple: #4b0082; /* deep purple for accents */
+  --bg-dark: #0d0d0d; /* very dark background */
+  --bg-darker: #010101; /* almost black for depth */
+  --bg-card: #1f1f1f; /* card background */
+  --bg-hover: #2a2a2a; /* hover overlay */
+  --border: #ffdd00; /* yellow border */
+  --text-primary: #fde7e7; /* soft off-white text for contrast */
+  --text-secondary: #bbbbbb; /* muted secondary text */
+  --text-muted: #b69999; /* slate grey muted text */
+  --gradient-1: linear-gradient(135deg, #1a1a1a 0%, #ffdd00 50%, #ffdd00 100%);
+  --gradient-2: linear-gradient(135deg, #333333 0%, #ffdd00 50%, #ffdd00 100%);
+  --gradient-3: linear-gradient(135deg, #222222 0%, #333333 100%);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(255, 221, 0, 0.3); /* yellow glow */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-family: "Courier New", Courier, monospace;
+}
+
+/* =======================
+   Base Reset & Global Styles
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-card));
+  color: var(--text-primary);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px; /* height of nav */
+}
+
+#hex-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99; /* behind all content */
+  pointer-events: none;
+}
+
+main {
+  flex-grow: 1;
+  max-width: 960px;
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.title-h2 {
+  font-size: 2.5rem;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.5rem;
+  color: var(--dark-grey);
+  border-bottom: 3px solid var(--secondary);
+}
+
+#terminal-list li {
+  position: relative;
+  padding-left: 1.5rem; /* space for the arrow */
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  list-style: none;
+}
+
+#terminal-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--secondary); /* yellow arrow like your theme */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* =======================
+   Hero Section
+======================= */
+
+.name-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-top: 50px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+/* Glow ring (Umbreon vibe) */
+.profile-image-glow {
+  position: absolute;
+  inset: -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--dark-grey), transparent 70%);
+  filter: blur(20px);
+  animation: pulseGlow 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.profile-image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Glowing spinning ring */
+.profile-image-frame::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  border-radius: 50%;
+  background: conic-gradient(
+    rgba(255, 221, 0, 0.8),
+    rgba(255, 221, 0, 0.2),
+    rgba(255, 221, 0, 0.8),
+    rgba(255, 221, 0, 0.2)
+  );
+  animation: spinRing 3s linear infinite;
+  z-index: 1;
+  filter: blur(6px); /* makes it glow */
+}
+
+/* Keep the inner image still */
+.profile-image-frame .profile-image {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes spinRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Actual image */
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--bg-card);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+/* =======================
+   Hero Floating Badges
+======================= */
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid var(--secondary);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glow);
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+  width: max-content;
+}
+
+/* Badge images */
+.floating-badge img {
+  width: 24px; /* size of icons */
+  height: 24px;
+  object-fit: contain;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+/* Badge positions */
+.badge-1 {
+  top: -30px;
+  left: -100px;
+  animation-delay: 0.3s;
+}
+
+.badge-2 {
+  top: 75%;
+  right: -150px;
+  transform: translateY(-50%);
+  animation-delay: 0s;
+}
+
+.badge-3 {
+  bottom: 70px;
+  left: -210px;
+  animation-delay: 2s;
+}
+.badge-4 {
+  top: 10%;
+  left: 80%;
+  animation-delay: 0.5s;
+}
+.badge-5 {
+  bottom: 30%;
+  right: 60%;
+  animation-delay: 1.5s;
+}
+
+/* Badge text */
+.badge-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.badge-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary);
+  margin-bottom: 5px;
+}
+
+.badge-libs {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+#hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  border-bottom: 2px solid var(--bg-hover);
+  width: 100%;
+  height: 100vh; /* always full screen height */
+  min-height: 600px; /* optional for very short screens */
+  background-color: var(--bg-dark);
+}
+
+#hero canvas#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  z-index: 0;
+}
+
+.hero-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px; /* adjust thickness */
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--dark-grey),
+    var(--text-primary),
+    var(--accent)
+  );
+  transform: scaleX(0); /* start hidden */
+  transform-origin: left; /* grows from left */
+  transition: transform 0.15s ease-out; /* smooth animation */
+  pointer-events: none; /* won't block clicks */
+  z-index: 20; /* above background but below content */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  bottom: 0; /* bottom border */
+  left: 0;
+  height: 3px;
+  width: 100%; /* full width for calculation */
+  background: linear-gradient(
+    90deg,
+    var(--dark-grey),
+    var(--text-primary),
+    var(--accent)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s linear; /* quick smooth update */
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--secondary);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 1rem;
+  animation: dropIn 0.8s ease-out 0s;
+}
+
+.hero-name-typing {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-top: var(--spacing-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: dropIn 0.8s ease-out 0.1s;
+}
+
+#hero p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  animation: dropIn 0.8s ease-out 0.2s;
+}
+
+.hero-title {
+  color: var(--dark-grey);
+  font-size: 1.2rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle upward bounce */
+.bounce-up {
+  display: inline-block;
+  animation: bounceUp 1.2s ease-in-out infinite alternate;
+}
+
+/* Subtle downward bounce */
+.bounce-down {
+  display: inline-block;
+  animation: bounceDown 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes bounceUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  } /* subtle up */
+}
+
+@keyframes bounceDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(6px);
+  } /* subtle down */
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0; /* make sure it's at the very left */
+  width: 100vw; /* full viewport width */
+  z-index: 999;
+  backdrop-filter: blur(15px) saturate(180%);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a {
+  color: var(--dark-grey);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all var(--transition);
+  margin: 0 2rem;
+}
+
+nav a:hover {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
+/* Typing Cursor */
+.cursor {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 2.75rem;
+  color: var(--dark-grey);
+  animation: blink 0.8s steps(1) infinite;
+}
+
+/* Scroll Progress Dots */
+#scroll-progress {
+  position: fixed;
+  top: 50%;
+  left: 20px; /* distance from left edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active dot animation */
+.progress-dot.active {
+  background-color: var(--secondary); /* yellow */
+  animation: bounceDot 0.6s infinite alternate;
+}
+
+/* Subtle bounce animation */
+@keyframes bounceDot {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =======================
+   Sections & Fade Animation
+======================= */
+section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+/* visible class will be added when scrolling */
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-section.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* ---------------- About Section Layout ---------------- */
+.about-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap; /* allows stacking on small screens */
+}
+
+.about-window {
+  background: rgba(44, 44, 44, 0.613);
+  backdrop-filter: blur(15px) saturate(180%);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  flex: 2;
+  min-width: auto;
+  height: auto;
+}
+
+/* Window header */
+.about-window .window-header {
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mac buttons */
+.about-window .window-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.about-window .close-btn {
+  background: #ff5f57;
+}
+
+.about-window .min-btn {
+  background: #ffdd00;
+}
+
+.about-window .max-btn {
+  background: #28c940;
+}
+
+/* Window content */
+.about-window .window-content {
+  padding: 1.5rem;
+  color: var(--text-primary);
+}
+
+.about-window .window-content p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.about-window .window-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Mini Windows Container */
+.mini-windows .mini-windows {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Mini Windows */
+.mini-windows .mini-window {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(50px); /* start slightly off to the right */
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* subtle bounce */
+}
+
+/* When visible, slide in */
+.mini-windows .mini-window.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Center content in mini windows */
+.mini-windows .mini-window .window-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+
+.mini-windows .mini-window h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mini-windows .mini-window p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/*------------------ Experience window -------------------*/
+/* Max-style Mac Window for Experience */
+.experience-window {
+  width: 100%;
+  max-width: 1200px; /* optional for huge screens */
+  height: auto;
+  margin: 3rem auto;
+  border-radius: 1rem;
+  background: rgba(44, 44, 44, 0.613);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Window header */
+.experience-window .window-header {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.experience-window .window-btn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.experience-window .close-btn {
+  background: #ff5f57;
+}
+.experience-window .min-btn {
+  background: #ffdd00;
+}
+.experience-window .max-btn {
+  background: #28c940;
+}
+
+/* Window content */
+.experience-window .window-content {
+  padding: 2rem;
+  color: var(--text-primary);
+}
+
+.experience-window h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.experience-window ul.terminal-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.experience-window ul.terminal-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Add ">" like terminal */
+.experience-window ul.terminal-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .experience-window {
+    width: 90%;
+    padding: 1rem;
+  }
+}
+
+/* Education Mac Window Styling */
+
+.education-wrapper {
+  display: flex;
+  gap: 2rem; /* space between windows */
+  flex-wrap: wrap; /* stack on smaller screens */
+  justify-content: center; /* center horizontally */
+  margin-top: 2rem;
+}
+
+.education-window {
+  flex: 1;
+  width: auto;
+  max-width: auto;
+  height: auto;
+  margin: 3rem auto;
+  border-radius: 1rem;
+  background: rgba(44, 44, 44, 0.613);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Window header (reuse styles) */
+.education-window .window-header {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.education-window .window-btn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.education-window .close-btn {
+  background: #ff5f57;
+}
+.education-window .min-btn {
+  background: #ffdd00;
+}
+.education-window .max-btn {
+  background: #28c940;
+}
+
+/* Window content */
+.education-window .window-content {
+  padding: 1rem;
+  color: var(--text-primary);
+}
+
+.education-window h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.education-window .terminal-list h3 {
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.education-window ul.terminal-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.education-window ul.terminal-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Add ">" like terminal */
+.education-window ul.terminal-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+.education-window .edu-year {
+  position: relative;
+  top: 0.5rem;
+  right: -20rem;
+  background: #ff605c; /* red calendar style */
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* Logo styling */
+.education-window .edu-logo {
+  display: block; /* block for centering */
+  margin: 0 auto 0.5rem; /* center horizontally, small gap below */
+  width: auto; /* fixed width */
+  height: 150px; /* keep aspect ratio */
+  object-fit: filll; /* scale nicely without cropping */
+  border-radius: 8px; /* optional: slightly rounded corners */
+  background-color: var(--text-secondary);
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mini-windows {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .mini-window {
+    flex: 1;
+    height: 80px;
+  }
+}
+/* =======================
+   3D Interactive Project Cards (Mac Window Style)
+======================= */
+.grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* Mac window header */
+.card-3d .window-header {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.window-header .window-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.window-header .close-btn {
+  background: #ff5f57;
+}
+.window-header .min-btn {
+  background: #ffdd00;
+}
+.window-header .max-btn {
+  background: #28c940;
+}
+
+.card-3d {
+  position: relative;
+  background: rgba(44, 44, 44, 0.613);
+  border-radius: 1rem;
+  overflow: hidden; /* <-- allow children to pop out */
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  min-height: 320px;
+  max-height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image container */
+.project-image {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(44, 44, 44, 0.613);
+  position: relative;
+}
+
+/* Image itself */
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* Optional: lift card slightly */
+.card-3d:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+/* Overlay */
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.98) 0%,
+    rgba(0, 0, 0, 0.88) 30%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.card-3d:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(255, 221, 0, 0.5);
+  transition:
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
+  border-bottom: 3px solid var(--secondary);
+}
+
+.card-3d:hover .project-overlay h3 {
+  transform: translateY(-2px);
+  text-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(255, 221, 0, 0.7);
+}
+
+.project-overlay p {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+
+  font-weight: 500; /* slightly bolder for clarity */
+  line-height: 1.4; /* more readable spacing */
+  letter-spacing: 0.5px; /* subtle polish */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* improves readability over background */
+  border-radius: 8px;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  background: var(--bg-card);
+  padding: 8px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-tags span {
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.tech-tags span:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.view-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--dark-grey);
+  margin-top: 5px;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.view-btn:hover {
+  background: var(--secondary);
+}
+
+/* Individual tech colors */
+.tech-tags span.angular {
+  background-color: #dd3737;
+}
+.tech-tags span.html {
+  background-color: #ff6a33;
+}
+.tech-tags span.css {
+  background-color: #994daa;
+}
+.tech-tags span.js {
+  background-color: #e4de2e;
+  color: #111827;
+}
+.tech-tags span.firebase {
+  background-color: orange;
+}
+.tech-tags span.mongodb {
+  background-color: #47a248;
+  color: #fff;
+}
+.tech-tags span.docker {
+  background-color: #2496ed;
+}
+.tech-tags span.aws {
+  background-color: #ffae18;
+  color: #111827;
+}
+.tech-tags span.mysql {
+  background-color: #00618a;
+}
+.tech-tags span.springboot {
+  background-color: #6db33f;
+}
+.tech-tags span.java {
+  background-color: #f89820;
+}
+.tech-tags span.python {
+  background-color: #3776ab;
+  color: #fff;
+}
+.tech-tags span.weatherAPI {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .project-image img {
+    height: 220px;
+  }
+  .tech-tags span {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+.card-sparks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* clicks pass through to underlying content */
+  z-index: 2; /* above image */
+}
+
+/* =======================
+   Skills
+======================= */
+
+/* Mac-style window for skills */
+.skills-window {
+  width: 100%;
+  max-width: auto;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: 12px;
+  background: rgba(44, 44, 44, 0.613);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Window header buttons (red, yellow, green) */
+.skills-window .window-header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #2c2c2c;
+}
+
+.skills-window .window-header .window-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.skills-window .window-header .close-btn {
+  background: #ff605c;
+}
+.skills-window .window-header .min-btn {
+  background: #ffbd44;
+}
+.skills-window .window-header .max-btn {
+  background: #00ca4e;
+}
+
+/* Window content */
+.skills-window .window-content {
+  padding: 1.5rem;
+  color: #f0f0f0;
+}
+
+#skills .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 3.8rem;
+  margin-top: var(--spacing-md);
+}
+
+#skills h3 {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  width: 40px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.skill img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+}
+
+.sql-icon {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+/* =======================
+   Contact Section
+======================= */
+#contact {
+  text-align: center;
+}
+
+#contact a.button {
+  display: inline-block;
+  margin: 0.5rem;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+#contact a.button:hover {
+  background-color: var(--secondary);
+}
+
+/* =======================
+   Footer
+======================= */
+footer {
+  background-color: var(--bg-dark);
+  color: var(--text-muted);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+footer .footer-links {
+  margin-bottom: 1rem;
+}
+
+footer .footer-links a {
+  color: var(--dark-grey);
+  text-decoration: none;
+  margin: 0 0.75rem;
+  font-weight: 600;
+}
+
+footer .footer-links a:hover {
+  color: var(--text-primary);
+}
+
+footer small {
+  font-size: 0.9rem;
+}
+
+/* =======================
+   Animations
+======================= */
+@keyframes dropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10px) scale(1.02);
+  }
+  80% {
+    transform: translateX(5px) scale(0.98);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+#footer-canvas {
+  position: absolute; /* or relative if you want it contained */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so it doesn’t block clicks */
+  z-index: 0;
+}
+footer {
+  position: relative; /* so canvas is positioned inside footer */
+  overflow: hidden;
+}
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .project-image img {
+    height: 150px;
+  }
+  .tech-tags span {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
