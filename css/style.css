@@ -829,10 +829,10 @@ section {
 }
 
 .education-window .edu-year {
-  position: relative;
-  top: 0.5rem;
-  right: -20rem;
-  background: #ff605c; /* red calendar style */
+  position: absolute;
+  top: 3rem;
+  right: 0.5rem; /* small offset, stays inside card */
+  background: #ff605c;
   color: white;
   font-size: 0.8rem;
   font-weight: 600;
@@ -840,6 +840,14 @@ section {
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .education-window .edu-year {
+    top: 0.25rem;
+    right: 0.25rem;
+    font-size: 0.7rem;
+  }
 }
 
 /* Logo styling */
