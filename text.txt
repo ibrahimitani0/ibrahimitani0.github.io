@@ -1,0 +1,188 @@
+:root {
+  /* Blastoise Theme */
+  --primary: rgba(8, 44, 78, 1); /* Deep Navy */
+  --secondary: rgba(64, 168, 255, 1); /* Water Blue */
+  --accent: rgba(0, 119, 190, 1); /* Strong Teal */
+  --headers: rgba(120, 200, 255, 1); /* Lighter Blue */
+  --bg-dark: rgba(5, 25, 45, 1); /* Darker Navy */
+  --bg-darker: rgba(1, 12, 22, 1); /* Almost Black Blue */
+  --bg-card: rgba(18, 61, 105, 1); /* Card Background */
+  --bg-hover: rgba(28, 80, 140, 1); /* Hover Effect */
+  --border: rgba(64, 168, 255, 1); /* Blue Border */
+  --circle: conic-gradient(
+    rgba(64, 168, 255, 0.8),
+    rgba(64, 168, 255, 0.2),
+    rgba(64, 168, 255, 0.8),
+    rgba(64, 168, 255, 0.2)
+  );
+  --text-primary: rgba(220, 240, 255, 1); /* Light Text */
+  --text-secondary: rgba(160, 200, 240, 1); /* Secondary Text */
+  --text-muted: rgba(130, 170, 210, 1); /* Muted Text */
+
+  /* Gradients */
+  --gradient-1: linear-gradient(
+    135deg,
+    rgba(8, 44, 78, 1) 0%,
+    rgba(64, 168, 255, 1) 50%,
+    rgba(64, 168, 255, 1) 100%
+  );
+  --gradient-2: linear-gradient(
+    135deg,
+    rgba(18, 61, 105, 1) 0%,
+    rgba(64, 168, 255, 1) 50%,
+    rgba(64, 168, 255, 1) 100%
+  );
+  --gradient-3: linear-gradient(
+    135deg,
+    rgba(15, 55, 95, 1) 0%,
+    rgba(28, 80, 140, 1) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(64, 168, 255, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Transitions */
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Fonts */
+  --font-family: "Courier New", Courier, monospace;
+}
+
+:root {
+  /* Umbreon Theme */
+  --primary: rgba(26, 26, 26, 1);
+  --secondary: rgba(255, 221, 0, 1);
+  --accent: rgba(255, 221, 0, 1);
+  --headers: rgba(165, 86, 86, 1);
+  --bg-dark: rgba(13, 13, 13, 1);
+  --bg-darker: rgba(1, 1, 1, 1);
+  --bg-card: rgba(31, 31, 31, 1);
+  --bg-hover: rgba(42, 42, 42, 1);
+  --border: rgba(255, 221, 0, 1);
+  --circle: conic-gradient(
+    rgba(255, 221, 0, 0.8),
+    rgba(255, 221, 0, 0.2),
+    rgba(255, 221, 0, 0.8),
+    rgba(255, 221, 0, 0.2)
+  );
+  --text-primary: rgba(253, 231, 231, 1);
+  --text-secondary: rgba(187, 187, 187, 1);
+  --text-muted: rgba(182, 153, 153, 1);
+
+  /* Gradients */
+  --gradient-1: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(255, 221, 0, 1) 50%,
+    rgba(255, 221, 0, 1) 100%
+  );
+  --gradient-2: linear-gradient(
+    135deg,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(255, 221, 0, 1) 50%,
+    rgba(255, 221, 0, 1) 100%
+  );
+  --gradient-3: linear-gradient(
+    135deg,
+    rgba(34, 34, 34, 1) 0%,
+    rgba(51, 51, 51, 1) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(255, 221, 0, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Transitions */
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Fonts */
+  --font-family: "Courier New", Courier, monospace;
+}
+
+:root {
+  /* Decidueye Theme */
+  --primary: rgba(29, 45, 33, 1); /* dark forest green */
+  --secondary: rgba(176, 196, 137, 1); /* pale moss green */
+  --accent: rgba(176, 196, 137, 1); /* matching accent */
+  --headers: rgba(102, 81, 48, 1); /* earthy brown for headers */
+  --bg-dark: rgba(15, 28, 18, 1); /* deep forest background */
+  --bg-darker: rgba(5, 10, 5, 1); /* almost black green */
+  --bg-card: rgba(37, 55, 37, 1); /* card background */
+  --bg-hover: rgba(50, 70, 50, 1); /* hover effect */
+  --border: rgba(176, 196, 137, 1); /* border highlight */
+  --circle: conic-gradient(
+    rgba(176, 196, 137, 0.8),
+    rgba(176, 196, 137, 0.2),
+    rgba(176, 196, 137, 0.8),
+    rgba(176, 196, 137, 0.2)
+  );
+  --text-primary: rgba(242, 242, 230, 1); /* off-white text */
+  --text-secondary: rgba(189, 189, 170, 1); /* muted secondary text */
+  --text-muted: rgba(160, 160, 140, 1); /* subtle muted text */
+
+  /* Gradients */
+  --gradient-1: linear-gradient(
+    135deg,
+    rgba(29, 45, 33, 1) 0%,
+    rgba(176, 196, 137, 1) 50%,
+    rgba(176, 196, 137, 1) 100%
+  );
+  --gradient-2: linear-gradient(
+    135deg,
+    rgba(52, 70, 52, 1) 0%,
+    rgba(176, 196, 137, 1) 50%,
+    rgba(176, 196, 137, 1) 100%
+  );
+  --gradient-3: linear-gradient(
+    135deg,
+    rgba(36, 55, 36, 1) 0%,
+    rgba(52, 70, 52, 1) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(173, 216, 105, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Transitions */
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Fonts */
+  --font-family: "Courier New", Courier, monospace;
+}
