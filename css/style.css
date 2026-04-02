@@ -98,6 +98,9 @@ main {
   padding: var(--spacing-lg) var(--spacing-sm);
 }
 
+/*=====================================*/
+/*       H2 for ALL SECTIONS
+/*=====================================*/
 .title-h2 {
   font-size: 2.5rem;
   text-align: center;
@@ -114,6 +117,116 @@ main {
     1;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0; /* make sure it's at the very left */
+  width: 100vw; /* full viewport width */
+  z-index: 999;
+  backdrop-filter: blur(15px) saturate(180%);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* border thickness */
+  background: linear-gradient(
+    to right,
+    var(--headers) 0%,
+    var(--text-muted) 50%,
+    var(--text-primary) 100%
+  );
+  /* add blur/glow */
+  filter: blur(2px); /* blurs the gradient itself */
+  opacity: 0.9; /* optional: soften intensity */
+}
+
+nav a {
+  color: var(--headers);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all var(--transition);
+  margin: 0 2rem;
+}
+
+nav a:hover {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
+/* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--headers);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Side menu */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: -250px; /* hidden by default */
+  width: 250px;
+  height: 100vh;
+  background-color: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1rem;
+  gap: 1.5rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu a {
+  color: var(--text-primary);
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--secondary);
+}
+
+/* Show menu when active */
+.nav-menu.active {
+  left: 0;
+}
+
+/* Animate hamburger into X */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
 /* =======================
    Hero Section
 ======================= */
@@ -140,8 +253,8 @@ main {
 
 .hero-image-container {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: auto;
+  height: auto;
 }
 
 .profile-image-glow {
@@ -312,7 +425,7 @@ main {
   border-bottom: 2px solid var(--bg-hover);
   width: 100%;
   height: 100vh; /* always full screen height */
-  min-height: 600px; /* optional for very short screens */
+  min-height: 768px; /* optional for very short screens */
   background-color: var(--bg-dark);
 }
 
@@ -367,17 +480,6 @@ main {
   z-index: 1;
 }
 
-.hero-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--secondary);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: 1rem;
-  animation: dropIn 0.8s ease-out 0s;
-}
-
 .hero-name-typing {
   font-size: 2.75rem;
   font-weight: 700;
@@ -430,53 +532,6 @@ main {
   100% {
     transform: translateY(6px);
   } /* subtle down */
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0; /* make sure it's at the very left */
-  width: 100vw; /* full viewport width */
-  z-index: 999;
-  backdrop-filter: blur(15px) saturate(180%);
-  padding: 0.75rem 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-nav::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px; /* border thickness */
-  background: linear-gradient(
-    to right,
-    var(--headers) 0%,
-    var(--text-muted) 50%,
-    var(--text-primary) 100%
-  );
-  /* add blur/glow */
-  filter: blur(2px); /* blurs the gradient itself */
-  opacity: 0.9; /* optional: soften intensity */
-}
-
-nav a {
-  color: var(--headers);
-  font-weight: bold;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: all var(--transition);
-  margin: 0 2rem;
-}
-
-nav a:hover {
-  background-color: var(--primary);
-  color: var(--text-primary);
 }
 
 /* Typing Cursor */
@@ -569,6 +624,10 @@ section {
   flex: 2;
   min-width: auto;
   height: auto;
+  background-color: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
 }
 
 /* Window header */
@@ -675,6 +734,10 @@ section {
   height: auto;
   margin: 1.2rem auto;
   overflow: hidden;
+  background-color: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
 }
 
 /* Window header */
@@ -759,6 +822,10 @@ section {
   text-align: center; /* center content */
   padding-bottom: 1rem;
   margin: 2rem;
+  background-color: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
 }
 
 /* Logo */
@@ -855,6 +922,10 @@ section {
   height: auto;
   display: flex;
   flex-direction: column;
+  background-color: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
 }
 
 /* Image container */
@@ -1020,6 +1091,10 @@ section {
   height: auto;
   margin: 2rem auto;
   overflow: hidden;
+  background-color: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
 }
 
 /* Window header buttons (red, yellow, green) */
@@ -1098,6 +1173,11 @@ section {
   flex: 2;
   min-width: auto;
   height: auto;
+  background-color: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
+  padding: 1rem;
 }
 
 /* Window header */
@@ -1279,4 +1359,619 @@ footer small {
 footer {
   position: relative; /* so canvas is positioned inside footer */
   overflow: hidden;
+}
+
+.mobile-badge-row {
+  display: none;
+}
+
+.mobile-badge {
+  display: none;
+}
+
+/* =======================
+   Mobile & Responsive Styles
+======================= */
+
+/* Extra small devices (phones, <=480px) */
+@media (max-width: 480px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    position: fixed;
+    top: auto;
+    left: 20px; /* move to left side */
+  }
+
+  body {
+    padding-top: 5px; /* slightly smaller nav padding */
+  }
+
+  main {
+    width: 100vw;
+  }
+
+  .title-h2 {
+    font-size: 1.8rem;
+  }
+
+  .floating-badge {
+    display: none;
+  }
+
+  .mobile-badge-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 1rem; /* space below image */
+  }
+
+  .mobile-badge {
+    font-size: 0.75rem;
+    background: var(--headers);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  /* Hero Section */
+  .hero-image-container {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
+  }
+
+  .hero-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-name-typing {
+    font-size: 1.8rem;
+  }
+
+  #hero {
+    height: auto;
+  }
+
+  #hero p {
+    font-size: 1rem;
+  }
+
+  /* Floating badges stack vertically */
+  .floating-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* About Section */
+  .about-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-window,
+  .mini-windows .mini-windows {
+    min-width: 100%;
+  }
+  /* Education Windows */
+  .education-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .experience-window .window-header {
+    padding: 15px 10px; /* less padding on sides */
+    text-align: left; /* optional, keeps things readable */
+  }
+
+  .experience-window .window-header h3 {
+    font-size: 0.9rem; /* smaller, fits mobile width */
+    line-height: 1.2; /* tighter spacing */
+    margin-bottom: 6px; /* space to small text */
+  }
+
+  .experience-window .window-header small {
+    font-size: 0.85rem; /* small but readable */
+    display: block; /* stacks below h3 */
+    color: var(--text-secondary); /* subtle color */
+    margin-bottom: 6px; /* space to small text */
+  }
+
+  .education-window {
+    margin: 1rem auto;
+    width: 100%;
+  }
+
+  .education-window .edu-logo {
+    height: 100px;
+  }
+
+  .education-window .window-header h3 {
+    font-size: 1rem;
+  }
+
+  .education-window .edu-year {
+    font-size: 0.75rem;
+  }
+
+  /* Skills Window */
+  #skills .skills-list {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .skill img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill {
+    width: 32px;
+    font-size: 0.7rem;
+  }
+
+  /* Project Cards */
+  .grid {
+    margin: 1rem;
+    gap: 1rem;
+  }
+
+  .project-window {
+    width: 100%;
+  }
+
+  .project-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-overlay p {
+    font-size: 0.8rem;
+  }
+
+  /* Article Window */
+  .article-window p {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: var(--spacing-md) var(--spacing-xs);
+  }
+}
+
+/* Small devices / tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  main {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  .title-h2 {
+    font-size: 2rem;
+  }
+
+  .hero-image-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero-name-typing {
+    font-size: 2rem;
+  }
+
+  #hero p {
+    font-size: 1.1rem;
+  }
+
+  nav a {
+    margin: 0 1rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .about-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .education-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .education-window .edu-logo {
+    height: 120px;
+  }
+
+  #skills .skills-list {
+    gap: 3rem;
+  }
+
+  .skill img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Medium devices / small laptops (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main {
+    max-width: 720px;
+  }
+
+  .hero-image-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-name-typing {
+    font-size: 2.2rem;
+  }
+
+  #hero p {
+    font-size: 1.15rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* Large devices / desktops (1025px+) */
+@media (min-width: 1025px) {
+  main {
+    max-width: 960px;
+  }
+
+  .hero-image-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .hero-photo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-name-typing {
+    font-size: 2.75rem;
+  }
+
+  #hero p {
+    font-size: 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* ---------------- Loader Screen ---------------- */
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-darker);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition:
+    opacity 0.5s,
+    visibility 0.5s;
+}
+
+.loader-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+/* Loader text animation for "LOADING..." with sliding + bouncing dots */
+.loader-code-text {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  white-space: nowrap;
+}
+
+/* Slide-in LOADING text */
+.loader-code-text span:first-child {
+  display: inline-block;
+  transform: translateX(-100%);
+  animation: slideIn 0.8s forwards;
+}
+
+/* Dots appear and bounce */
+.loader-dots {
+  display: inline-block;
+  margin-left: 0.3rem;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+  animation-delay: 0.8s;
+}
+
+.loader-dots span {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: bounce 1.2s infinite;
+}
+
+.loader-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Existing code lines fade in up */
+.code-line {
+  display: block;
+  margin: 0.5rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+.code-line[data-line="1"] {
+  animation-delay: 0.1s;
+}
+.code-line[data-line="2"] {
+  animation-delay: 0.3s;
+}
+.code-line[data-line="3"] {
+  animation-delay: 0.5s;
+}
+.code-line[data-line="4"] {
+  animation-delay: 0.7s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spinner */
+.loader-spinner-wrapper {
+  margin: 2rem 0;
+}
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-right-color: var(--cyan);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------- Loader Screen ---------------- */
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-darker);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition:
+    opacity 0.5s,
+    visibility 0.5s;
+}
+
+.loader-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+/* Loading text */
+.loader-code-text {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  white-space: nowrap;
+}
+
+/* Slide-in LOADING */
+.loader-code-text span:first-child {
+  display: inline-block;
+  transform: translateX(-100%);
+  animation: slideIn 0.8s forwards;
+}
+
+/* Bouncing dots */
+.loader-dots {
+  display: inline-block;
+  margin-left: 0.3rem;
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+  animation-delay: 0.8s;
+}
+
+.loader-dots span {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: bounce 1.2s infinite;
+}
+.loader-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Spinner */
+.loader-spinner-wrapper {
+  margin: 2rem 0;
+}
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-right-color: var(--cyan);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Progress bar */
+.loader-progress-wrapper {
+  width: 200px;
+  height: 4px;
+  background: var(--headers);
+  border-radius: 2px;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  background: var(--secondary);
+  width: 0%;
+  box-shadow: 0 0 10px var(--text-primary);
+  transition: width 0.15s linear; /* smooth steps */
+}
+
+/* Percentage */
+.loader-percentage {
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* MOUSE*/
+.scroll-indicator {
+  margin-top: 50px;
+  margin-bottom: -50px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+.scroll-mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--accent);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  z-index: 10;
+}
+
+.scroll-wheel {
+  width: 4px;
+  height: 10px;
+  background: var(--headers);
+  border-radius: 2px;
+  animation: scrollWheel 2s infinite;
+  z-index: 10;
+}
+
+@keyframes scrollWheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
 }
