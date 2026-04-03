@@ -1,3 +1,22 @@
+const savedTheme = localStorage.getItem("theme") || "light";
+const root = document.documentElement;
+root.setAttribute("data-theme", savedTheme);
+
+// Update icon and profile image
+const themeToggle = document.getElementById("themeToggle");
+if (themeToggle) {
+  const icon = themeToggle.querySelector("i");
+  const profileImg = document.querySelector("#profileImage img");
+
+  if (savedTheme === "light") {
+    icon?.classList.replace("fa-moon", "fa-sun");
+    profileImg.src = "images/pcLight.png";
+  } else {
+    icon?.classList.replace("fa-sun", "fa-moon");
+    profileImg.src = "images/pc.png";
+  }
+}
+
 // ---------------- Loader Screen ----------------
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -39,50 +58,41 @@ window.addEventListener("load", () => {
 // ---------------- Page Animations (Everything else) ----------------
 function initPageAnimations() {
   // -------------------------- DARK/LIGHT MODE ------------------------
-  const toggleBtn = document.getElementById("theme-toggle");
-  const root = document.documentElement;
-  const sliderIcon = document.querySelector(".slider .icon");
+  const themeToggleBtn = document.getElementById("themeToggle");
+  const icon = themeToggleBtn.querySelector("i");
+  const profileImg = document.querySelector("#profileImage img");
 
-  // Apply saved theme on load
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "espeon") {
-    root.setAttribute("data-theme", "espeon");
-    toggleBtn.checked = true;
-    sliderIcon.textContent = "🌞";
-  } else {
-    root.removeAttribute("data-theme"); // Umbreon default
-    toggleBtn.checked = false;
-    sliderIcon.textContent = "🌙";
-  }
+  themeToggleBtn.addEventListener("click", () => {
+    const isLight = root.getAttribute("data-theme") === "light";
 
-  // Listen for toggle
-  toggleBtn.addEventListener("change", () => {
-    const isChecked = toggleBtn.checked;
-
-    if (isChecked) {
-      root.setAttribute("data-theme", "espeon");
-      localStorage.setItem("theme", "espeon");
-      sliderIcon.textContent = "🌞";
+    if (isLight) {
+      root.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+      icon.classList.replace("fa-sun", "fa-moon");
+      profileImg.src = "images/pc.png"; // dark image
     } else {
-      root.removeAttribute("data-theme");
-      localStorage.setItem("theme", "umbreon");
-      sliderIcon.textContent = "🌙";
+      root.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+      icon.classList.replace("fa-moon", "fa-sun");
+      profileImg.src = "images/pcLight.png"; // light image
     }
 
-    // Update shapes and particles colors dynamically if needed
     const colors = updateColors();
-    hexColors = colors.hexColors;
+    canvasColors = colors.canvasColors;
     particleColors = colors.particleColors;
 
     shapes.forEach((shape) => {
-      shape.colorBase = hexColors[Math.floor(Math.random() * hexColors.length)];
+      shape.colorBase =
+        canvasColors[Math.floor(Math.random() * canvasColors.length)];
     });
+
     heroParticles.forEach((p) => {
       p.color =
         particleColors[Math.floor(Math.random() * particleColors.length)] +
         p.alpha +
         ")";
     });
+
     footerParticles.forEach((p) => {
       p.color =
         particleColors[Math.floor(Math.random() * particleColors.length)] +
@@ -90,6 +100,7 @@ function initPageAnimations() {
         ")";
     });
   });
+
   // ---------------- Colors Helper ----------------
   function updateColors() {
     const rootStyles = getComputedStyle(document.documentElement);
@@ -97,7 +108,7 @@ function initPageAnimations() {
       return rgba.replace(/rgba?\(([^)]+),\s*[^,]+?\)$/, "rgba($1,");
     }
 
-    const hexColors = [
+    const canvasColors = [
       "--headers",
       "--secondary",
       "--text-secondary",
@@ -111,53 +122,90 @@ function initPageAnimations() {
       "--text-primary",
     ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
 
-    return { hexColors, particleColors };
+    return { canvasColors, particleColors };
   }
 
-  ({ hexColors, particleColors } = updateColors());
+  ({ canvasColors, particleColors } = updateColors());
 
   // ---------------- Hamburger ----------------
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
-  if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    navMenu.classList.toggle("active");
+  });
+
+  // ---------------- Smooth Scroll + Scroll Spy ----------------
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  let currentSection = "";
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+      if (!targetSection) return;
+
+      const headerHeight = document.querySelector(".main-header").offsetHeight;
+      const targetPosition = targetSection.offsetTop - headerHeight;
+
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
+    });
+  });
+
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 300;
+    sections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute("id");
+
+      if (scrollPos >= top && scrollPos < top + height) {
+        if (currentSection !== id) {
+          currentSection = id;
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${id}`) {
+              link.classList.add("active");
+            }
+          });
+        }
+      }
     });
   }
 
-  // ---------------- Scroll Progress ----------------
-  const sections = document.querySelectorAll("section");
+  // ---------------- Scroll Progress Dots ----------------
   const dots = document.querySelectorAll(".progress-dot");
   dots.forEach((dot) => dot.classList.remove("active"));
   if (dots[0]) dots[0].classList.add("active");
 
-  window.addEventListener("scroll", () => {
+  function updateProgressDots() {
     const scrollPos = window.scrollY + window.innerHeight / 2;
     sections.forEach((section, idx) => {
       const sectionTop = section.offsetTop;
       const sectionBottom = sectionTop + section.offsetHeight;
-
       if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
         dots.forEach((dot) => dot.classList.remove("active"));
         if (dots[idx]) dots[idx].classList.add("active");
       }
     });
-  });
+  }
 
-  // ---------------- Hero Section line ----------------
+  // ---------------- Hero Section Line ----------------
   const hero = document.getElementById("hero");
-  if (hero) {
-    const heroLine = document.createElement("div");
+  const heroLine = hero ? document.createElement("div") : null;
+  if (hero && heroLine) {
     heroLine.className = "hero-line";
     hero.appendChild(heroLine);
-
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY;
-      const heroHeight = hero.offsetHeight;
-      let progress = Math.min(scrollTop / heroHeight, 1);
-      heroLine.style.transform = `scaleX(${progress})`;
-    });
+  }
+  function updateHeroLine() {
+    if (!hero || !heroLine) return;
+    const scrollTop = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+    let progress = Math.min(scrollTop / heroHeight, 1);
+    heroLine.style.transform = `scaleX(${progress})`;
   }
 
   // ---------------- Fade Sections ----------------
@@ -190,34 +238,54 @@ function initPageAnimations() {
       });
     }
   }
-  window.addEventListener("scroll", animateMiniWindows);
   window.addEventListener("load", animateMiniWindows);
 
-  // ---------------- Name Typing Animation ----------------
+  // ---------------- Header Scroll ----------------
+  const header = document.querySelector(".main-header");
+  function updateHeaderOnScroll() {
+    if (!header) return;
+    if (window.scrollY > 50) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
+  }
+
+  // ---------------- Typing Animation ----------------
   const name = "Ibrahim Itani";
   const nameElement = document.getElementById("typed-name");
   if (nameElement) {
     let i = 0;
-    function typeNextChar() {
+    (function typeNextChar() {
       if (i < name.length) {
         nameElement.textContent += name.charAt(i++);
         setTimeout(typeNextChar, 100);
       }
-    }
-    typeNextChar();
+    })();
   }
 
-  // ---------------- Canvas Background ----------------
-  const canvas = document.getElementById("hex-canvas");
+  // ---------------- Canvas Background Shapes ----------------
+  const canvas = document.getElementById("main-canvas");
   const ctx = canvas?.getContext("2d");
   let shapes = [];
   const shapeTypes = [
+    // Classic shapes
     "hexagon",
     "triangle",
     "square",
     "circle",
     "star",
     "cross",
+
+    // Coding-inspired shapes
+    "curly", // { }
+    "angle", // < >
+    "semicolon", // ;
+    "arrow", // =>
+    "bracket", // [ ]
+    "plus", // +
+    "minus", // -
+    "hash", // #
+    "parentheses", // ()
+    "curly-small", // smaller { }
+    "angle-small", // smaller < >
   ];
   function resizeCanvas() {
     if (!canvas) return;
@@ -236,7 +304,8 @@ function initPageAnimations() {
       this.speedY = (Math.random() - 0.5) * 0.5;
       this.rotation = Math.random() * 2 * Math.PI;
       this.rotationSpeed = (Math.random() - 0.5) * 0.02;
-      this.colorBase = hexColors[Math.floor(Math.random() * hexColors.length)];
+      this.colorBase =
+        canvasColors[Math.floor(Math.random() * canvasColors.length)];
       this.baseAlpha = 0.2 + Math.random() * 0.3;
       this.alpha = this.baseAlpha;
     }
@@ -247,8 +316,8 @@ function initPageAnimations() {
       ctx.rotate(this.rotation);
       const s = this.size;
       ctx.beginPath();
-
       switch (this.type) {
+        // ----------------- Classic shapes -----------------
         case "hexagon":
           for (let i = 0; i < 6; i++) {
             const angle = (Math.PI / 3) * i;
@@ -257,6 +326,7 @@ function initPageAnimations() {
             i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
           }
           break;
+
         case "triangle":
           for (let i = 0; i < 3; i++) {
             const angle = ((2 * Math.PI) / 3) * i - Math.PI / 2;
@@ -265,12 +335,15 @@ function initPageAnimations() {
             i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
           }
           break;
+
         case "square":
           ctx.rect(-s / 2, -s / 2, s, s);
           break;
+
         case "circle":
           ctx.arc(0, 0, s, 0, Math.PI * 2);
           break;
+
         case "star":
           for (let i = 0; i < 5; i++) {
             let angle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
@@ -283,13 +356,88 @@ function initPageAnimations() {
             ctx.lineTo(x, y);
           }
           break;
+
         case "cross":
           const w = s / 3;
           ctx.rect(-w, -s, w * 2, s * 2);
           ctx.rect(-s, -w, s * 2, w * 2);
           break;
-      }
 
+        // ----------------- Coding-inspired shapes -----------------
+        case "curly": // { }
+          ctx.moveTo(-s / 2, -s);
+          ctx.bezierCurveTo(s / 2, -s, s / 2, s, -s / 2, s);
+          break;
+
+        case "angle": // < >
+          ctx.moveTo(-s, -s);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(-s, s);
+          ctx.moveTo(s, -s);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(s, s);
+          break;
+
+        case "semicolon": // ;
+          ctx.arc(0, -s / 4, s / 6, 0, Math.PI * 2);
+          ctx.rect(-s / 8, 0, s / 4, s / 2);
+          break;
+
+        case "arrow": // =>
+          ctx.moveTo(-s, -s / 2);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(-s, s / 2);
+          ctx.moveTo(0, 0);
+          ctx.lineTo(s, 0);
+          break;
+
+        case "bracket": // [ ]
+          ctx.rect(-s / 2, -s, s / 4, s * 2);
+          ctx.rect(s / 4, -s, s / 4, s * 2);
+          break;
+
+        case "plus": // +
+          ctx.moveTo(-s / 2, 0);
+          ctx.lineTo(s / 2, 0);
+          ctx.moveTo(0, -s / 2);
+          ctx.lineTo(0, s / 2);
+          break;
+
+        case "minus": // -
+          ctx.moveTo(-s / 2, 0);
+          ctx.lineTo(s / 2, 0);
+          break;
+
+        case "hash": // #
+          ctx.moveTo(-s / 2, -s / 4);
+          ctx.lineTo(s / 2, -s / 4);
+          ctx.moveTo(-s / 2, s / 4);
+          ctx.lineTo(s / 2, s / 4);
+          ctx.moveTo(-s / 4, -s / 2);
+          ctx.lineTo(-s / 4, s / 2);
+          ctx.moveTo(s / 4, -s / 2);
+          ctx.lineTo(s / 4, s / 2);
+          break;
+
+        case "parentheses": // ()
+          ctx.arc(-s / 3, 0, s / 3, Math.PI * 0.5, Math.PI * 1.5);
+          ctx.arc(s / 3, 0, s / 3, -Math.PI * 0.5, Math.PI * 0.5);
+          break;
+
+        case "curly-small": // tiny { }
+          ctx.moveTo(-s / 3, -s / 2);
+          ctx.bezierCurveTo(s / 3, -s / 2, s / 3, s / 2, -s / 3, s / 2);
+          break;
+
+        case "angle-small": // tiny <>
+          ctx.moveTo(-s / 2, -s / 2);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(-s / 2, s / 2);
+          ctx.moveTo(s / 2, -s / 2);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(s / 2, s / 2);
+          break;
+      }
       ctx.closePath();
       ctx.fillStyle = `${this.colorBase}${this.alpha})`;
       ctx.fill();
@@ -499,4 +647,13 @@ function initPageAnimations() {
   // ---------------- Footer Year ----------------
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ---------------- Unified Scroll Handler ----------------
+  window.addEventListener("scroll", () => {
+    updateHeaderOnScroll();
+    updateProgressDots();
+    updateHeroLine();
+    animateMiniWindows();
+    updateActiveNav();
+  });
 }
