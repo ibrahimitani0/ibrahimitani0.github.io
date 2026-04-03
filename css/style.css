@@ -61,6 +61,90 @@
   --font-family: "Courier New", Courier, monospace;
 }
 
+/* Espeon Theme */
+[data-theme="espeon"] {
+  --primary: rgba(82, 36, 115, 1);
+  --secondary: rgba(241, 185, 255, 1);
+  --accent: rgba(214, 145, 255, 1);
+  --headers: rgba(200, 150, 255, 1);
+  --bg-dark: rgba(28, 10, 35, 1);
+  --bg-darker: rgba(15, 5, 25, 1);
+  --bg-card: rgba(55, 22, 65, 1);
+  --bg-hover: rgba(75, 30, 90, 1);
+  --border: rgba(214, 145, 255, 1);
+  --circle: conic-gradient(
+    rgba(214, 145, 255, 0.8),
+    rgba(241, 185, 255, 0.2),
+    rgba(214, 145, 255, 0.8),
+    rgba(241, 185, 255, 0.2)
+  );
+  --text-primary: rgba(245, 230, 255, 1);
+  --text-secondary: rgba(220, 200, 240, 1);
+  --text-muted: rgba(200, 180, 220, 1);
+}
+
+/* ---------------- Theme Toggle Button ---------------- */
+.theme-switch {
+  margin-left: 80px;
+  z-index: 999;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.switch-label {
+  display: block;
+  width: 60px;
+  height: 30px;
+  background-color: var(--secondary);
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Slider (circle) */
+.slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Emoji inside the slider */
+.slider .icon {
+  display: block;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* Checked state: slide circle to the right */
+input:checked + .switch-label .slider {
+  transform: translateX(30px);
+}
+
+/* Optional: flip emoji when toggled */
+input:checked + .switch-label .slider .icon {
+  transform: rotateY(180deg);
+}
+
+/* Optional: change background of track */
+input:checked + .switch-label {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
 /* =======================
    Base Reset & Global Styles
 ======================= */
@@ -330,7 +414,7 @@ nav a:hover {
   padding: 0.4rem 1.2rem;
   border-radius: 999px;
   color: var(--text-primary);
-  box-shadow: var(--shadow-glow);
+
   animation: float 4s ease-in-out infinite;
   z-index: 2;
   width: max-content;
@@ -425,7 +509,7 @@ nav a:hover {
   border-bottom: 2px solid var(--bg-hover);
   width: 100%;
   height: 100vh; /* always full screen height */
-  min-height: 768px; /* optional for very short screens */
+  min-height: 820px; /* optional for very short screens */
   background-color: var(--bg-dark);
 }
 
@@ -581,6 +665,37 @@ nav a:hover {
   100% {
     transform: scale(1);
   }
+}
+
+.hero-social {
+  margin-top: 20px;
+  display: block;
+  gap: 2rem;
+}
+
+.social-icon {
+  display: inline-flex; /* makes hover effects work */
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden; /* ensures rounded corners clip image */
+  transition: all var(--transition-fast);
+  width: 50px;
+  height: 50px;
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.social-icon:hover {
+  background: var(--bg-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(192, 132, 252, 0.2);
 }
 
 /* =======================
@@ -1931,8 +2046,7 @@ footer {
 
 /* MOUSE*/
 .scroll-indicator {
-  margin-top: 50px;
-  margin-bottom: -50px;
+  margin-top: 10px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);

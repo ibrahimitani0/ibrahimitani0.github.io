@@ -11,7 +11,6 @@ window.addEventListener("load", () => {
 
   let progress = 0;
   const interval = setInterval(() => {
-    // Step increment for a terminal feel
     progress += Math.random() * 4 + 1; // random 1-5%
     if (progress >= 100) {
       progress = 100;
@@ -32,19 +31,94 @@ window.addEventListener("load", () => {
       }, 500);
     }
 
-    // Update percentage
     loaderPercent.textContent = Math.floor(progress) + "%";
-
-    // Update progress bar in steps
     progressBar.style.width = Math.floor(progress) + "%";
   }, 100);
 });
+
 // ---------------- Page Animations (Everything else) ----------------
 function initPageAnimations() {
+  // -------------------------- DARK/LIGHT MODE ------------------------
+  const toggleBtn = document.getElementById("theme-toggle");
+  const root = document.documentElement;
+  const sliderIcon = document.querySelector(".slider .icon");
+
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "espeon") {
+    root.setAttribute("data-theme", "espeon");
+    toggleBtn.checked = true;
+    sliderIcon.textContent = "🌞";
+  } else {
+    root.removeAttribute("data-theme"); // Umbreon default
+    toggleBtn.checked = false;
+    sliderIcon.textContent = "🌙";
+  }
+
+  // Listen for toggle
+  toggleBtn.addEventListener("change", () => {
+    const isChecked = toggleBtn.checked;
+
+    if (isChecked) {
+      root.setAttribute("data-theme", "espeon");
+      localStorage.setItem("theme", "espeon");
+      sliderIcon.textContent = "🌞";
+    } else {
+      root.removeAttribute("data-theme");
+      localStorage.setItem("theme", "umbreon");
+      sliderIcon.textContent = "🌙";
+    }
+
+    // Update shapes and particles colors dynamically if needed
+    const colors = updateColors();
+    hexColors = colors.hexColors;
+    particleColors = colors.particleColors;
+
+    shapes.forEach((shape) => {
+      shape.colorBase = hexColors[Math.floor(Math.random() * hexColors.length)];
+    });
+    heroParticles.forEach((p) => {
+      p.color =
+        particleColors[Math.floor(Math.random() * particleColors.length)] +
+        p.alpha +
+        ")";
+    });
+    footerParticles.forEach((p) => {
+      p.color =
+        particleColors[Math.floor(Math.random() * particleColors.length)] +
+        p.alpha +
+        ")";
+    });
+  });
+  // ---------------- Colors Helper ----------------
+  function updateColors() {
+    const rootStyles = getComputedStyle(document.documentElement);
+    function stripAlpha(rgba) {
+      return rgba.replace(/rgba?\(([^)]+),\s*[^,]+?\)$/, "rgba($1,");
+    }
+
+    const hexColors = [
+      "--headers",
+      "--secondary",
+      "--text-secondary",
+      "--text-primary",
+    ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
+
+    const particleColors = [
+      "--secondary",
+      "--headers",
+      "--text-secondary",
+      "--text-primary",
+    ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
+
+    return { hexColors, particleColors };
+  }
+
+  ({ hexColors, particleColors } = updateColors());
+
   // ---------------- Hamburger ----------------
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
-
   if (hamburger && navMenu) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
@@ -55,7 +129,6 @@ function initPageAnimations() {
   // ---------------- Scroll Progress ----------------
   const sections = document.querySelectorAll("section");
   const dots = document.querySelectorAll(".progress-dot");
-
   dots.forEach((dot) => dot.classList.remove("active"));
   if (dots[0]) dots[0].classList.add("active");
 
@@ -98,7 +171,6 @@ function initPageAnimations() {
     },
     { threshold: 0.15 },
   );
-
   fadeSections.forEach((section) => {
     section.classList.add("hidden");
     fadeObserver.observe(section);
@@ -106,11 +178,9 @@ function initPageAnimations() {
 
   // ---------------- Mini Windows ----------------
   const miniWindows = document.querySelectorAll(".mini-windows .mini-window");
-
   function animateMiniWindows() {
     const aboutSection = document.getElementById("about");
     if (!aboutSection) return;
-
     const sectionTop = aboutSection.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
@@ -120,7 +190,6 @@ function initPageAnimations() {
       });
     }
   }
-
   window.addEventListener("scroll", animateMiniWindows);
   window.addEventListener("load", animateMiniWindows);
 
@@ -138,25 +207,6 @@ function initPageAnimations() {
     typeNextChar();
   }
 
-  // ---------------- Colors & Helper Functions ----------------
-  const rootStyles = getComputedStyle(document.documentElement);
-  function stripAlpha(rgba) {
-    return rgba.replace(/rgba?\(([^)]+),\s*[^,]+?\)$/, "rgba($1,");
-  }
-
-  const hexColors = [
-    "--headers",
-    "--secondary",
-    "--text-secondary",
-    "--text-primary",
-  ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
-  const particleColors = [
-    "--secondary",
-    "--headers",
-    "--text-secondary",
-    "--text-primary",
-  ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
-
   // ---------------- Canvas Background ----------------
   const canvas = document.getElementById("hex-canvas");
   const ctx = canvas?.getContext("2d");
@@ -169,7 +219,6 @@ function initPageAnimations() {
     "star",
     "cross",
   ];
-
   function resizeCanvas() {
     if (!canvas) return;
     canvas.width = window.innerWidth;
@@ -228,7 +277,7 @@ function initPageAnimations() {
             let x = s * Math.cos(angle);
             let y = s * Math.sin(angle);
             i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-            angle += Math.PI / 5; // inner point
+            angle += Math.PI / 5;
             x = (s / 2) * Math.cos(angle);
             y = (s / 2) * Math.sin(angle);
             ctx.lineTo(x, y);
@@ -264,7 +313,6 @@ function initPageAnimations() {
           const absDistance = Math.abs(distance);
           if (absDistance < closestDistance) closestDistance = absDistance;
         });
-
         const fadeDistance = 150;
         this.alpha =
           closestDistance < fadeDistance
@@ -291,6 +339,18 @@ function initPageAnimations() {
   animateShapes();
 
   // ---------------- Hero & Footer Particles ----------------
+  const heroCanvas = document.getElementById("hero-canvas");
+  const heroCtx = heroCanvas.getContext("2d");
+  heroCanvas.width = window.innerWidth;
+  heroCanvas.height = window.innerHeight;
+  let heroParticles = [];
+
+  const footerCanvas = document.getElementById("footer-canvas");
+  const footerCtx = footerCanvas.getContext("2d");
+  footerCanvas.width = footerCanvas.offsetWidth;
+  footerCanvas.height = footerCanvas.offsetHeight;
+  let footerParticles = [];
+
   function Particle(canvas, ctx, colors) {
     this.canvas = canvas;
     this.ctx = ctx;
@@ -375,18 +435,9 @@ function initPageAnimations() {
     requestAnimationFrame(() => animateParticles(particles, canvas, ctx));
   }
 
-  const heroCanvas = document.getElementById("hero-canvas");
-  const heroCtx = heroCanvas.getContext("2d");
-  heroCanvas.width = window.innerWidth;
-  heroCanvas.height = window.innerHeight;
-  let heroParticles = initParticles(heroCanvas, heroCtx, particleColors);
+  heroParticles = initParticles(heroCanvas, heroCtx, particleColors);
+  footerParticles = initParticles(footerCanvas, footerCtx, particleColors);
   animateParticles(heroParticles, heroCanvas, heroCtx);
-
-  const footerCanvas = document.getElementById("footer-canvas");
-  const footerCtx = footerCanvas.getContext("2d");
-  footerCanvas.width = footerCanvas.offsetWidth;
-  footerCanvas.height = footerCanvas.offsetHeight;
-  let footerParticles = initParticles(footerCanvas, footerCtx, particleColors);
   animateParticles(footerParticles, footerCanvas, footerCtx);
 
   // ---------------- Handle Resize ----------------
@@ -396,11 +447,9 @@ function initPageAnimations() {
     resizeTimeout = setTimeout(() => {
       resizeCanvas();
       initShapes();
-
       heroCanvas.width = window.innerWidth;
       heroCanvas.height = window.innerHeight;
       heroParticles = initParticles(heroCanvas, heroCtx, particleColors);
-
       footerCanvas.width = footerCanvas.offsetWidth;
       footerCanvas.height = footerCanvas.offsetHeight;
       footerParticles = initParticles(footerCanvas, footerCtx, particleColors);
@@ -417,7 +466,6 @@ function initPageAnimations() {
       data.items.forEach((post) => {
         const article = document.createElement("div");
         article.classList.add("article-window");
-
         article.innerHTML = `
           <div class="window-header"> 
             <h3>${post.title}</h3>
