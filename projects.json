@@ -1,0 +1,97 @@
+[
+  {
+    "title": "PageFlipper",
+    "date": "Feb 2026 - March 2026",
+    "image": "images/PageFlipper.png",
+    "alt": "PageFlipper App",
+    "description": "Full-stack Library Management App with Angular, Spring Boot & MySQL. Explore books, manage orders, and interact with community-driven posts.",
+    "technologies": [
+      { "name": "Angular", "class": "angular" },
+      { "name": "Java", "class": "java" },
+      { "name": "Spring Boot", "class": "springboot" },
+      { "name": "MySQL", "class": "mysql" }
+    ],
+    "link": "https://github.com/ibrahimitani0/Library-Management-System"
+  },
+  {
+    "title": "PokeCenter",
+    "date": "Apr 2025 - Dec 2025",
+    "image": "images/PokdeCenter.png",
+    "alt": "PokeCenter App",
+    "description": "Modern, responsive Pokédex with dynamic search, type filtering, and detailed Pokémon profiles using Angular & Firebase.",
+    "technologies": [
+      { "name": "Angular", "class": "angular" },
+      { "name": "Python", "class": "python" },
+      { "name": "MongoDB", "class": "mongodb" },
+      { "name": "Docker", "class": "docker" }
+    ],
+    "link": "https://github.com/ibrahimitani0/PokeCenter"
+  },
+  {
+    "title": "To-Do List",
+    "date": "Nov 2022",
+    "image": "images/todolistProject.png",
+    "alt": "To-Do List",
+    "description": "Responsive To-Do app with add, edit, delete, bulk delete, completion tracking, and dark/light mode toggle.",
+    "technologies": [
+      { "name": "JavaScript", "class": "js" },
+      { "name": "HTML", "class": "html" },
+      { "name": "CSS", "class": "css" }
+    ],
+    "link": "https://github.com/ibrahimitani0/To-DoListApp"
+  },
+  {
+    "title": "TriviAttack",
+    "date": "Dec 2022",
+    "image": "images/tiviattack.png",
+    "alt": "TriviAttack",
+    "description": "TriviAttack is a trivia-based web application built with Angular. Players can answer questions, compete for scores, and test their knowledge across different categories.",
+    "technologies": [
+      { "name": "Angular", "class": "angular" },
+      { "name": "HTML", "class": "html" },
+      { "name": "CSS", "class": "css" },
+      { "name": "OpenTD API", "class": "opentdb" }
+    ],
+    "link": "https://github.com/ibrahimitani0/TriviAttack"
+  },
+  {
+    "title": "Weather App",
+    "date": "Dec 2022",
+    "image": "images/WeatherApp.png",
+    "alt": "Weather App",
+    "description": "Weather app with current conditions, and location search using OpenWeatherMap API, with responsive design and dark/light mode toggle.",
+    "technologies": [
+      { "name": "JavaScript", "class": "js" },
+      { "name": "HTML", "class": "html" },
+      { "name": "CSS", "class": "css" },
+      { "name": "Weather API", "class": "weatherAPI" }
+    ],
+    "link": "#"
+  },
+  {
+    "title": "Overwatch Central",
+    "date": "Nov 2019 - Jan 2020",
+    "image": "images/owangular.png",
+    "alt": "Overwatch Central App",
+    "description": "Angular app with detailed info on Overwatch heroes, abilities, skins, and voice lines. Intuitive UI and API integration.",
+    "technologies": [
+      { "name": "Angular", "class": "angular" },
+      { "name": "Firebase", "class": "firebase" }
+    ],
+    "link": "#"
+  },
+  {
+    "title": "E-Commerce Store",
+    "date": " Sep 2016 - Dec 2017",
+    "image": "images/store.png",
+    "alt": "E-Commerce App",
+    "description": "Full-featured online store inspired by Amazon, with user accounts, cart, search, and virtual currency.",
+    "technologies": [
+      { "name": "JavaScript", "class": "js" },
+      { "name": "AWS", "class": "aws" },
+      { "name": "HTML", "class": "html" },
+      { "name": "CSS", "class": "css" }
+    ],
+    "link": "#"
+  }
+]

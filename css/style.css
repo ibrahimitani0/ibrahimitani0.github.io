@@ -1259,13 +1259,6 @@ section {
   gap: 2rem;
 }
 
-/* Mac window header */
-.project-window .window-header {
-  background: rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-}
-
 .project-window {
   padding: 10px;
   position: relative;
@@ -1285,6 +1278,17 @@ section {
   backdrop-filter: blur(2px);
   border-radius: 12px;
   box-shadow: inset 0 0 20px var(--bg-card);
+}
+
+.project-window .year {
+  display: inline-block;
+  background: var(--headers);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Image container */
@@ -1394,6 +1398,15 @@ section {
   background: var(--secondary);
 }
 
+/* Disabled button */
+.view-btn.disabled {
+  background-color: #9ca3af; /* Gray */
+  color: #e5e7eb; /* Light gray text */
+  cursor: not-allowed;
+  pointer-events: none; /* Makes it unclickable */
+  opacity: 0.7; /* Slightly faded */
+}
+
 /* Individual tech colors */
 .tech-tags span.angular {
   background-color: #dd3737;
@@ -1406,7 +1419,7 @@ section {
 }
 .tech-tags span.js {
   background-color: #e4de2e;
-  color: #111827;
+  color: #fff;
 }
 .tech-tags span.firebase {
   background-color: orange;
@@ -1420,7 +1433,7 @@ section {
 }
 .tech-tags span.aws {
   background-color: #ffae18;
-  color: #111827;
+  color: #fff;
 }
 .tech-tags span.mysql {
   background-color: #00618a;
@@ -1436,7 +1449,11 @@ section {
   color: #fff;
 }
 .tech-tags span.weatherAPI {
-  background-color: #f39c12;
+  background: linear-gradient(145deg, #e3e3e3, #ff4800);
+  color: #fff;
+}
+.tech-tags span.opentdb {
+  background: linear-gradient(135deg, #3498db, #f39c12, #9b59b6, #2ecc71);
   color: #fff;
 }
 
