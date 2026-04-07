@@ -130,6 +130,37 @@
 }
 
 /* =======================
+  Scroll bar styling
+======================= */
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+  border: 2px solid var(--bg-darker);
+  transition: var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  box-shadow: var(--shadow-sm);
+}
+
+/* =======================
    Base Reset & Global Styles
 ======================= */
 * {
@@ -662,10 +693,10 @@ main {
   align-items: center;
   gap: 0.5rem;
   background: rgba(20, 20, 20, 0.9);
-  border: 1px solid var(--secondary);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 6px var(--accent);
   padding: 0.4rem 1.2rem;
   border-radius: 12px;
-  color: var(--text-primary);
   animation: float 4s ease-in-out infinite;
   z-index: 2;
   width: max-content;
@@ -702,7 +733,7 @@ main {
 
 .badge-libs {
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: var(--primary);
 }
 
 /* Badge positions */
@@ -803,7 +834,7 @@ main {
 #scroll-progress {
   position: fixed;
   top: 50%;
-  left: 20px;
+  right: 20px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -822,6 +853,7 @@ main {
 
 .progress-dot.active {
   background-color: var(--secondary);
+  box-shadow: 0 0 6px var(--accent);
   animation: bounceDot 0.6s infinite alternate;
 }
 
@@ -1762,6 +1794,9 @@ footer {
 
 /* Extra small devices (phones, <=480px) */
 @media (max-width: 480px) {
+  #scroll-progress {
+    display: none;
+  }
   .nav-container {
     padding: 0.7rem 0.8rem;
   }
@@ -1790,7 +1825,7 @@ footer {
   }
 
   .title-h2 {
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
 
   .floating-badge {
@@ -1855,7 +1890,7 @@ footer {
   }
 
   .experience-window .window-header small {
-    font-size: 0.85rem; /* small but readable */
+    font-size: 0.8rem; /* small but readable */
     display: block; /* stacks below h3 */
     color: var(--text-secondary); /* subtle color */
     margin-bottom: 6px; /* space to small text */

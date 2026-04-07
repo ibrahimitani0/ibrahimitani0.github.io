@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
 
   let progress = 0;
   const interval = setInterval(() => {
-    progress += Math.random() * 4 + 1; // random 1-5%
+    progress += Math.random() * 15 + 1; // random 1-5%
     if (progress >= 100) {
       progress = 100;
       clearInterval(interval);
