@@ -54,7 +54,18 @@ window.addEventListener("load", () => {
     progressBar.style.width = Math.floor(progress) + "%";
   }, 100);
 });
+// ------------------------- Time line button --------------------
+function toggleDetails(button) {
+  const details = button.previousElementSibling;
 
+  details.classList.toggle("open");
+
+  if (details.classList.contains("open")) {
+    button.innerText = "Read Less";
+  } else {
+    button.innerText = "Read More";
+  }
+}
 // ---------------- Page Animations (Everything else) ----------------
 function initPageAnimations() {
   // -------------------------- DARK/LIGHT MODE ------------------------

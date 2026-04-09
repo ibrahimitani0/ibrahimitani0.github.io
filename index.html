@@ -130,7 +130,6 @@
     <!-- Hero Section -->
     <section id="hero">
       <canvas id="hero-canvas"></canvas>
-
       <div class="hero-container">
         <div class="hero-image-wrapper">
           <div class="hero-image-container">
@@ -249,12 +248,12 @@
     <main>
       <!-- About -->
       <section id="about" class="fade-section">
-        <h2 class="title-h2"><i class="fas fa-user"></i>About Me</h2>
+        <h2 class="title-h2"><i class="fas fa-user"></i> About Me</h2>
         <div class="about-container">
-          <!-- Main Mac Window -->
-          <div class="about-window">
+          <!-- Main Summary Window -->
+          <div class="about-window main-window">
             <div class="window-header">
-              <h3>Prossional Summary</h3>
+              <h3>Professional Summary</h3>
             </div>
 
             <div class="window-content">
@@ -272,7 +271,7 @@
             </div>
           </div>
 
-          <!-- Vertical Mini Windows -->
+          <!-- Mini Windows -->
           <div class="mini-windows">
             <div class="about-window mini-window">
               <div class="window-header">
@@ -307,110 +306,311 @@
       <!-- Experience -->
       <section id="experience" class="fade-section">
         <h2 class="title-h2"><i class="fas fa-briefcase"></i>Experience</h2>
-        <div class="experience-window">
-          <!-- Window header -->
-          <div class="window-header">
-            <h3>Software Engineer</h3>
-          </div>
+        <div class="timeline">
+          <ul class="exp-list">
+            <li class="ex-li">
+              <div class="content">
+                <div class="window-header">
+                  <h3>Software Engineer (Part-Time)</h3>
+                </div>
 
-          <!-- Window content -->
-          <div class="window-content">
-            <small
-              ><i class="fa-solid fa-building"></i> Tata Consultancy Services
-              (Jan 2021 – Apr 2025)</small
-            >
-            <ul class="terminal-list">
-              <li>
-                Optimized Angular applications for large datasets, and
-                financial/manufacturing dashboards using lazy loading, sorting,
-                and custom search filters, improving performance and experience
-                for 10,000+ users.
-              </li>
-              <li>
-                Designed modern, responsive user interfaces with Angular
-                reactive forms and RxJS for data handling, implementing
-                validations that reduced input errors, cutting manual work by
-                2-3 hours per week for analysts.
-              </li>
-              <li>
-                Created Java/Angular components to process and validate CSV
-                files, efficiently storing data in Oracle SQL and streamlining
-                approximately 7+ major business and financial workflows across
-                North America and Europe.
-              </li>
-              <li>
-                Built REST APIs and JPA entity models aligned with Oracle
-                schemas and optimized SQL queries to ensure data integrity,
-                transaction efficiency, and scalability, serving 2 microservices
-                for cross-functional operations.
-              </li>
-              <li>
-                Implemented automated event-triggered email notifications using
-                Java Servlets and SMTP, enhancing workflow efficiency and team
-                communication across departments and manufacturing sites
-                worldwide.
-              </li>
-              <li>
-                Led the migration of six legacy applications from on-prem
-                servers to AWS using Maven and Azure DevOps CI/CD pipelines,
-                improving deployment reliability and reducing downtime.
-              </li>
-              <li>
-                Rebuilt and migrated a legacy Angular/Spring application to
-                Mendix, integrating SQL Server and automating SharePoint
-                document synchronization, increasing efficiency for 50+ users
-                across Business, Product, and Finance teams.
-              </li>
-              <li>
-                Handled user support tickets, addressing bug reports and fixing
-                production issues to maintain operational continuity and a high
-                client satisfaction index, earning the Service & Commitment
-                Award (Jan 2024).
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="experience-window">
-          <!-- Window header -->
-          <div class="window-header">
-            <h3>Financial Operations Assistant</h3>
-          </div>
+                <!-- Window content -->
+                <div class="window-content">
+                  <small><i class="fa-solid fa-building"></i> Free Lance</small>
+                  <p class="exp-summary">
+                    Built and deployed full-stack applications using Java,
+                    Spring Boot, Angular, and SQL, focusing on scalable APIs,
+                    clean architecture, and responsive UI while strengthening
+                    microservices and system design expertise through freelance
+                    projects.
+                  </p>
+                  <div class="exp-details">
+                    <ul class="terminal-list">
+                      <li>
+                        Developed full-stack projects focusing on REST APIs,
+                        database design, and responsive UI.
+                      </li>
+                      <li>
+                        Strengthened backend architecture, microservices, and
+                        system design skills through personal projects.
+                      </li>
+                    </ul>
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDetails(this)">
+                    Read More
+                  </button>
+                </div>
+              </div>
+              <div class="time">
+                <h4>Apr 2025 - Present</h4>
+              </div>
+            </li>
 
-          <!-- Window content -->
-          <div class="window-content">
-            <small
-              ><i class="fa-solid fa-building"></i> Ameriprise Financial
-              Services (Aug 2016 – Sep 2017)</small
-            >
-            <ul class="terminal-list">
-              <li>
-                Conducted quantitative research on equities and market trends to
-                assist advisors in preparing investment recommendations.
-              </li>
-              <li>
-                Entered and validated client financial data within internal
-                systems, ensuring record accuracy and completeness.
-              </li>
-              <li>
-                Maintained and organized investment portfolio records,
-                supporting timely account updates and operational processing.
-              </li>
-              <li>
-                Participated in client and advisor meetings to capture
-                requirements, document updates, and support follow-up actions.
-              </li>
-              <li>
-                Prepared client documentation, reports, and meeting materials
-                while coordinating with advisors to ensure readiness and
-                compliance.
-              </li>
-              <li>
-                Utilized Microsoft Excel (formulas, sorting/filtering, and basic
-                functions such as VLOOKUP and SUMIF) to organize financial data,
-                reconcile records, and support report preparation.
-              </li>
-            </ul>
-          </div>
+            <li class="ex-li">
+              <div class="content">
+                <div class="window-header">
+                  <h3>Client Service Specialist (Part-Time)</h3>
+                </div>
+
+                <!-- Window content -->
+                <div class="window-content">
+                  <small
+                    ><i class="fa-solid fa-building"></i> Ameriprise Financial
+                    Services</small
+                  >
+
+                  <p class="exp-summary">
+                    Supported Financial Advisors decision-making through client
+                    data analysis, documentation, scheduled events, and
+                    appointments, ensuring accurate client portfolio management
+                    withing Ameripise CRM System.
+                  </p>
+                  <div class="exp-details">
+                    <ul class="terminal-list">
+                      <li>
+                        Documenting client interactions, updating client data,
+                        and managing workflows within the Ameriprise CRM system
+                      </li>
+                      <li>
+                        Assisting advisors with maintaining client files,
+                        scheduled events, and appointments
+                      </li>
+                    </ul>
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDetails(this)">
+                    Read More
+                  </button>
+                </div>
+              </div>
+              <div class="time">
+                <h4>Mar 2026 - Present</h4>
+              </div>
+            </li>
+
+            <li class="ex-li">
+              <div class="content">
+                <!-- Window header -->
+                <div class="window-header">
+                  <h3>Software Engineer</h3>
+                </div>
+
+                <!-- Window content -->
+                <div class="window-content">
+                  <small
+                    ><i class="fa-solid fa-building"></i> Tata Consultancy
+                    Services</small
+                  >
+                  <p class="exp-summary">
+                    Built scalable Angular & Java applications, optimized
+                    performance for 10K+ users, led cloud migrations to AWS, and
+                    automated enterprise workflows across global teams.
+                  </p>
+                  <div class="exp-details">
+                    <ul class="terminal-list">
+                      <li>
+                        Optimized Angular applications for large datasets, and
+                        financial/manufacturing dashboards using lazy loading,
+                        sorting, and custom search filters, improving
+                        performance and experience for 10,000+ users.
+                      </li>
+                      <li>
+                        Designed modern, responsive user interfaces with Angular
+                        reactive forms and RxJS for data handling, implementing
+                        validations that reduced input errors, cutting manual
+                        work by 2-3 hours per week for analysts.
+                      </li>
+                      <li>
+                        Created Java/Angular components to process and validate
+                        CSV files, efficiently storing data in Oracle SQL and
+                        streamlining approximately 7+ major business and
+                        financial workflows across North America and Europe.
+                      </li>
+                      <li>
+                        Built REST APIs and JPA entity models aligned with
+                        Oracle schemas and optimized SQL queries to ensure data
+                        integrity, transaction efficiency, and scalability,
+                        serving 2 microservices for cross-functional operations.
+                      </li>
+                      <li>
+                        Implemented automated event-triggered email
+                        notifications using Java Servlets and SMTP, enhancing
+                        workflow efficiency and team communication across
+                        departments and manufacturing sites worldwide.
+                      </li>
+                      <li>
+                        Led the migration of six legacy applications from
+                        on-prem servers to AWS using Maven and Azure DevOps
+                        CI/CD pipelines, improving deployment reliability and
+                        reducing downtime.
+                      </li>
+                      <li>
+                        Rebuilt and migrated a legacy Angular/Spring application
+                        to Mendix, integrating SQL Server and automating
+                        SharePoint document synchronization, increasing
+                        efficiency for 50+ users across Business, Product, and
+                        Finance teams.
+                      </li>
+                      <li>
+                        Handled user support tickets, addressing bug reports and
+                        fixing production issues to maintain operational
+                        continuity and a high client satisfaction index, earning
+                        the Service & Commitment Award (Jan 2024).
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Button -->
+                  <button class="read-more-btn" onclick="toggleDetails(this)">
+                    Read More
+                  </button>
+                </div>
+              </div>
+
+              <div class="time">
+                <h4>Jan 2021 – Apr 2025</h4>
+              </div>
+            </li>
+
+            <li class="ex-li">
+              <div class="content">
+                <div class="window-header">
+                  <h3>Financial Advisor In Training Intern</h3>
+                </div>
+
+                <!-- Window content -->
+                <div class="window-content">
+                  <small
+                    ><i class="fa-solid fa-building"></i> Ameriprise Financial
+                    Services</small
+                  >
+
+                  <p class="exp-summary">
+                    Supported investment decision-making through market
+                    research, data analysis, and financial reporting while
+                    ensuring accurate client portfolio management.
+                  </p>
+                  <div class="exp-details">
+                    <ul class="terminal-list">
+                      <li>
+                        Conducted quantitative research on equities and market
+                        trends to assist advisors in preparing investment
+                        recommendations.
+                      </li>
+                      <li>
+                        Entered and validated client financial data within
+                        internal systems, ensuring record accuracy and
+                        completeness.
+                      </li>
+                      <li>
+                        Maintained and organized investment portfolio records,
+                        supporting timely account updates and operational
+                        processing.
+                      </li>
+                      <li>
+                        Participated in client and advisor meetings to capture
+                        requirements, document updates, and support follow-up
+                        actions.
+                      </li>
+                      <li>
+                        Prepared client documentation, reports, and meeting
+                        materials while coordinating with advisors to ensure
+                        readiness and compliance.
+                      </li>
+                      <li>
+                        Utilized Microsoft Excel (formulas, sorting/filtering,
+                        and basic functions such as VLOOKUP and SUMIF) to
+                        organize financial data, reconcile records, and support
+                        report preparation.
+                      </li>
+                    </ul>
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDetails(this)">
+                    Read More
+                  </button>
+                </div>
+              </div>
+              <div class="time">
+                <h4>Aug 2016 - Sep 2017</h4>
+              </div>
+            </li>
+
+            <li class="ex-li">
+              <div class="content">
+                <div class="window-header">
+                  <h3>Administrative Assistant Intern</h3>
+                </div>
+
+                <!-- Window content -->
+                <div class="window-content">
+                  <small><i class="fa-solid fa-building"></i> AMIDEAST</small>
+
+                  <p class="exp-summary">
+                    Supported daily operations through data management,
+                    administrative coordination, and financial handling, while
+                    improving process efficiency, data accuracy, and overall
+                    customer satisfaction in a fast-paced office environment.
+                  </p>
+                  <div class="exp-details">
+                    <ul class="terminal-list">
+                      <li>
+                        Managed data entry and maintained accurate records using
+                        Microsoft Excel, ensuring data integrity and
+                        accessibility.
+                      </li>
+                      <li>
+                        Analyzed and organized student survey data to support
+                        program evaluation and continuous improvement.
+                      </li>
+                      <li>
+                        Coordinated office operations, including scheduling
+                        meetings and preparing materials for internal and
+                        student sessions.
+                      </li>
+                      <li>
+                        Supported financial processes by handling cash
+                        collections and ensuring timely transfers to the
+                        accounting department.
+                      </li>
+                      <li>
+                        Assisted middle management with administrative tasks,
+                        including preparing course materials, reports, and
+                        marketing collateral.
+                      </li>
+                      <li>
+                        Performed basic maintenance and troubleshooting for
+                        office equipment such as printers and computers.
+                      </li>
+                      <li>
+                        Improved efficiency and task completion through strong
+                        time management and organizational skills.
+                      </li>
+                      <li>
+                        Contributed to the accuracy and quality of course
+                        materials, enhancing the learning experience for
+                        students.
+                      </li>
+                      <li>
+                        Enhanced customer satisfaction by delivering timely
+                        support and maintaining a high level of service quality.
+                      </li>
+                      <li>
+                        Collaborated with team members and interns to boost
+                        overall productivity by leveraging diverse skills and
+                        knowledge.
+                      </li>
+                    </ul>
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDetails(this)">
+                    Read More
+                  </button>
+                </div>
+              </div>
+              <div class="time">
+                <h4>February 2018</h4>
+              </div>
+            </li>
+
+            <div style="clear: both"></div>
+          </ul>
         </div>
       </section>
 
@@ -635,7 +835,7 @@
       </section>
 
       <section id="articles" class="fade-section">
-        <h2 class="title-h2"><i class="fas fa-pen"></i>Articles</h2>
+        <h2 class="title-h2"><i class="fas fa-pen"></i>Publications</h2>
 
         <!-- Window content -->
         <div class="window-content">

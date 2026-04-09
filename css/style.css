@@ -18,6 +18,7 @@
   --text-secondary: rgba(200, 220, 255, 0.9);
   --text-accent: rgba(12, 31, 63, 0.9);
   --text-muted: rgba(150, 180, 200, 0.7);
+  --timeline-header: rgba(255, 165, 0, 1);
 
   /* Gradients for Light Theme */
 
@@ -64,9 +65,7 @@
   --font-family: system-ui;
 }
 
-/* Espeon Theme */
 [data-theme="dark"] {
-  /* Umbreon Theme */
   --primary: rgba(26, 26, 26, 1);
   --secondary: rgba(255, 221, 0, 1);
   --accent: rgba(255, 221, 0, 1);
@@ -86,6 +85,7 @@
   --text-secondary: rgba(187, 187, 187, 1);
   --text-accent: rgb(100, 100, 100);
   --text-muted: rgba(182, 153, 153, 1);
+  --timeline-header: rgba(165, 86, 86, 1);
 
   /* Gradients */
   --gradient-1: linear-gradient(
@@ -128,7 +128,6 @@
   /* Fonts */
   --font-family: system-ui;
 }
-
 /* =======================
   Scroll bar styling
 ======================= */
@@ -567,6 +566,7 @@ main {
 
 /* Hero container (centers content) */
 .hero-container {
+  top: -80px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1002,13 +1002,14 @@ section {
 /* ---------------- About Section Layout ---------------- */
 .about-container {
   display: flex;
+  flex-direction: column; /* Stack main window on top, mini-windows below */
   gap: 2rem;
-  align-items: flex-start;
-  flex-wrap: wrap; /* allows stacking on small screens */
+  align-items: center;
 }
 
-.about-window {
-  overflow: hidden;
+/* Main Summary Window */
+.about-window.main-window {
+  padding: 10px;
   margin: 1.2rem auto;
   max-width: auto;
   flex: 2;
@@ -1018,11 +1019,11 @@ section {
   backdrop-filter: blur(2px);
   border-radius: 12px;
   box-shadow: inset 0 0 20px var(--bg-card);
+  overflow: hidden;
 }
 
-/* Window header */
 .about-window .window-header {
-  position: relative; /* for the pseudo-element */
+  position: relative;
   height: 40px;
   display: flex;
   align-items: center;
@@ -1036,7 +1037,7 @@ section {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px; /* border thickness */
+  height: 2px;
   background: linear-gradient(
     to right,
     var(--headers) 0%,
@@ -1045,15 +1046,6 @@ section {
   );
 }
 
-/* Mac buttons */
-.about-window .window-btn {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-/* Window content */
 .about-window .window-content {
   color: var(--text-primary);
   padding: 0.5rem 1rem;
@@ -1071,21 +1063,29 @@ section {
 }
 
 /* Mini Windows Container */
-.mini-windows .mini-windows {
+.mini-windows {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 150px;
+  flex-direction: row; /* Horizontal layout */
+  gap: 1rem;
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  justify-content: center;
+  width: 100%;
 }
 
 /* Mini Windows */
 .mini-windows .mini-window {
+  flex: 1 1 150px; /* Flexible width with minimum 150px */
+  max-width: 200px;
   height: auto;
   display: flex;
   flex-direction: column;
   opacity: 0;
-  transform: translateX(50px); /* start slightly off to the right */
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* subtle bounce */
+  transform: translateX(50px); /* Start slightly to the right */
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* slide animation */
+  background-color: var(--bg-dark);
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px var(--bg-card);
+  padding: 5px;
 }
 
 /* When visible, slide in */
@@ -1100,7 +1100,6 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
   text-align: center;
   padding: 0.5rem 1rem;
 }
@@ -1117,21 +1116,194 @@ section {
   font-weight: 500;
 }
 
-/*------------------ Experience window -------------------*/
-/* Max-style Mac Window for Experience */
-.experience-window {
+/*------------------ Experience -------------------*/
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 40px 0;
   width: 100%;
   height: auto;
-  margin: 1.2rem auto;
-  overflow: hidden;
   background-color: var(--bg-dark);
   backdrop-filter: blur(2px);
   border-radius: 12px;
   box-shadow: inset 0 0 20px var(--bg-card);
+  box-sizing: border-box;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  top: 40px;
+  bottom: 40px; /* better than height: 100% */
+  background: var(--gradient-1);
+}
+
+.timeline .exp-list {
+  padding: 0;
+  margin: 0;
+}
+
+.timeline .exp-list .ex-li {
+  list-style: none;
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.timeline .exp-list .ex-li:nth-child(odd) {
+  float: left;
+  clear: both;
+}
+
+.timeline .exp-list .ex-li:nth-child(even) {
+  float: right;
+  text-align: left;
+  clear: both;
+}
+
+.content {
+  padding-bottom: 20px;
+}
+
+.exp-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.exp-details.open {
+  max-height: 2000px; /* big enough to fit content */
+}
+
+.read-more-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  background: var(--secondary);
+  color: var(--text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.read-more-btn:hover {
+  background: var(--primary);
+  color: var(--timeline-header);
+}
+
+.timeline .exp-list .ex-li:nth-child(odd):before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 24px;
+  right: -6px;
+  background: var(--timeline-header);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+}
+
+.timeline .exp-list .ex-li:nth-child(even):before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 24px;
+  left: -4px;
+  background: var(--timeline-header);
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+  border-radius: 50%;
+}
+
+.timeline .exp-list .ex-li h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.timeline .exp-list .ex-li p {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.timeline .exp-list .ex-li .time h4 {
+  margin: 0 -8px;
+  padding: 0;
+  font-size: 14px;
+}
+
+.timeline .exp-list .ex-li:nth-child(odd) .time {
+  position: absolute;
+  top: 12px;
+  right: -165px;
+  margin: 0;
+  padding: 8px 16px;
+  background: var(--timeline-header);
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+  color: var(--text-primary);
+  border-radius: 12px;
+}
+
+.timeline .exp-list .ex-li:nth-child(even) .time {
+  position: absolute;
+  top: 12px;
+  left: -165px;
+  margin: 0;
+  padding: 8px 16px;
+  color: var(--text-primary);
+  background: var(--timeline-header);
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+  border-radius: 12px;
+}
+
+@media (max-width: 1000px) {
+  .timeline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  h1 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .timeline:before {
+    left: 20px;
+    height: auto;
+  }
+
+  .timeline .exp-list .ex-li:nth-child(odd),
+  .timeline .exp-list .ex-li:nth-child(even) {
+    width: 100%;
+    text-align: left;
+    padding-left: 50px;
+    padding-bottom: 50px;
+  }
+
+  .timeline .exp-list .ex-li:nth-child(odd):before,
+  .timeline .exp-list .ex-li:nth-child(even):before {
+    top: -18px;
+    left: 16px;
+  }
+
+  .timeline .exp-list .ex-li:nth-child(odd) .time,
+  .timeline .exp-list .ex-li:nth-child(even) .time {
+    top: -30px;
+    left: 50px;
+    right: inherit;
+  }
 }
 
 /* Window header */
-.experience-window .window-header {
+.timeline .window-header {
   position: relative; /* for the pseudo-element */
   height: 40px;
   display: flex;
@@ -1140,7 +1312,7 @@ section {
   gap: 0.5rem;
 }
 
-.experience-window .window-header::after {
+.timeline .window-header::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -1155,30 +1327,26 @@ section {
   );
 }
 
-/* Buttons */
-.experience-window .window-btn {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  display: inline-block;
-}
 /* Window content */
-.experience-window .window-content {
+.timeline .window-content {
   padding: 0.5rem 1rem;
   color: var(--text-primary);
 }
+.window-content small {
+  color: var(--text-secondary);
+}
 
-.experience-window h3 {
+.timeline h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }
 
-.experience-window ul.terminal-list {
+.terminal-list {
   list-style: none;
   padding-left: 1rem;
 }
 
-.experience-window ul.terminal-list li {
+.terminal-list li {
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.8rem;
@@ -1187,11 +1355,11 @@ section {
 }
 
 /* Add ">" like terminal */
-.experience-window ul.terminal-list li::before {
+.terminal-list li::before {
   content: ">";
   position: absolute;
   left: 0;
-  color: var(--secondary);
+  color: var(--accent);
   font-weight: bold;
 }
 
@@ -1210,12 +1378,12 @@ section {
   max-width: auto; /* fixed width for cards */
   overflow: hidden;
   text-align: center; /* center content */
-  padding-bottom: 1rem;
   margin: 2rem;
   background-color: var(--bg-dark);
   backdrop-filter: blur(2px);
   border-radius: 12px;
   box-shadow: inset 0 0 20px var(--bg-card);
+  padding: 10px;
 }
 
 /* Logo */
@@ -1295,10 +1463,8 @@ section {
   padding: 12px;
   position: relative;
   border-radius: 2px;
-
   cursor: default;
   transform-style: preserve-3d;
-
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
@@ -1504,6 +1670,7 @@ section {
   backdrop-filter: blur(2px);
   border-radius: 12px;
   box-shadow: inset 0 0 20px var(--bg-card);
+  padding: 10px;
 }
 
 /* Window header buttons (red, yellow, green) */
@@ -1878,18 +2045,18 @@ footer {
     gap: 1rem;
   }
 
-  .experience-window .window-header {
+  .timeline .window-header {
     padding: 15px 10px; /* less padding on sides */
     text-align: left; /* optional, keeps things readable */
   }
 
-  .experience-window .window-header h3 {
+  .timeline .window-header h3 {
     font-size: 0.9rem; /* smaller, fits mobile width */
     line-height: 1.2; /* tighter spacing */
     margin-bottom: 6px; /* space to small text */
   }
 
-  .experience-window .window-header small {
+  .timeline .window-header small {
     font-size: 0.8rem; /* small but readable */
     display: block; /* stacks below h3 */
     color: var(--text-secondary); /* subtle color */
@@ -1956,6 +2123,10 @@ footer {
   footer {
     padding: var(--spacing-md) var(--spacing-xs);
   }
+
+  .hero-container {
+    top: 0;
+  }
 }
 
 /* Small devices / tablets (481px - 768px) */
@@ -1977,7 +2148,7 @@ footer {
     top: 60px;
     left: -100%;
     width: 100%;
-    background: var(--bg-card);
+    background: var(--bg-dark);
     flex-direction: column;
     padding: 2rem 1rem;
     border-top: 1px solid var(--border);
@@ -2097,7 +2268,6 @@ footer {
   }
 }
 
-/* Medium devices / small laptops (769px - 1024px) */
 @media (max-width: 1024px) {
   main {
     max-width: 720px;
@@ -2126,7 +2296,6 @@ footer {
   }
 }
 
-/* Large devices / desktops (1025px+) */
 @media (min-width: 1025px) {
   main {
     max-width: 960px;
