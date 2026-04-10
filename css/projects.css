@@ -37,7 +37,6 @@
 /* Image container */
 .project-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +47,6 @@
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
   object-position: center center;
   transition:
