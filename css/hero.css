@@ -141,7 +141,6 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  animation: subtleZoomOutIn 5s ease-in-out infinite alternate;
 }
 
 .profile-image img {
@@ -151,52 +150,76 @@
   border-radius: 50%;
 }
 
-@keyframes subtleZoomOutIn {
-  0%,
-  100% {
-    transform: scale(0.98);
-  }
-  50% {
-    transform: scale(1);
-  }
-}
-
 .name-wrapper {
   display: inline-block;
-  margin-top: 50px;
 }
 
 /* =======================
-   Hero Floating Badges
+   Hero Floating Badges (Theme Aware)
 ======================= */
 .floating-badge {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(20, 20, 20, 0.9);
-  border: 1px solid var(--accent);
-  box-shadow: 0 0 6px var(--accent);
-  padding: 0.4rem 1.2rem;
-  border-radius: 12px;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  /* 3D sphere effect using theme colors */
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.25),
+    var(--bg-darker) 60%,
+    var(--primary) 100%
+  );
+
+  border: 1px solid var(--secondary);
+
+  /* depth + glow using theme */
+  box-shadow:
+    inset -6px -8px 12px rgba(0, 0, 0, 0.5),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.08),
+    0 6px 20px color-mix(in srgb, var(--secondary) 35%, transparent);
+
   animation: float 4s ease-in-out infinite;
   z-index: 2;
-  width: max-content;
+}
+
+/* highlight reflection */
+.floating-badge::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 70%
+  );
+
+  filter: blur(2px);
 }
 
 .badge-content {
   display: flex;
+  flex-direction: column; /* stack */
   align-items: center;
-  gap: 10px;
-  line-height: 1.1;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
 }
 
 .floating-badge img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  border-radius: 5px;
-  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  z-index: 2;
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
@@ -206,44 +229,43 @@
 }
 
 .badge-title {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: var(--secondary);
   margin-bottom: 2px;
-  text-align: left;
+  text-align: center;
 }
 
 .badge-libs {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: var(--primary);
+  white-space: nowrap;
 }
 
-/* Badge positions */
+/* Badge positions adjusted to form a horizontal row */
 .badge-1 {
-  top: 10px;
-  left: -80px;
-  animation-delay: 0.3s;
-}
-.badge-2 {
-  top: 75%;
-  right: -100px;
-  transform: translateY(-50%);
+  top: 250px;
+  left: 0px;
   animation-delay: 0s;
 }
+
+.badge-2 {
+  top: 250px;
+  left: 70px;
+  transform: none;
+  animation-delay: 1s;
+}
+
 .badge-3 {
-  bottom: 40px;
-  left: -100px;
+  top: 250px;
+  left: 140px;
   animation-delay: 2s;
 }
+
 .badge-4 {
-  top: 10%;
-  left: 75%;
-  animation-delay: 0.5s;
-}
-.badge-5 {
-  bottom: 30%;
-  right: 60%;
-  animation-delay: 1.5s;
+  top: 250px;
+  left: 210px;
+  animation-delay: 3s;
 }
 
 @keyframes float {
@@ -252,7 +274,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
 }
 
