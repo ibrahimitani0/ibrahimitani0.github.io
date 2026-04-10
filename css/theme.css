@@ -1,0 +1,130 @@
+:root {
+  --primary: rgba(255, 255, 255, 1); /* White body */
+  --secondary: rgba(66, 135, 245, 1); /* Sky blue accents */
+  --accent: rgba(255, 165, 0, 1); /* Orange beak/feet highlights */
+  --headers: rgba(50, 120, 230, 1); /* Blue headers */
+  --bg-dark: rgba(20, 50, 80, 1); /* Deep ocean background */
+  --bg-darker: rgba(10, 30, 60, 1); /* Darker sections/cards */
+  --bg-card: rgba(70, 130, 180, 0.1); /* Light blue card backgrounds */
+  --bg-hover: rgba(100, 160, 210, 0.15); /* Hover effect */
+  --border: rgba(255, 165, 0, 0.8); /* Orange border */
+  --circle: conic-gradient(
+    rgba(66, 135, 245, 0.8),
+    rgba(255, 255, 255, 0.2),
+    rgba(66, 135, 245, 0.8),
+    rgba(255, 255, 255, 0.2)
+  );
+  --text-primary: rgba(255, 255, 255, 1);
+  --text-secondary: rgba(200, 220, 255, 0.9);
+  --text-accent: rgba(12, 31, 63, 0.9);
+  --text-muted: rgba(150, 180, 200, 0.7);
+  --timeline-header: rgba(255, 165, 0, 1);
+
+  /* Gradients for Light Theme */
+
+  --gradient-1: linear-gradient(
+    135deg,
+    rgba(50, 120, 230, 1) 0%,
+    /* --headers blue */ rgba(66, 135, 245, 1) 50%,
+    /* --secondary sky blue */ rgba(200, 220, 255, 1) 100%
+  );
+
+  --gradient-2: linear-gradient(
+    135deg,
+    rgba(100, 160, 255, 1) 0%,
+    rgba(66, 135, 245, 1) 50%,
+    rgba(50, 120, 230, 1) 100%
+  );
+
+  --gradient-3: linear-gradient(
+    135deg,
+    rgba(200, 220, 255, 1) 0%,
+    rgba(150, 180, 255, 1) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(66, 135, 245, 0.5);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Transitions */
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Fonts */
+  --font-family: system-ui;
+}
+
+[data-theme="dark"] {
+  --primary: rgba(26, 26, 26, 1);
+  --secondary: rgba(255, 221, 0, 1);
+  --accent: rgba(255, 221, 0, 1);
+  --headers: rgba(165, 86, 86, 1);
+  --bg-dark: rgba(13, 13, 13, 1);
+  --bg-darker: rgba(1, 1, 1, 1);
+  --bg-card: rgba(31, 31, 31, 1);
+  --bg-hover: rgba(42, 42, 42, 1);
+  --border: rgba(255, 221, 0, 1);
+  --circle: conic-gradient(
+    rgba(255, 221, 0, 0.8),
+    rgba(255, 221, 0, 0.2),
+    rgba(255, 221, 0, 0.8),
+    rgba(255, 221, 0, 0.2)
+  );
+  --text-primary: rgba(253, 231, 231, 1);
+  --text-secondary: rgba(187, 187, 187, 1);
+  --text-accent: rgb(100, 100, 100);
+  --text-muted: rgba(182, 153, 153, 1);
+  --timeline-header: rgba(165, 86, 86, 1);
+
+  /* Gradients */
+  --gradient-1: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(255, 221, 0, 1) 50%,
+    rgba(255, 221, 0, 1) 100%
+  );
+  --gradient-2: linear-gradient(
+    135deg,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(255, 221, 0, 1) 50%,
+    rgba(255, 221, 0, 1) 100%
+  );
+  --gradient-3: linear-gradient(
+    135deg,
+    rgba(34, 34, 34, 1) 0%,
+    rgba(51, 51, 51, 1) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(255, 221, 0, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Transitions */
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Fonts */
+  --font-family: system-ui;
+}

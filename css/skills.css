@@ -1,0 +1,123 @@
+/* =======================
+   Skills
+======================= */
+
+/* Mac-style window for skills */
+.skills-window {
+  width: 100%;
+  max-width: auto;
+  height: auto;
+  margin: 2rem auto;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
+  padding: 10px;
+}
+
+/* Window header buttons (red, yellow, green) */
+.skills-window .window-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.skills-window .window-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* border thickness */
+  background: linear-gradient(
+    to right,
+    var(--headers) 0%,
+    var(--text-muted) 50%,
+    var(--text-primary) 100%
+  );
+}
+
+/* Window content */
+.skills-window .window-content {
+  padding: 1.5rem;
+  color: var(--text-primary);
+}
+
+#skills .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 3.8rem;
+}
+
+#skills h3 {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  width: 40px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.skill img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+}
+
+.sql-icon {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+/* =======================
+   Mobile & Responsive Styles
+======================= */
+
+@media (max-width: 480px) {
+  #skills .skills-list {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .skill img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill {
+    width: 32px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #skills .skills-list {
+    gap: 3rem;
+  }
+
+  .skill img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
+}

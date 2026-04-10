@@ -1,0 +1,243 @@
+/*------------------ Experience -------------------*/
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 40px 0;
+  width: 100%;
+  height: auto;
+  background-color: var(--bg-dark);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
+  box-sizing: border-box;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  top: 40px;
+  bottom: 40px; /* better than height: 100% */
+  background: var(--gradient-1);
+}
+
+.timeline .exp-list {
+  padding: 0;
+  margin: 0;
+}
+
+.timeline .exp-list .ex-li {
+  list-style: none;
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.timeline .exp-list .ex-li:nth-child(odd) {
+  float: left;
+  clear: both;
+}
+
+.timeline .exp-list .ex-li:nth-child(even) {
+  float: right;
+  text-align: left;
+  clear: both;
+}
+
+.content {
+  padding-bottom: 20px;
+}
+
+.exp-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.exp-details.open {
+  max-height: 2000px; /* big enough to fit content */
+}
+
+.read-more-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  background: var(--secondary);
+  color: var(--text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.read-more-btn:hover {
+  background: var(--primary);
+  color: var(--timeline-header);
+}
+
+.timeline .exp-list .ex-li:nth-child(odd):before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 24px;
+  right: -6px;
+  background: var(--timeline-header);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+}
+
+.timeline .exp-list .ex-li:nth-child(even):before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 24px;
+  left: -4px;
+  background: var(--timeline-header);
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+  border-radius: 50%;
+}
+
+.timeline .exp-list .ex-li h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.timeline .exp-list .ex-li p {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.timeline .exp-list .ex-li .time h4 {
+  margin: 0 -8px;
+  padding: 0;
+  font-size: 14px;
+}
+
+.timeline .exp-list .ex-li:nth-child(odd) .time {
+  position: absolute;
+  top: 12px;
+  right: -165px;
+  margin: 0;
+  padding: 8px 16px;
+  background: var(--timeline-header);
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+  color: var(--text-primary);
+  border-radius: 12px;
+}
+
+.timeline .exp-list .ex-li:nth-child(even) .time {
+  position: absolute;
+  top: 12px;
+  left: -165px;
+  margin: 0;
+  padding: 8px 16px;
+  color: var(--text-primary);
+  background: var(--timeline-header);
+  box-shadow: 0 0 0 3px var(--shadow-glow);
+  border-radius: 12px;
+}
+
+/* Window header */
+.timeline .window-header {
+  position: relative; /* for the pseudo-element */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+}
+
+.timeline .window-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* border thickness */
+  background: linear-gradient(
+    to right,
+    var(--headers) 0%,
+    var(--text-muted) 50%,
+    var(--text-primary) 100%
+  );
+}
+
+/* Window content */
+.timeline .window-content {
+  padding: 0.5rem 1rem;
+  color: var(--text-primary);
+}
+
+.window-content small {
+  color: var(--text-secondary);
+}
+
+.timeline h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* =======================
+   Mobile & Responsive Styles
+======================= */
+@media (max-width: 480px) {
+  .timeline .window-header {
+    padding: 15px 10px;
+    text-align: left;
+  }
+
+  .timeline .window-header h3 {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .timeline .window-header small {
+    font-size: 0.8rem;
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .timeline:before {
+    left: 20px;
+    height: auto;
+  }
+
+  .timeline .exp-list .ex-li:nth-child(odd),
+  .timeline .exp-list .ex-li:nth-child(even) {
+    width: 100%;
+    text-align: left;
+    padding-left: 50px;
+    padding-bottom: 50px;
+  }
+
+  .timeline .exp-list .ex-li:nth-child(odd):before,
+  .timeline .exp-list .ex-li:nth-child(even):before {
+    top: -18px;
+    left: 16px;
+  }
+
+  .timeline .exp-list .ex-li:nth-child(odd) .time,
+  .timeline .exp-list .ex-li:nth-child(even) .time {
+    top: -30px;
+    left: 50px;
+    right: inherit;
+  }
+}
+
+@media (max-width: 1000px) {
+  .timeline {
+    width: 100%;
+  }
+}

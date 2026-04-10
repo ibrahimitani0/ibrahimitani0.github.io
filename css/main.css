@@ -1,0 +1,370 @@
+@import url("theme.css");
+@import url("loading.css");
+@import url("header.css");
+@import url("hero.css");
+@import url("about.css");
+@import url("experience.css");
+@import url("education.css");
+@import url("projects.css");
+@import url("skills.css");
+@import url("publications.css");
+
+/* =======================
+   Base Reset & Global Styles
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-card));
+  color: var(--text-primary);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px; /* height of nav */
+}
+
+main {
+  flex-grow: 1;
+  max-width: 960px;
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+#main-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -99;
+}
+
+/* =======================
+   Sections & Fade Animation
+======================= */
+section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+/* visible class will be added when scrolling */
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-section.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* =======================
+  Scroll bar styling
+======================= */
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+  border: 2px solid var(--bg-darker);
+  transition: var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  box-shadow: var(--shadow-sm);
+}
+
+/*=====================================*/
+/*       H2 for ALL SECTIONS
+/*=====================================*/
+.title-h2 {
+  font-size: 2.5rem;
+  color: var(--headers);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  text-shadow:
+    2px 2px 0 var(--text-accent),
+    var(--shadow-lg);
+}
+
+/* The line */
+.title-h2::after {
+  content: "";
+  flex: 1; /* fills remaining space */
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--secondary) 0%,
+    var(--accent) 50%,
+    var(--headers) 100%
+  );
+}
+
+/* =======================
+   Scroll Progress Dots
+======================= */
+#scroll-progress {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 998;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background-color: var(--secondary);
+  box-shadow: 0 0 6px var(--accent);
+  animation: bounceDot 0.6s infinite alternate;
+}
+
+@keyframes bounceDot {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =======================
+   Contact Section
+======================= */
+#contact {
+  text-align: center;
+}
+
+#contact a.button {
+  display: inline-block;
+  margin: 0.5rem;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+#contact a.button:hover {
+  background-color: var(--secondary);
+}
+
+/* =======================
+   Footer
+======================= */
+footer {
+  background-color: var(--bg-dark);
+  color: var(--text-muted);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* always full screen height */
+  min-height: 820px; /* optional for very short screens */
+  pointer-events: none;
+  z-index: 0;
+
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.125) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+}
+
+footer .footer-links {
+  margin-bottom: 1rem;
+}
+
+footer .footer-links a {
+  color: var(--headers);
+  text-decoration: none;
+  margin: 0 0.75rem;
+  font-weight: 600;
+}
+
+footer .footer-links a:hover {
+  color: var(--text-primary);
+}
+
+footer small {
+  font-size: 0.9rem;
+}
+
+/* =======================
+   Animations
+======================= */
+@keyframes dropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-10px) scale(1.02);
+  }
+  80% {
+    transform: translateX(5px) scale(0.98);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+#footer-canvas {
+  position: absolute; /* or relative if you want it contained */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so it doesn’t block clicks */
+  z-index: 0;
+}
+footer {
+  position: relative; /* so canvas is positioned inside footer */
+  overflow: hidden;
+}
+
+/* =======================
+   Mobile & Responsive Styles
+======================= */
+
+/* Extra small devices (phones, <=480px) */
+@media (max-width: 480px) {
+  #scroll-progress {
+    display: none;
+  }
+
+  body {
+    padding-top: 5px;
+  }
+
+  main {
+    width: 100vw;
+  }
+
+  .title-h2 {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: var(--spacing-md) var(--spacing-xs);
+  }
+}
+
+/* Small devices / tablets (481px - 768px) */
+@media (max-width: 768px) {
+  main {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  /*common*/
+  .title-h2 {
+    font-size: 2rem;
+  }
+  #scroll-progress {
+    display: none;
+  }
+}
+
+/* Medium devices (<=1024px) */
+@media (max-width: 1024px) {
+  main {
+    max-width: 720px;
+  }
+  #scroll-progress {
+    display: none;
+  }
+}
+
+/* Large devices (>=1025px) */
+@media (min-width: 1025px) {
+  main {
+    max-width: 960px;
+  }
+}

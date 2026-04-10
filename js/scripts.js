@@ -235,22 +235,6 @@ function initPageAnimations() {
     fadeObserver.observe(section);
   });
 
-  // ---------------- Mini Windows ----------------
-  const miniWindows = document.querySelectorAll(".mini-windows .mini-window");
-  function animateMiniWindows() {
-    const aboutSection = document.getElementById("about");
-    if (!aboutSection) return;
-    const sectionTop = aboutSection.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (sectionTop < windowHeight - 100) {
-      miniWindows.forEach((win, index) => {
-        setTimeout(() => win.classList.add("visible"), index * 150);
-      });
-    }
-  }
-  window.addEventListener("load", animateMiniWindows);
-
   // ---------------- Header Scroll ----------------
   const header = document.querySelector(".main-header");
   function updateHeaderOnScroll() {
@@ -664,7 +648,6 @@ function initPageAnimations() {
     updateHeaderOnScroll();
     updateProgressDots();
     updateHeroLine();
-    animateMiniWindows();
     updateActiveNav();
   });
 }

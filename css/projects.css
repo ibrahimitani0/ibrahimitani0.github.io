@@ -1,0 +1,243 @@
+/* =======================
+   3D Interactive Project Cards (Mac Window Style)
+======================= */
+.grid {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.project-window {
+  padding: 12px;
+  position: relative;
+  border-radius: 2px;
+  cursor: default;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  background-color: var(--bg-dark);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
+}
+
+.project-window .year {
+  display: inline-block;
+  background: var(--headers);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Image container */
+.project-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Image itself */
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center center;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  border-radius: 8px;
+}
+
+/* Optional: lift card slightly */
+.project-window:hover img {
+  transform: translateY(-20px);
+  box-shadow: 0 0 12px var(--border);
+}
+
+.project-overlay h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    0 0 8px rgba(255, 221, 0, 0.5);
+  transition:
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
+  border-bottom: 3px solid var(--secondary);
+}
+
+.project-window:hover .project-overlay h3 {
+  transform: translateY(-8px);
+  text-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(255, 221, 0, 0.7);
+}
+
+.project-overlay p {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  height: 90px;
+  font-weight: 500; /* slightly bolder for clarity */
+  line-height: 1.4; /* more readable spacing */
+  letter-spacing: 0.5px; /* subtle polish */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* improves readability over background */
+  border-radius: 2px;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  background: var(--bg-card);
+  padding: 8px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-tags span {
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.tech-tags span:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.view-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--headers);
+  margin-top: 5px;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.view-btn:hover {
+  background: var(--secondary);
+}
+
+/* Disabled button */
+.view-btn.disabled {
+  background-color: #9ca3af; /* Gray */
+  color: #e5e7eb; /* Light gray text */
+  cursor: not-allowed;
+  pointer-events: none; /* Makes it unclickable */
+  opacity: 0.7; /* Slightly faded */
+}
+
+/* Individual tech colors */
+.tech-tags span.angular {
+  background-color: #dd3737;
+}
+.tech-tags span.html {
+  background-color: #ff6a33;
+}
+.tech-tags span.css {
+  background-color: #994daa;
+}
+.tech-tags span.js {
+  background-color: #e4de2e;
+  color: #fff;
+}
+.tech-tags span.firebase {
+  background-color: orange;
+}
+.tech-tags span.mongodb {
+  background-color: #47a248;
+  color: #fff;
+}
+.tech-tags span.docker {
+  background-color: #2496ed;
+}
+.tech-tags span.aws {
+  background-color: #ffae18;
+  color: #fff;
+}
+.tech-tags span.mysql {
+  background-color: #00618a;
+}
+.tech-tags span.springboot {
+  background-color: #6db33f;
+}
+.tech-tags span.java {
+  background-color: #f89820;
+}
+.tech-tags span.python {
+  background-color: #3776ab;
+  color: #fff;
+}
+.tech-tags span.weatherAPI {
+  background: linear-gradient(145deg, #e3e3e3, #ff4800);
+  color: #fff;
+}
+.tech-tags span.opentdb {
+  background: linear-gradient(135deg, #3498db, #f39c12, #9b59b6, #2ecc71);
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    margin: 1rem;
+    gap: 1rem;
+  }
+
+  .project-window {
+    width: 100%;
+  }
+
+  .project-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-overlay p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    margin: 1rem;
+    gap: 1rem;
+  }
+
+  .project-window {
+    width: 100%;
+  }
+
+  .project-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-overlay p {
+    font-size: 0.8rem;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}

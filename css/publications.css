@@ -1,0 +1,108 @@
+/*------------------ Article window -------------------*/
+.article-window {
+  overflow: hidden;
+  margin: 1.2rem auto;
+  max-width: auto;
+  flex: 2;
+  min-width: auto;
+  height: auto;
+  background-color: var(--bg-dark);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px var(--bg-card);
+  padding: 1rem;
+}
+
+/* Window header */
+.article-window .window-header {
+  position: relative; /* for the pseudo-element */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  margin-bottom: 10px;
+}
+
+.article-window .window-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* border thickness */
+  background: linear-gradient(
+    to right,
+    var(--headers) 0%,
+    var(--text-muted) 50%,
+    var(--text-primary) 100%
+  );
+}
+
+/* Window content */
+.article-window .window-content {
+  color: var(--text-primary);
+}
+
+.article-window h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Article card styling */
+.article-window p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.article-window .meta {
+  font-size: 12px;
+  color: #777;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-window a {
+  color: var(--text-primary); /* use your accent color (yellow in your theme) */
+  text-decoration: none; /* remove underline */
+  font-weight: bold; /* make it stand out */
+  transition: 0.3s ease; /* smooth transition on hover */
+}
+
+.article-window a:hover {
+  text-decoration: underline; /* optional extra emphasis */
+}
+
+/* =======================
+   Mobile & Responsive Styles
+======================= */
+
+/* Extra small devices (phones, <=480px) */
+@media (max-width: 480px) {
+  .article-window h3 {
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+  .article-window p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .article-window a {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small devices / tablets (481px - 768px) */
+@media (max-width: 768px) {
+}
+
+/* Medium devices (<=1024px) */
+@media (max-width: 1024px) {
+}
+
+/* Large devices (>=1025px) */
+@media (min-width: 1025px) {
+}
