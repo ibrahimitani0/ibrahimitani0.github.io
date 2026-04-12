@@ -108,7 +108,7 @@
 
 .theme-toggle,
 .menu-toggle {
-  background: var(--bg-card);
+  background: var(--headers);
   border: 1px solid var(--text-secondary);
   color: var(--text-primary);
   padding: 0.6rem 1rem;
@@ -197,10 +197,10 @@
     top: 60px;
     left: -100%;
     width: 100%;
-    background: var(--bg-dark);
+    background: var(--bg-darker);
     flex-direction: column;
     padding: 2rem 1rem;
-    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     transition: left var(--transition);
     z-index: 999;
     max-height: calc(100vh - 60px);

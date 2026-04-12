@@ -48,13 +48,13 @@
 
 /* Hero container (centers content) */
 .hero-container {
-  top: -80px;
+  top: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertical center */
   align-items: center; /* horizontal center */
-  height: 100%;
+
   z-index: 1;
   text-align: center;
 }
@@ -151,132 +151,7 @@
 }
 
 .name-wrapper {
-  margin-top: 20px;
   display: inline-block;
-}
-
-/* =======================
-   Hero Floating Badges (Theme Aware)
-======================= */
-.floating-badge {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 60px;
-  height: 60px;
-
-  border-radius: 50%;
-
-  /* 3D sphere effect using theme colors */
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.25),
-    var(--bg-darker) 60%,
-    var(--primary) 100%
-  );
-
-  border: 1px solid var(--secondary);
-
-  /* depth + glow using theme */
-  box-shadow:
-    inset -6px -8px 12px rgba(0, 0, 0, 0.5),
-    inset 4px 4px 8px rgba(255, 255, 255, 0.08),
-    0 6px 20px color-mix(in srgb, var(--secondary) 35%, transparent);
-
-  animation: float 4s ease-in-out infinite;
-  z-index: 2;
-}
-
-/* highlight reflection */
-.floating-badge::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  width: 40%;
-  height: 40%;
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.4),
-    transparent 70%
-  );
-
-  filter: blur(2px);
-}
-
-.badge-content {
-  display: flex;
-  flex-direction: column; /* stack */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 5px;
-}
-
-.floating-badge img {
-  width: 28px;
-  height: 28px;
-  z-index: 2;
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-.badge-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.badge-title {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: var(--secondary);
-  margin-bottom: 2px;
-  text-align: center;
-}
-
-.badge-libs {
-  font-size: 0.6rem;
-  color: var(--primary);
-  white-space: nowrap;
-}
-
-/* Badge positions adjusted to form a horizontal row */
-.badge-1 {
-  top: 250px;
-  left: 0px;
-  animation-delay: 0s;
-}
-
-.badge-2 {
-  top: 250px;
-  left: 70px;
-  transform: none;
-  animation-delay: 1s;
-}
-
-.badge-3 {
-  top: 250px;
-  left: 140px;
-  animation-delay: 2s;
-}
-
-.badge-4 {
-  top: 250px;
-  left: 210px;
-  animation-delay: 3s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 /* =======================
@@ -373,7 +248,7 @@
 ======================= */
 .scroll-indicator {
   position: absolute;
-  bottom: 5px;
+  bottom: -180px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -455,13 +330,12 @@
     width: 120px;
     height: 120px;
   }
+  .name-wrapper {
+    margin-top: 25px;
+  }
 
   .hero-name-typing {
     font-size: 1.8rem;
-  }
-
-  #hero {
-    height: auto;
   }
 
   #hero p {

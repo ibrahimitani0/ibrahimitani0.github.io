@@ -56,6 +56,35 @@
   transition: max-height 0.4s ease;
 }
 
+.exp-details ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 16px 18px;
+  border-radius: 10px;
+}
+
+.exp-details li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.exp-details li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.exp-details li:hover {
+  transform: translateX(3px);
+  transition: 0.2s ease;
+}
+
 .exp-details.open {
   max-height: 2000px; /* big enough to fit content */
 }

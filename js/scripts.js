@@ -16,7 +16,6 @@ if (themeToggle) {
     profileImg.src = "images/pc.png";
   }
 }
-
 // ---------------- Loader Screen ----------------
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -47,6 +46,7 @@ window.addEventListener("load", () => {
 
         // Initialize page animations
         initPageAnimations();
+        setTimeout(typeEffect, 500);
       }, 500);
     }
 
@@ -54,16 +54,51 @@ window.addEventListener("load", () => {
     progressBar.style.width = Math.floor(progress) + "%";
   }, 100);
 });
+
+// ------------------------- Ticker skills --------------------
+const track = document.getElementById("tickerTrack");
+
+// clone content once for seamless loop
+track.innerHTML += track.innerHTML;
+
+let speed = 0.3;
+let position = 0;
+
+function animate() {
+  position -= speed;
+
+  // reset when half (because we doubled content)
+  if (Math.abs(position) >= track.scrollWidth / 2) {
+    position = 0;
+  }
+  if (window.innerWidth < 768) {
+    speed = 1.5;
+  }
+
+  track.style.transform = `translateX(${position}px)`;
+
+  requestAnimationFrame(animate);
+}
+
+animate();
 // ------------------------- Time line button --------------------
 function toggleDetails(button) {
-  const details = button.previousElementSibling;
+  const content = button.closest(".window-content");
+  const details = content.querySelector(".exp-details");
+  const summary = content.querySelector(".exp-summary");
 
-  details.classList.toggle("open");
+  const isOpen = details.classList.toggle("open");
 
-  if (details.classList.contains("open")) {
+  if (isOpen) {
     button.innerText = "Read Less";
   } else {
     button.innerText = "Read More";
+
+    // scroll back to summary when closing
+    summary.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
   }
 }
 // ---------------- Page Animations (Everything else) ----------------
@@ -141,10 +176,20 @@ function initPageAnimations() {
   // ---------------- Hamburger ----------------
   const menuToggle = document.getElementById("menuToggle");
   const navMenu = document.getElementById("navMenu");
+  const menuLinks = document.querySelectorAll(".nav-link");
 
+  // open/close menu
   menuToggle.addEventListener("click", () => {
     menuToggle.classList.toggle("active");
     navMenu.classList.toggle("active");
+  });
+
+  // close when clicking a link
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      navMenu.classList.remove("active");
+    });
   });
 
   // ---------------- Smooth Scroll + Scroll Spy ----------------
@@ -221,20 +266,24 @@ function initPageAnimations() {
 
   // ---------------- Fade Sections ----------------
   const fadeSections = document.querySelectorAll(".fade-section");
+
   const fadeObserver = new IntersectionObserver(
-    (entries) => {
+    (entries, observer) => {
       entries.forEach((entry) => {
-        entry.target.classList.toggle("visible", entry.isIntersecting);
-        entry.target.classList.toggle("hidden", !entry.isIntersecting);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
       });
     },
-    { threshold: 0.15 },
+    {
+      threshold: 0.15,
+    },
   );
+
   fadeSections.forEach((section) => {
-    section.classList.add("hidden");
     fadeObserver.observe(section);
   });
-
   // ---------------- Header Scroll ----------------
   const header = document.querySelector(".main-header");
   function updateHeaderOnScroll() {

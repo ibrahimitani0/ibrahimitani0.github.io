@@ -61,15 +61,9 @@ section {
     transform 0.8s ease-out;
 }
 
-/* visible class will be added when scrolling */
 .fade-section.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.fade-section.hidden {
-  opacity: 0;
-  transform: translateY(30px);
 }
 
 /* =======================
@@ -103,6 +97,57 @@ section {
   box-shadow: var(--shadow-sm);
 }
 
+/* ---------- SCROLLING TICKER ---------- */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-top: 1px solid var(--headers);
+  border-bottom: 1px solid var(--accent);
+  padding: 1rem 0;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.ticker-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+.ticker-item .label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.ticker-item::after {
+  content: "·";
+  color: var(--accent);
+  font-size: 1.2em;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 /*=====================================*/
 /*       H2 for ALL SECTIONS
 /*=====================================*/
