@@ -118,7 +118,7 @@
 
 .loader-progress-bar {
   height: 100%;
-  background: var(--secondary);
+  background: var(--accent);
   width: 0%;
   box-shadow: 0 0 10px var(--text-primary);
   transition: width 0.15s linear; /* smooth steps */
