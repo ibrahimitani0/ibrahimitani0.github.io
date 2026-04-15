@@ -1,5 +1,19 @@
 [
   {
+    "title": "Expensly",
+    "date": "April 2026",
+    "image": "images/expensly.jpg",
+    "alt": "Expense & Subscription Tracker App",
+    "description": "Modern expense and subscription tracking web app built with Vite + TypeScript. Users can add expenses, manage recurring subscriptions, and view monthly spending summaries stored in localStorage.",
+    "technologies": [
+      { "name": "TypeScript", "class": "typescript" },
+      { "name": "Vite", "class": "vite" },
+      { "name": "HTML", "class": "html" },
+      { "name": "CSS", "class": "css" }
+    ],
+    "link": "#"
+  },
+  {
     "title": "PageFlipper",
     "date": "Feb 2026 - March 2026",
     "image": "images/PageFlipper.jpg",
@@ -99,6 +113,7 @@
     "alt": "E-Commerce App",
     "description": "Full-featured online store inspired by Amazon, with user accounts, cart, search, and virtual currency.",
     "technologies": [
+      { "name": "PHP", "class": "php" },
       { "name": "JavaScript", "class": "js" },
       { "name": "AWS", "class": "aws" },
       { "name": "HTML", "class": "html" },

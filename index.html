@@ -9,6 +9,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <script defer src="js/scripts.js"></script>
+    <script defer src="js/fetchSkills.js"></script>
     <script defer src="js/fetchdata.js"></script>
     <!-- <script defer src="js/chat.js"></script> -->
     <script
@@ -209,182 +210,7 @@
 
     <!-- TICKER -->
     <div class="ticker-wrap">
-      <div class="ticker-track" id="tickerTrack">
-        <!-- Languages -->
-        <span class="ticker-item">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-          <span class="label">Java</span>
-        </span>
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" /><span
-            class="label"
-            >JavaScript</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" /><span
-            class="label"
-            >TypeScript</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" /><span
-            class="label"
-            >PHP</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" /><span
-            class="label"
-            >C#</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" /><span
-            class="label"
-            >HTML</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /><span
-            class="label"
-            >CSS</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/sass.svg" /><span
-            class="label"
-            >SCSS</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img src="images/sql-d770f38c.png" /><span class="label"
-            >SQL</span
-          ></span
-        >
-
-        <!-- Databases -->
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" /><span
-            class="label"
-            >Oracle</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" /><span
-            class="label"
-            >MySQL</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" /><span
-            class="label"
-            >MongoDB</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg" /><span
-            class="label"
-            >MSSQL</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" /><span
-            class="label"
-            >PostgreSQL</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" /><span
-            class="label"
-            >Firebase</span
-          ></span
-        >
-
-        <!-- Frameworks -->
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" /><span
-            class="label"
-            >Spring Boot</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" /><span
-            class="label"
-            >Angular</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /><span
-            class="label"
-            >NodeJS</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" /><span
-            class="label"
-            >Bootstrap</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" /><span
-            class="label"
-            >ASP.NET</span
-          ></span
-        >
-
-        <!-- Tools -->
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /><span
-            class="label"
-            >Git</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /><span
-            class="label"
-            >GitHub</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" /><span
-            class="label"
-            >GCP</span
-          ></span
-        >
-        <span class="ticker-item"
-          ><img src="images/aws.svg" /><span class="label">AWS</span></span
-        >
-        <span class="ticker-item"
-          ><img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" /><span
-            class="label"
-            >Unity</span
-          ></span
-        >
-      </div>
+      <div class="ticker-track" id="tickerTrack"></div>
     </div>
 
     <!-- Main Section -->
@@ -854,55 +680,7 @@
             <h3 class="title">Programming Languages</h3>
           </div>
           <div class="window-content">
-            <div class="skills-list">
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-                  alt="Java" /><span>Java</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                  alt="JavaScript" /><span>JavaScript</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                  alt="TypeScript" /><span>TypeScript</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-                  alt="PHP" /><span>PHP</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-                  alt="C#" /><span>C#</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                  alt="HTML5" /><span>HTML</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                  alt="CSS3" /><span>CSS</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/sass.svg"
-                  alt="SCSS" />
-                <span>SCSS</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="images/sql-d770f38c.png"
-                  alt="SQL"
-                  class="devicon" /><span>SQL</span>
-              </div>
-            </div>
+            <div class="skills-list" id="languages"></div>
           </div>
         </div>
 
@@ -912,38 +690,7 @@
           <div class="window-header"><h3>Databases</h3></div>
           <div class="window-content">
             <div class="skills-list">
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
-                  alt="Oracle DB" /><span>OracleDB</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                  alt="MySQL" /><span>MySQL</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                  alt="MongoDB" /><span>MongoDB</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg"
-                  alt="MSSQL"
-                  class="devicon" /><span>MsSQL</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                  alt="PostgreSQL" />
-                <span>PostgreSQL</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                  alt="Firebase" /><span>Firebase</span>
-              </div>
+              <div class="skills-list" id="databases"></div>
             </div>
           </div>
         </div>
@@ -955,31 +702,7 @@
           </div>
           <div class="window-content">
             <div class="skills-list">
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
-                  alt="Spring" /><span>Spring</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-                  alt="Angular" /><span>Angular</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                  alt="Node.js" /><span>NodeJs</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                  alt="Bootstrap" /><span>Bootstrap</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
-                  alt="ASP.NET" /><span>ASP.NET</span>
-              </div>
+              <div class="skills-list" id="frameworks"></div>
             </div>
           </div>
         </div>
@@ -992,39 +715,7 @@
           </div>
           <div class="window-content">
             <div class="skills-list">
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                  alt="Git" /><span>Git</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                  alt="GitHub"
-                  class="devicon" /><span>GitHub</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg"
-                  alt="GitHub Actions" />
-                <span>GitHub Actions</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
-                  alt="GCP" /><span>GCP</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-                  alt="AWS" />
-                <span>AWS</span>
-              </div>
-              <div class="skill">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
-                  alt="Unity" /><span>Unity</span>
-              </div>
+              <div class="skills-list" id="tools"></div>
             </div>
           </div>
         </div>

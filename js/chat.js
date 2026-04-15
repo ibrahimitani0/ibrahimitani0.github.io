@@ -252,7 +252,12 @@ ${detectedSkills.map((s) => "• " + s).join("\n")}
 • Cloud engineering`;
 
     default:
-      return "Try asking about 'Java', 'projects', or paste a job description.";
+      return `Sorry can't quite get that! Try asking:
+• Experience
+• Projects
+• Skills
+• Role fit
+• Or paste a job descriptio`;
   }
 }
 
@@ -288,7 +293,14 @@ chatToggle?.addEventListener("click", () => {
     setTimeout(
       () =>
         addMessage(
-          "Hey! I'm Ibrahim's assistant. Ask me about his work!",
+          `👋 Hi! I'm Ibrahim's assistant.
+
+Try asking:
+• Experience
+• Projects
+• Skills
+• Role fit
+• Or paste a job description`,
           "bot",
         ),
       500,

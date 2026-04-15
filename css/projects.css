@@ -211,6 +211,22 @@
   border-color: #3776ab;
   color: #3776ab;
 }
+.tech-tags span.vite {
+  background-color: rgba(100, 108, 255, 0.15);
+  border-color: #646cff;
+  color: #646cff;
+}
+.tech-tags span.typescript {
+  background-color: rgba(49, 120, 198, 0.15);
+  border-color: #3178c6;
+  color: #3178c6;
+}
+
+.tech-tags span.php {
+  background-color: rgba(119, 123, 180, 0.15);
+  border-color: #777bb4;
+  color: #777bb4;
+}
 
 .tech-tags span.weatherAPI {
   background-color: rgba(66, 133, 244, 0.15);
