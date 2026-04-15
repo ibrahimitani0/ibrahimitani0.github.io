@@ -1,23 +1,39 @@
 /*=====================================*/
 /*       HEADER MENU
 /*=====================================*/
-.main-header.scrolled {
-  backdrop-filter: blur(15px) saturate(180%);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid var(--primary);
-}
-
 .main-header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  backdrop-filter: blur(15px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--headers);
+  transition:
+    backdrop-filter var(--transition),
+    box-shadow var(--transition);
+  border-bottom: none;
   z-index: 1000;
-  transition: all var(--transition);
+}
+
+.main-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-1);
+  opacity: 0.9;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.main-header.scrolled {
+  backdrop-filter: blur(14px) saturate(180%);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+.main-header.scrolled::after {
+  opacity: 0.5;
 }
 
 .nav-container {
@@ -108,36 +124,48 @@
 
 .theme-toggle,
 .menu-toggle {
-  background: var(--headers);
-  border: 1px solid var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
   color: var(--text-primary);
-  padding: 0.6rem 1rem;
+
+  padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  cursor: pointer;
+
   transition: all var(--transition);
+
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
   font-size: 0.9rem;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.menu-toggle:hover {
   background: var(--bg-hover);
-  border-color: var(--headers);
-  color: var(--headers);
+  border-color: var(--secondary);
+  color: var(--text-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:active,
+.menu-toggle:active {
+  transform: scale(0.98);
 }
 
 .menu-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   padding: 0.6rem;
 }
 
 .menu-toggle span {
-  width: 24px;
+  width: 20px;
   height: 2px;
-  background: var(--text-primary);
+  background: var(--text-secondary);
+  border-radius: 2px;
   transition: all var(--transition);
 }
 

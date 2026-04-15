@@ -16,8 +16,8 @@
   margin: 2rem;
   background-color: var(--bg-dark);
   backdrop-filter: blur(2px);
-  border-radius: 12px;
   box-shadow: inset 0 0 20px var(--bg-card);
+  border-radius: 16px;
   padding: 10px;
 }
 
@@ -29,7 +29,7 @@
   height: 150px;
   object-fit: fill; /* scale nicely without cropping */
   border-radius: 8px; /* optional: slightly rounded corners */
-  background-color: var(--text-secondary);
+  background-color: var(--bg-dark);
   padding: 0.25rem;
 }
 
@@ -65,7 +65,7 @@
 /* Year */
 .education-window .edu-year {
   display: inline-block;
-  background: var(--headers);
+  background: var(--secondary);
   color: var(--text-primary);
   font-size: 0.85rem;
   font-weight: 600;

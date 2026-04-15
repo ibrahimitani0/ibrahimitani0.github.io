@@ -29,10 +29,7 @@
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.125) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
@@ -46,17 +43,40 @@
   z-index: 0;
 }
 
-/* Hero container (centers content) */
 .hero-container {
-  top: 0;
+  top: -160px;
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertical center */
-  align-items: center; /* horizontal center */
-
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
   z-index: 1;
-  text-align: center;
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  justify-content: flex-start;
+}
+
+.name-wrapper {
+  display: inline-block;
 }
 
 /* =======================
@@ -77,81 +97,118 @@
   height: 280px;
 }
 
-.profile-image-glow {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  inset: -50px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--headers), transparent 70%);
-  filter: blur(20px);
-  animation: pulseGlow 3s ease-in-out infinite;
-  z-index: 1;
-}
-
-@keyframes pulseGlow {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
 .profile-image-frame {
   position: relative;
   width: 280px;
   height: 280px;
-  border-radius: 50%;
-  overflow: visible;
-  z-index: 1;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-/* Glowing spinning ring */
 .profile-image-frame::before {
   content: "";
   position: absolute;
-  top: -8px;
-  left: -8px;
-  width: calc(100% + 16px);
-  height: calc(100% + 16px);
-  border-radius: 50%;
-  background: var(--circle);
-  animation: spinRing 3s linear infinite;
-  filter: blur(6px);
-  z-index: 1;
-}
+  inset: 0;
+  padding: 2px;
+  border-radius: 20px;
 
-@keyframes spinRing {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+  background: linear-gradient(135deg, #4285f4, #ea4335, #fbbc05, #34a853);
 
-.profile-image-frame .profile-image {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
+  pointer-events: none;
+
+  /* Standard (modern browsers) */
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  /* WebKit (Chrome, Safari, Edge legacy support) */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+}
+/* image */
+.profile-image {
+  width: 100%;
+  height: 100%;
 }
 
 .profile-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 20px;
 }
 
-.name-wrapper {
-  display: inline-block;
+.travelling-line {
+  position: absolute;
+  width: 90px;
+  height: 8px; /* thicker */
+
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+
+  border-radius: 999px;
+
+  /* Google gradient */
+  background: linear-gradient(
+    90deg,
+    #4285f4,
+    #ea4335,
+    #fbbc05,
+    #34a853,
+    #4285f4
+  );
+
+  background-size: 300% 100%;
+
+  /* stronger glow */
+  filter: blur(0.3px) drop-shadow(0 0 10px rgba(66, 133, 244, 0.6))
+    drop-shadow(0 0 18px rgba(234, 67, 53, 0.35));
+
+  offset-path: inset(0 round 20px);
+  offset-rotate: auto;
+
+  animation:
+    travel 3s linear infinite,
+    flowColors 1.2s linear infinite,
+    pulseGlow 1.8s ease-in-out infinite;
+}
+
+/* movement */
+@keyframes travel {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* internal color flow */
+@keyframes flowColors {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* breathing glow */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scaleY(1.15);
+    opacity: 1;
+  }
 }
 
 /* =======================
@@ -170,8 +227,6 @@
   font-size: 1.2rem;
   display: flex;
   gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
 }
 
 .bounce-up {
@@ -204,7 +259,7 @@
   display: inline-block;
   font-weight: bold;
   font-size: 2.75rem;
-  color: var(--headers);
+  color: var(--secondary);
   animation: blink 0.8s steps(1) infinite;
 }
 
@@ -213,9 +268,12 @@
 ======================= */
 .hero-social {
   display: flex;
-  justify-content: center;
   gap: 2rem;
   margin-top: 20px;
+}
+
+.devicon {
+  filter: var(--icon-filter);
 }
 
 .social-icon {
@@ -225,8 +283,6 @@
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  overflow: hidden;
-  background: var(--bg-card);
   transition: all var(--transition-fast);
 }
 
@@ -238,7 +294,6 @@
 }
 
 .social-icon:hover {
-  background: var(--bg-hover);
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(192, 132, 252, 0.2);
 }
@@ -248,7 +303,7 @@
 ======================= */
 .scroll-indicator {
   position: absolute;
-  bottom: -180px;
+  bottom: 260px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -300,12 +355,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--headers),
-    var(--text-primary),
-    var(--accent)
-  );
+  background: var(--google-gradient);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.15s ease-out;
@@ -314,55 +364,106 @@
 }
 
 /* =======================
-   Mobile & Responsive Styles
+   RESPONSIVE
 ======================= */
 
 /* Extra small devices (phones, <=480px) */
 @media (max-width: 480px) {
-  /* Hero Section */
+  #hero {
+    min-height: 100vh;
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-container {
+    top: 0 !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .hero-left {
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image-wrapper {
+    margin: 0 auto;
+  }
+
   .hero-image-container {
     width: 180px;
     height: 180px;
-    margin-bottom: 30px;
-  }
-
-  .hero-photo {
-    width: 120px;
-    height: 120px;
-  }
-  .name-wrapper {
-    margin-top: 25px;
+    margin: 0 auto;
   }
 
   .hero-name-typing {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+  }
+
+  .cursor {
+    font-size: 1.6rem;
   }
 
   #hero p {
     font-size: 1rem;
+    padding: 0 10px;
   }
 
-  .floating-badge {
-    display: none;
-    font-size: 0.75rem;
-    padding: 0.3rem 0.8rem;
+  .hero-social {
+    margin-top: 8px;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .hero-container {
-    top: 0;
+  .scroll-indicator {
+    bottom: 180px;
+    transform: translateX(-50%) scale(0.85);
   }
 }
 
-/* Small devices / tablets (481px - 768px) */
+/* Small devices / tablets (<=768px) */
 @media (max-width: 768px) {
-  .badge-stack {
-    display: none;
+  #hero {
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+  }
+
+  .hero-container {
+    top: 0 !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-image-container {
-    margin-top: 100px;
-    width: 250px;
-    height: 250px;
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
   }
 
   .hero-name-typing {
@@ -371,63 +472,47 @@
 
   #hero p {
     font-size: 1.1rem;
+    padding: 0 1rem;
   }
 
-  /* FOR hero section*/
-  .scroll-indicator {
-    position: absolute;
-    bottom: -150px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    z-index: 10;
-  }
-
-  .scroll-mouse {
-    width: 30px;
-    height: 50px;
-    border: 2px solid var(--accent);
-    border-radius: 15px;
-    display: flex;
+  .hero-social {
     justify-content: center;
-    padding-top: 8px;
-  }
-
-  .scroll-wheel {
-    width: 4px;
-    height: 10px;
-    background: var(--headers);
-    border-radius: 2px;
-    animation: scrollWheel 2s infinite;
-  }
-
-  @keyframes scrollWheel {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
+    gap: 1.2rem;
+    margin-top: 10px;
   }
 }
 
 /* Medium devices (<=1024px) */
 @media (max-width: 1024px) {
+  #hero {
+    min-height: 100vh;
+  }
+
+  .hero-container {
+    top: 0 !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hero-image-container {
     width: 300px;
     height: 300px;
-  }
-
-  .hero-photo {
-    width: 160px;
-    height: 160px;
+    margin: 0 auto;
   }
 
   .hero-name-typing {
@@ -436,6 +521,11 @@
 
   #hero p {
     font-size: 1.15rem;
+  }
+
+  .hero-social {
+    justify-content: center;
+    margin-top: 10px;
   }
 }
 
@@ -446,16 +536,49 @@
     height: 350px;
   }
 
-  .hero-photo {
-    width: 180px;
-    height: 180px;
-  }
-
   .hero-name-typing {
     font-size: 2.75rem;
   }
 
   #hero p {
     font-size: 1.25rem;
+  }
+}
+
+/* =======================
+   FINAL MOBILE HERO FIX (REAL ROOT FIX)
+======================= */
+
+@media (max-width: 1024px) {
+  /* 🔥 KEY FIX: stop vertical stretching behavior */
+  .hero-container {
+    height: auto !important;
+    justify-content: center !important;
+  }
+
+  #hero {
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  /* 🔥 removes flex distribution gap issue */
+  .hero-left,
+  .hero-right {
+    flex: unset !important;
+  }
+
+  /* 🔥 removes hidden spacing from internal stacking */
+  .hero-left {
+    gap: 0.5rem !important;
+  }
+
+  /* 🔥 tightens social → image spacing */
+  .hero-social {
+    margin-top: 6px !important;
+  }
+
+  /* 🔥 removes visual push from wrapper */
+  .hero-image-wrapper {
+    margin: 0 !important;
   }
 }

@@ -16,6 +16,7 @@ if (themeToggle) {
     profileImg.src = "images/pc.png";
   }
 }
+
 // ---------------- Loader Screen ----------------
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -46,7 +47,6 @@ window.addEventListener("load", () => {
 
         // Initialize page animations
         initPageAnimations();
-        setTimeout(typeEffect, 500);
       }, 500);
     }
 
@@ -155,17 +155,19 @@ function initPageAnimations() {
     }
 
     const canvasColors = [
-      "--headers",
-      "--secondary",
-      "--text-secondary",
-      "--text-primary",
+      "--canvas-primary",
+      "--canvas-secondary",
+      "--canvas-tertiary",
+      "--canvas-red",
+      "--canvas-muted",
     ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
 
     const particleColors = [
-      "--secondary",
-      "--headers",
-      "--text-secondary",
-      "--text-primary",
+      "--canvas-primary",
+      "--canvas-secondary",
+      "--canvas-tertiary",
+      "--canvas-red",
+      "--canvas-muted",
     ].map((v) => stripAlpha(rootStyles.getPropertyValue(v).trim()));
 
     return { canvasColors, particleColors };
@@ -667,7 +669,7 @@ function initPageAnimations() {
             <span>${formatDate(post.pubDate)}</span>
             <span>${post.categories.join(", ")}</span>
           </div>
-          <a href="${post.link}" target="_blank">Read on Medium →</a>
+          <a class="readArticle" href="${post.link}" target="_blank">Read on Medium →</a>
         `;
         container.appendChild(article);
       });
@@ -687,10 +689,138 @@ function initPageAnimations() {
       day: "numeric",
     });
   }
+  //----------------------- back ground blob on hover -------------------
+
+  const glow = document.getElementById("mouse-glow");
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+
+  let currentX = mouseX;
+  let currentY = mouseY;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateGlow() {
+    // smooth interpolation (the "liquid" feel)
+    currentX += (mouseX - currentX) * 0.08;
+    currentY += (mouseY - currentY) * 0.08;
+
+    glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+
+    requestAnimationFrame(animateGlow);
+  }
+
+  animateGlow();
+
+  //------------------------------Experience list slide in ---------------------
+  const timelineItems = document.querySelectorAll(".timeline .ex-li");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    },
+  );
+
+  timelineItems.forEach((item) => observer.observe(item));
+
+  // ------------ back to top -----------------------
+
+  const backToTop = document.getElementById("backToTop");
+
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    if (scrollPosition >= pageHeight - 200) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 
   // ---------------- Footer Year ----------------
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ---------------------- custom cursor -----------------------
+
+  const cursor = document.getElementById("cursor");
+  const dot = document.getElementById("cursor-dot");
+
+  let mouseCuX = 0;
+  let mouseCuY = 0;
+
+  let cursorX = 0;
+  let cursorY = 0;
+
+  /* Track mouse */
+  document.addEventListener("mousemove", (e) => {
+    mouseCuX = e.clientX;
+    mouseCuY = e.clientY;
+
+    dot.style.left = mouseCuX + "px";
+    dot.style.top = mouseCuY + "px";
+  });
+
+  /* Smooth follow (Google-like lag) */
+  function animate() {
+    cursorX += (mouseCuX - cursorX) * 0.15;
+    cursorY += (mouseCuY - cursorY) * 0.15;
+
+    cursor.style.left = cursorX + "px";
+    cursor.style.top = cursorY + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  document.addEventListener("mouseover", (e) => {
+    if (
+      e.target.closest(
+        "a, button, .view-btn, .read-more-btn, .social-icon, .readArticle",
+      )
+    ) {
+      document.body.classList.add("cursor-hover");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (
+      e.target.closest(
+        "a, button, .view-btn, .read-more-btn, .social-icon, .readArticle",
+      )
+    ) {
+      document.body.classList.remove("cursor-hover");
+    }
+  });
+
+  /* Click effect */
+  document.addEventListener("mousedown", () => {
+    document.body.classList.add("cursor-click");
+  });
+
+  document.addEventListener("mouseup", () => {
+    document.body.classList.remove("cursor-click");
+  });
 
   // ---------------- Unified Scroll Handler ----------------
   window.addEventListener("scroll", () => {

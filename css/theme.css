@@ -1,130 +1,180 @@
 :root {
-  --primary: rgba(255, 255, 255, 1); /* White body */
-  --secondary: rgba(66, 135, 245, 1); /* Sky blue accents */
-  --accent: rgba(255, 165, 0, 1); /* Orange beak/feet highlights */
-  --headers: rgba(50, 120, 230, 1); /* Blue headers */
-  --bg-dark: rgba(20, 50, 80, 1); /* Deep ocean background */
-  --bg-darker: rgba(10, 30, 60, 1); /* Darker sections/cards */
-  --bg-card: rgba(70, 130, 180, 0.1); /* Light blue card backgrounds */
-  --bg-hover: rgba(100, 160, 210, 0.15); /* Hover effect */
-  --border: rgba(255, 165, 0, 0.8); /* Orange border */
+  --primary: rgba(255, 255, 255, 1); /* clean Google surface */
+  --secondary: rgba(26, 115, 232, 1); /* Google blue */
+  --accent: rgba(52, 168, 83, 1); /* Google green */
+  --headers: rgba(32, 33, 36, 1); /* Google text black */
+
+  --bg-dark: rgba(248, 249, 250, 1); /* Google light background */
+  --bg-darker: rgba(241, 243, 244, 1); /* section shading */
+  --bg-card: rgba(255, 255, 255, 1); /* pure cards */
+  --bg-hover: rgba(26, 115, 232, 0.06); /* subtle blue hover */
+
+  --border: rgba(218, 220, 224, 1); /* Google border gray */
+
   --circle: conic-gradient(
-    rgba(66, 135, 245, 0.8),
-    rgba(255, 255, 255, 0.2),
-    rgba(66, 135, 245, 0.8),
-    rgba(255, 255, 255, 0.2)
+    rgba(26, 115, 232, 0.9),
+    rgba(52, 168, 83, 0.6),
+    rgba(251, 188, 5, 0.6),
+    rgba(234, 67, 53, 0.6)
   );
-  --text-primary: rgba(255, 255, 255, 1);
-  --text-secondary: rgba(200, 220, 255, 0.9);
-  --text-accent: rgba(12, 31, 63, 0.9);
-  --text-muted: rgba(150, 180, 200, 0.7);
-  --timeline-header: rgba(255, 165, 0, 1);
 
-  /* Gradients for Light Theme */
-
-  --gradient-1: linear-gradient(
+  --google-gradient: linear-gradient(
     135deg,
-    rgba(50, 120, 230, 1) 0%,
-    /* --headers blue */ rgba(66, 135, 245, 1) 50%,
-    /* --secondary sky blue */ rgba(200, 220, 255, 1) 100%
+    rgba(26, 115, 232, 0.9),
+    rgba(52, 168, 83, 0.6),
+    rgba(251, 188, 5, 0.6),
+    rgba(234, 67, 53, 0.6)
   );
 
-  --gradient-2: linear-gradient(
-    135deg,
-    rgba(100, 160, 255, 1) 0%,
-    rgba(66, 135, 245, 1) 50%,
-    rgba(50, 120, 230, 1) 100%
-  );
+  --icon-filter: none;
+  --grid-dot: rgba(32, 33, 36, 0.2);
+  --cursor-dot: rgba(251, 188, 5, 0.6);
+  --cursor-background: rgba(251, 188, 5, 0.12);
 
-  --gradient-3: linear-gradient(
-    135deg,
-    rgba(200, 220, 255, 1) 0%,
-    rgba(150, 180, 255, 1) 100%
-  );
+  --text-primary: rgba(32, 33, 36, 1);
+  --text-secondary: rgba(95, 99, 104, 1);
+  --text-accent: rgba(26, 115, 232, 1);
+  --text-muted: rgba(128, 134, 139, 1);
 
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 30px rgba(66, 135, 245, 0.5);
+  --timeline-header: rgba(26, 115, 232, 1);
 
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 3rem;
-  --spacing-xl: 4rem;
-
-  /* Transitions */
-  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-  /* Fonts */
-  --font-family: system-ui;
-}
-
-[data-theme="dark"] {
-  --primary: rgba(26, 26, 26, 1);
-  --secondary: rgba(255, 221, 0, 1);
-  --accent: rgba(255, 221, 0, 1);
-  --headers: rgba(165, 86, 86, 1);
-  --bg-dark: rgba(13, 13, 13, 1);
-  --bg-darker: rgba(1, 1, 1, 1);
-  --bg-card: rgba(31, 31, 31, 1);
-  --bg-hover: rgba(42, 42, 42, 1);
-  --border: rgba(255, 221, 0, 1);
-  --circle: conic-gradient(
-    rgba(255, 221, 0, 0.8),
-    rgba(255, 221, 0, 0.2),
-    rgba(255, 221, 0, 0.8),
-    rgba(255, 221, 0, 0.2)
-  );
-  --text-primary: rgba(253, 231, 231, 1);
-  --text-secondary: rgba(187, 187, 187, 1);
-  --text-accent: rgb(100, 100, 100);
-  --text-muted: rgba(182, 153, 153, 1);
-  --timeline-header: rgba(165, 86, 86, 1);
+  --canvas-primary: rgba(26, 115, 232, 0.9);
+  --canvas-secondary: rgba(52, 168, 83, 0.7);
+  --canvas-tertiary: rgba(251, 188, 5, 0.6);
+  --canvas-red: rgba(234, 67, 53, 0.6);
+  --canvas-muted: rgba(32, 33, 36, 0.4);
 
   /* Gradients */
   --gradient-1: linear-gradient(
     135deg,
-    rgba(26, 26, 26, 1) 0%,
-    rgba(255, 221, 0, 1) 50%,
-    rgba(255, 221, 0, 1) 100%
+    rgba(26, 115, 232, 1) 0%,
+    rgba(52, 168, 83, 1) 50%,
+    rgba(251, 188, 5, 1) 100%
   );
+
   --gradient-2: linear-gradient(
     135deg,
-    rgba(51, 51, 51, 1) 0%,
-    rgba(255, 221, 0, 1) 50%,
-    rgba(255, 221, 0, 1) 100%
+    rgba(66, 133, 244, 1) 0%,
+    rgba(52, 168, 83, 1) 50%,
+    rgba(234, 67, 53, 1) 100%
   );
+
   --gradient-3: linear-gradient(
     135deg,
-    rgba(34, 34, 34, 1) 0%,
-    rgba(51, 51, 51, 1) 100%
+    rgba(248, 249, 250, 1) 0%,
+    rgba(241, 243, 244, 1) 100%
   );
 
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 30px rgba(255, 221, 0, 0.3);
+  /* Shadows (very subtle, Material-like) */
+  --shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.1);
+  --shadow-md: 0 2px 6px rgba(60, 64, 67, 0.15);
+  --shadow-lg: 0 6px 16px rgba(60, 64, 67, 0.2);
+  --shadow-xl: 0 12px 32px rgba(60, 64, 67, 0.25);
+  --shadow-glow: 0 0 18px rgba(26, 115, 232, 0.25);
+  --icon-shadow: rgba(0, 0, 0, 0.35); /* light theme shadow */
 
-  /* Spacing */
+  /* Spacing (unchanged) */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
 
-  /* Transitions */
+  /* Transitions (unchanged) */
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Fonts */
+  /* Fonts (unchanged) */
+  --font-family: system-ui;
+}
+
+[data-theme="dark"] {
+  --primary: rgba(32, 33, 36, 1);
+  --secondary: rgba(138, 180, 248, 1);
+  --accent: rgba(129, 201, 149, 1);
+  --headers: rgba(232, 234, 237, 1);
+
+  --bg-dark: rgba(18, 18, 18, 1);
+  --bg-darker: rgba(10, 10, 10, 1);
+  --bg-card: rgba(32, 33, 36, 1);
+  --bg-hover: rgba(138, 180, 248, 0.1);
+
+  --border: rgba(60, 64, 67, 1);
+
+  --circle: conic-gradient(
+    rgba(138, 180, 248, 0.9),
+    rgba(129, 201, 149, 0.6),
+    rgba(251, 188, 5, 0.6),
+    rgba(234, 67, 53, 0.6)
+  );
+
+  --google-gradient: linear-gradient(
+    135deg,
+    rgba(26, 115, 232, 0.9),
+    rgba(52, 168, 83, 0.6),
+    rgba(251, 188, 5, 0.6),
+    rgba(234, 67, 53, 0.6)
+  );
+
+  --icon-filter: invert(1);
+  --grid-dot: rgba(255, 255, 255, 0.2);
+  --cursor-dot: rgba(129, 201, 149, 0.6);
+  --cursor-background: rgba(26, 232, 150, 0.12);
+
+  --text-primary: rgba(232, 234, 237, 1);
+  --text-secondary: rgba(154, 160, 166, 1);
+  --text-accent: rgba(138, 180, 248, 1);
+  --text-muted: rgba(128, 134, 139, 1);
+
+  --timeline-header: rgba(138, 180, 248, 1);
+
+  --canvas-primary: rgba(138, 180, 248, 0.9);
+  --canvas-secondary: rgba(129, 201, 149, 0.7);
+  --canvas-red: rgba(234, 67, 53, 0.6);
+  --canvas-tertiary: rgba(251, 188, 5, 0.6);
+  --canvas-muted: rgba(232, 234, 237, 0.3);
+
+  /* Gradients */
+  --gradient-1: linear-gradient(
+    135deg,
+    rgba(32, 33, 36, 1) 0%,
+    rgba(138, 180, 248, 1) 50%,
+    rgba(129, 201, 149, 1) 100%
+  );
+
+  --gradient-2: linear-gradient(
+    135deg,
+    rgba(18, 18, 18, 1) 0%,
+    rgba(138, 180, 248, 1) 50%,
+    rgba(234, 67, 53, 1) 100%
+  );
+
+  --gradient-3: linear-gradient(
+    135deg,
+    rgba(32, 33, 36, 1) 0%,
+    rgba(18, 18, 18, 1) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 6px 18px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.7);
+  --icon-shadow: rgba(255, 255, 255, 0.35); /* glow in dark mode */
+
+  /* Spacing (unchanged) */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Transitions (unchanged) */
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Fonts (unchanged) */
   --font-family: system-ui;
 }

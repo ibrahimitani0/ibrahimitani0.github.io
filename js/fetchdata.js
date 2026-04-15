@@ -32,7 +32,7 @@ fetch("projects.json")
             </div>
 
             <a class="${buttonClass}" ${buttonAttrs}>
-              View Project
+              View Project <span class="arrow">→</span>
             </a>
           </div>
         </div>
