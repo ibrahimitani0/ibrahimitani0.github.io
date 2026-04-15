@@ -2,57 +2,59 @@
    GRID LAYOUT
 ======================= */
 .grid {
-  margin: 2rem;
+  margin: var(--spacing-md) auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--spacing-md);
   max-width: 1400px;
-  margin-inline: auto;
+  padding: 0 var(--spacing-sm);
 }
 
 /* =======================
-   PROJECT CARD (Material / Google Style)
+   PROJECT CARD (Google Labs Style)
 ======================= */
 .project-window {
-  padding: 16px;
+  padding: 24px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 
-  background-color: var(--bg-dark);
-  backdrop-filter: blur(2px);
-  box-shadow: inset 0 0 20px var(--bg-card);
-  border-radius: 16px;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-  transform-style: preserve-3d;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border 0.25s ease;
+    transform var(--transition-smooth),
+    background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
 }
 
-/* Hover elevation (Material-style) */
 .project-window:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
   border-color: var(--secondary);
+  box-shadow: var(--shadow-lg);
 }
 
 /* =======================
    YEAR BADGE
 ======================= */
 .project-window .year {
-  display: inline-block;
+  align-self: flex-start;
+  background: var(--bg-darker);
+  color: var(--text-secondary);
 
-  background: var(--bg-hover);
-  color: var(--text-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
 
-  font-size: 0.85rem;
-  font-weight: 600;
-
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-
-  margin-bottom: 0.5rem;
-
+  padding: 4px 12px;
+  border-radius: 100px;
   border: 1px solid var(--border);
 }
 
@@ -61,171 +63,247 @@
 ======================= */
 .project-image {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-
-  border-radius: 10px;
-  background: var(--bg-hover);
+  border-radius: 20px;
+  background: var(--bg-darker);
+  position: relative;
+  border: 1px solid var(--border);
 }
 
-/* IMAGE */
 .project-image img {
   width: 100%;
-  height: auto;
-  display: block;
-
-  border-radius: 10px;
-
-  transition:
-    transform 0.35s ease,
-    filter 0.35s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* Hover image effect */
 .project-window:hover .project-image img {
   transform: scale(1.04);
-  filter: brightness(1.05);
 }
 
 /* =======================
-   TEXT OVERLAY TITLE
+   TEXT CONTENT
 ======================= */
+
+.project-overlay {
+  flex-grow: 1; /* This forces the text area to expand and push the button down */
+  display: flex;
+  flex-direction: column;
+}
 .project-overlay h3 {
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 10px;
 
-  margin-bottom: 0.5rem;
+  color: var(--headers);
+  letter-spacing: -0.01em;
 
-  color: var(--text-primary);
+  padding-bottom: 6px;
 
-  /* subtle, not glowing */
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-
-  border-bottom: 2px solid var(--secondary);
-  padding-bottom: 4px;
-
-  transition: color 0.2s ease;
+  background: var(--google-gradient) bottom left / 100% 2px no-repeat;
 }
 
-/* =======================
-   DESCRIPTION
-======================= */
 .project-overlay p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.6;
-
-  margin-bottom: 0.75rem;
-
-  padding: 10px;
-
-  background: var(--bg-hover);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-
-  transition: background 0.2s ease;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
 }
 
 /* =======================
-   TECH TAGS
+   TECH TAGS (Restored Colors)
 ======================= */
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .tech-tags span {
   font-size: 0.75rem;
-  font-weight: 500;
-
+  font-weight: 600;
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
-
-  background: var(--bg-hover);
-  color: var(--text-primary);
-
-  border: 1px solid var(--border);
-
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+  color: #fff; /* White text looks best on your solid colors */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
 
 .tech-tags span:hover {
   transform: scale(1.05);
-  border-color: var(--secondary);
+}
+/* =======================
+   TECH COLORS (Google Labs Glass Upgrade)
+======================= */
+
+.tech-tags span.angular {
+  background-color: rgba(221, 55, 55, 0.15);
+  border-color: #dd3737;
+  color: #dd3737;
+}
+
+.tech-tags span.html {
+  background-color: rgba(255, 106, 51, 0.15);
+  border-color: #ff6a33;
+  color: #ff6a33;
+}
+
+.tech-tags span.css {
+  background-color: rgba(153, 77, 170, 0.15);
+  border-color: #994daa;
+  color: #994daa;
+}
+
+.tech-tags span.js {
+  background-color: rgba(228, 222, 46, 0.15);
+  border-color: #e4de2e;
+  color: #d4cc1d; /* Slightly darkened for better readability */
+}
+
+.tech-tags span.firebase {
+  background-color: rgba(255, 165, 0, 0.15);
+  border-color: #ffa500;
+  color: #ffa500;
+}
+
+.tech-tags span.mongodb {
+  background-color: rgba(71, 162, 72, 0.15);
+  border-color: #47a248;
+  color: #47a248;
+}
+
+.tech-tags span.docker {
+  background-color: rgba(36, 150, 237, 0.15);
+  border-color: #2496ed;
+  color: #2496ed;
+}
+
+.tech-tags span.aws {
+  background-color: rgba(255, 174, 24, 0.15);
+  border-color: #ffae18;
+  color: #ffae18;
+}
+
+.tech-tags span.mysql {
+  background-color: rgba(0, 97, 138, 0.15);
+  border-color: #00618a;
+  color: #00618a;
+}
+
+.tech-tags span.springboot {
+  background-color: rgba(109, 179, 63, 0.15);
+  border-color: #6db33f;
+  color: #6db33f;
+}
+
+.tech-tags span.java {
+  background-color: rgba(248, 152, 32, 0.15);
+  border-color: #f89820;
+  color: #f89820;
+}
+
+.tech-tags span.python {
+  background-color: rgba(55, 118, 171, 0.15);
+  border-color: #3776ab;
+  color: #3776ab;
+}
+
+.tech-tags span.weatherAPI {
+  background-color: rgba(66, 133, 244, 0.15);
+  border-color: #4285f4;
+  color: #4285f4;
+}
+
+.tech-tags span.opentdb {
+  background-color: rgba(52, 168, 83, 0.15);
+  border-color: #34a853;
+  color: #34a853;
+}
+
+.tech-tags span.csharp {
+  background-color: rgba(104, 33, 122, 0.1);
+  border-color: #68217a;
+  color: #68217a;
+}
+
+.tech-tags span.unity {
+  background-color: rgba(34, 44, 55, 0.1);
+  border-color: #222c37;
+  color: #222c37;
 }
 
 /* =======================
-   BUTTON
+   BUTTON (Labs Pill with Indicator)
 ======================= */
 .view-btn {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Centered looks cleaner for Labs "Pills" */
+  gap: 8px;
 
   width: 100%;
-  padding: 12px 6px;
+  padding: 14px 18px;
+  margin-top: auto;
 
-  background: transparent;
+  background: var(--bg-darker);
   color: var(--secondary);
 
+  font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
 
-  border-top: 1px solid var(--border);
-
-  transition: all 0.2s ease;
-
+  border-radius: 16px;
+  border: 1px solid var(--border);
   position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
 }
 
-/* Google-style left indicator */
-.view-btn::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  width: 3px;
-  height: 100%;
-
-  background: var(--secondary);
-
-  transform: scaleY(0);
-  transform-origin: bottom;
-
-  transition: transform 0.2s ease;
-}
-
-/* hover effect */
 .view-btn:hover {
   background: var(--bg-hover);
-  padding-left: 10px;
-}
-
-.view-btn:hover::before {
-  transform: scaleY(1);
-}
-
-/* arrow animation */
-.view-btn span {
-  transition: transform 0.2s ease;
-}
-
-.view-btn:hover span {
-  transform: translateX(4px);
+  border-color: var(--secondary);
+  /* Optional: slight lift on the button itself */
+  transform: translateY(-2px);
 }
 
 /* =======================
-   DISABLED STATE (KEPT)
+   THE ARROW ANIMATION
+======================= */
+.view-btn .arrow {
+  display: inline-block;
+  opacity: 0; /* Hidden by default */
+  transform: translateX(-10px); /* Positioned slightly to the left */
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: monospace; /* Coding/Lab aesthetic */
+  font-size: 1.1rem;
+}
+
+.view-btn:hover .arrow {
+  opacity: 1; /* Fade in */
+  transform: translateX(4px); /* Slide into place */
+}
+
+/* Disabled State Adjustment */
+.view-btn.disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+  filter: grayscale(1);
+}
+
+.view-btn.disabled .arrow {
+  display: none; /* Keep it clean if disabled */
+}
+
+/* =======================
+   DISABLED STATE
 ======================= */
 .view-btn.disabled {
   color: var(--text-muted);
@@ -234,125 +312,12 @@
   opacity: 0.6;
 }
 
-.view-btn.disabled::before {
-  background: var(--text-muted);
-}
-
-.view-btn.disabled:hover {
-  background: transparent;
-  padding-left: 6px;
-}
-
-.view-btn.disabled span {
-  transform: none;
-}
-
-.view-btn .arrow {
-  display: inline-block;
-
-  opacity: 0;
-  transform: translateX(-8px);
-
-  color: var(--secondary);
-  font-weight: 700;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-.view-btn:hover .arrow {
-  opacity: 1;
-  transform: translateX(4px);
-}
-
 /* =======================
-   TECH COLORS (FILLED)
+   RESPONSIVE
 ======================= */
-.tech-tags span.angular {
-  background-color: #dd3737;
-}
-.tech-tags span.html {
-  background-color: #ff6a33;
-}
-.tech-tags span.css {
-  background-color: #994daa;
-}
-.tech-tags span.js {
-  background-color: #e4de2e;
-}
-.tech-tags span.firebase {
-  background-color: orange;
-}
-.tech-tags span.mongodb {
-  background-color: #47a248;
-}
-.tech-tags span.docker {
-  background-color: #2496ed;
-}
-.tech-tags span.aws {
-  background-color: #ffae18;
-}
-.tech-tags span.mysql {
-  background-color: #00618a;
-}
-.tech-tags span.springboot {
-  background-color: #6db33f;
-}
-.tech-tags span.java {
-  background-color: #f89820;
-}
-.tech-tags span.python {
-  background-color: #3776ab;
-}
-
-/* =======================
-   RESPONSIVE (TABLET)
-======================= */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-    margin: 1rem;
-  }
-
-  .project-overlay h3 {
-    font-size: 1.2rem;
-  }
-
-  .project-overlay p {
-    font-size: 0.85rem;
-  }
-}
-
-/* =======================
-   RESPONSIVE (MOBILE)
-======================= */
-@media (max-width: 480px) {
-  .grid {
-    margin: 0.5rem;
-    gap: 0.75rem;
-  }
-
-  .project-window {
-    padding: 12px;
-  }
-
-  .project-overlay h3 {
-    font-size: 1.1rem;
-  }
-
-  .project-overlay p {
-    font-size: 0.8rem;
-  }
-
-  .tech-tags span {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-  }
-
-  .view-btn {
-    font-size: 0.85rem;
-    padding: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
   }
 }

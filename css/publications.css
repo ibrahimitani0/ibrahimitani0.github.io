@@ -4,14 +4,12 @@
   margin: 1.2rem auto;
   width: 100%;
   height: auto;
-
   background-color: var(--bg-dark);
   backdrop-filter: blur(2px);
   box-shadow: inset 0 0 20px var(--bg-card);
-  border-radius: 16px;
-
+  border-radius: 28px;
+  border: 1px solid var(--border);
   padding: 1rem 1.2rem;
-
   box-shadow: 0 4px 16px rgba(60, 64, 67, 0.08);
   transition:
     transform 0.2s ease,
@@ -39,7 +37,7 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(to right, var(--border), transparent);
+  background: var(--google-gradient);
 }
 
 .article-window h3 {
@@ -100,22 +98,10 @@
   transition: transform 0.25s ease;
 }
 
-/* arrow */
-.article-window .readArticle::before {
-  content: "→";
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: all 0.25s ease;
-}
-
 .article-window .readArticle:hover::after {
   transform: scaleX(1);
 }
 
-.article-window .readArticle:hover::before {
-  opacity: 1;
-  transform: translateX(0);
-}
 /* =======================
    Mobile & Responsive Styles
 ======================= */

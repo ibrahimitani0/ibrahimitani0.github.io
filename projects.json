@@ -16,7 +16,7 @@
   {
     "title": "PokeCenter",
     "date": "Apr 2025 - Dec 2025",
-    "image": "images/PokeCenter.jpg",
+    "image": "images/PokeCenter.png",
     "alt": "PokeCenter App",
     "description": "Modern, responsive Pokédex with dynamic search, type filtering, and detailed Pokémon profiles using Angular & Firebase.",
     "technologies": [
@@ -43,7 +43,7 @@
   {
     "title": "TriviAttack",
     "date": "Dec 2022",
-    "image": "images/TriviAttack.jpg",
+    "image": "images/TriviAttack.png",
     "alt": "TriviAttack",
     "description": "TriviAttack is a trivia-based web application built with Angular. Players can answer questions, compete for scores, and test their knowledge across different categories.",
     "technologies": [
@@ -57,7 +57,7 @@
   {
     "title": "Weather App",
     "date": "Dec 2022",
-    "image": "images/WeatherApp.jpg",
+    "image": "images/WeatherApp.png",
     "alt": "Weather App",
     "description": "Weather app with current conditions, and location search using OpenWeatherMap API, with responsive design and dark/light mode toggle.",
     "technologies": [
@@ -69,9 +69,21 @@
     "link": "#"
   },
   {
+    "title": "Star Traveler",
+    "date": " Aug 2020 - Sep 2020",
+    "image": "images/StarTraveler.png",
+    "alt": "2D shooter",
+    "description": "A 2D shooter video game built using Unity and C# where the player controls a space ship to fight waves of enemy AI. Scoring enough points will advance the player to later stages and face the final boss.",
+    "technologies": [
+      { "name": "C#", "class": "csharp" },
+      { "name": "Unity", "class": "unity" }
+    ],
+    "link": "#"
+  },
+  {
     "title": "Overwatch Central",
     "date": "Nov 2019 - Jan 2020",
-    "image": "images/owCentral.jpg",
+    "image": "images/owCentral.png",
     "alt": "Overwatch Central App",
     "description": "Angular app with detailed info on Overwatch heroes, abilities, skins, and voice lines. Intuitive UI and API integration.",
     "technologies": [

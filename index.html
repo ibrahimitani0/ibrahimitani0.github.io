@@ -25,33 +25,6 @@
     </script>
     <title>Ibrahim Itani | Portfolio</title>
   </head>
-
-  <!-- Loader Screen -->
-  <div class="loader-screen" id="loader">
-    <div class="loader-content">
-      <!-- Loading text with sliding + bouncing dots -->
-      <div class="loader-code-text">
-        <span>LOADING</span>
-        <span class="loader-dots">
-          <span>.</span><span>.</span><span>.</span>
-        </span>
-      </div>
-
-      <!-- Spinner -->
-      <div class="loader-spinner-wrapper">
-        <div class="loader-spinner"></div>
-      </div>
-
-      <!-- Progress bar -->
-      <div class="loader-progress-wrapper">
-        <div class="loader-progress-bar"></div>
-      </div>
-
-      <!-- Percentage -->
-      <div class="loader-percentage" id="loaderPercent">0%</div>
-    </div>
-  </div>
-
   <!-- Navigation Header -->
   <header class="main-header" id="header">
     <nav class="nav-container">
@@ -119,6 +92,30 @@
   </header>
 
   <body class="loaded">
+    <!-- Loader Screen -->
+    <div class="loader-screen" id="loader">
+      <div class="loader-content">
+        <div class="loader-code-text">
+          <span>LOADING</span>
+          <span class="loader-dots">
+            <span>.</span><span>.</span><span>.</span>
+          </span>
+        </div>
+
+        <!-- Spinner -->
+        <div class="loader-spinner-wrapper">
+          <div class="loader-spinner"></div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="loader-progress-wrapper">
+          <div class="loader-progress-bar"></div>
+        </div>
+
+        <!-- Percentage -->
+        <div class="loader-percentage" id="loaderPercent">0%</div>
+      </div>
+    </div>
     <div id="scroll-progress">
       <a href="#hero"><div class="progress-dot"></div></a>
       <a href="#about"><div class="progress-dot"></div></a>
@@ -133,7 +130,6 @@
       <canvas id="hero-canvas"></canvas>
 
       <div class="hero-container">
-        <!-- LEFT SIDE -->
         <div class="hero-left">
           <div class="name-wrapper">
             <h1 class="hero-name-typing">
@@ -148,7 +144,7 @@
           </h1>
 
           <p class="hero-description">
-            I have a lot of passion for building digital experiences.
+            I design and build thoughtful digital experiences.
           </p>
 
           <div class="hero-social">
@@ -189,7 +185,6 @@
           </div>
         </div>
 
-        <!-- RIGHT SIDE -->
         <div class="hero-right">
           <div class="hero-image-wrapper">
             <div class="hero-image-container">
@@ -401,20 +396,66 @@
           <!-- Main Summary Window -->
           <div class="about-window main-window">
             <div class="window-header">
-              <h3>Professional Summary</h3>
+              <h3>A Quick Overview</h3>
             </div>
 
             <div class="window-content">
+              <h4 class="content-heading">
+                The Bridge Between Logic & Capital
+              </h4>
               <p>
-                Software Engineer with 4+ years of experience, specializing in
-                developing Web Applications, REST APIs, Microservices, and
-                Backend Systems using Java, Spring Boot, Angular, SQL, and
-                Python. Experienced in building Financial dashboards, and data
-                visualization systems that enhance user experiences, and support
-                businesses with analytical and data-driven digital solutions. I
-                am passionate about optimizing application performance, creating
-                intuitive and user-friendly front-end interfaces, and developing
-                maintainable, scalable backend architectures.
+                Most people see code and finance as two different worlds.
+                <strong>I see them as the same language.</strong>
+              </p>
+              <br />
+              <p>
+                I’m a Software Engineer with over four years of experience, but
+                my journey didn't start with just a keyboard... Not at all, it
+                actually started with a fascination for how systems work, both
+                in the market and in the machine. With dual degrees in
+                <strong>Computer Science and Finance</strong>, I’ve spent my
+                career standing at the intersection of these two fast-paced
+                industries, translating complex financial logic into
+                high-performance reality.
+              </p>
+              <br />
+              <p>
+                This dual-lens perspective was my secret weapon at
+                <strong>Tata Consultancy Services</strong>. There, I didn't just
+                write code; I translated intricate financial and manufacturing
+                requirements into scalable digital architectures, ensuring that
+                complex business logic was never lost in translation from the
+                boardroom to the server.
+              </p>
+              <br />
+
+              <h4 class="content-heading">What I Do Best</h4>
+              <p>
+                I specialize in the <strong>Java/Spring Boot</strong> ecosystem,
+                building the "engine room" of modern web applications, like
+                scalable microservices, robust REST APIs, and the backend
+                systems that keep things running when the stakes are high. On
+                the flip side, I use <strong>Angular and JavaScript</strong> to
+                build the "cockpit," turning dense financial data into intuitive
+                dashboards that actually make sense to the human eye.
+              </p>
+              <br />
+
+              <h4 class="content-heading">Beyond the Codebase</h4>
+              <p>
+                My passion for building is not only tied to work. If I’m not
+                lost in a
+                <strong>great book</strong>, practicing a new song on my
+                <strong>guitar</strong>, or diving into my video-game
+                collection. You’ll likely find me designing and building
+                <strong>"mock-up" applications</strong> inspired by the
+                franchises I love.
+              </p>
+              <br />
+              <p>
+                Connect with me on <strong>LinkeIn</strong> or shoot me a quick
+                <strong>email</strong>, and
+                <strong>let’s build something that matters.</strong>
               </p>
             </div>
           </div>
@@ -441,7 +482,7 @@
 
             <div class="about-window mini-window">
               <div class="window-header">
-                <p>Technologies</p>
+                <p>Stack</p>
               </div>
               <div class="window-content stats">
                 <h3>8+</h3>
@@ -859,7 +900,7 @@
                 <img
                   src="images/sql-d770f38c.png"
                   alt="SQL"
-                  class="sql-icon" /><span>SQL</span>
+                  class="devicon" /><span>SQL</span>
               </div>
             </div>
           </div>
@@ -889,7 +930,8 @@
               <div class="skill">
                 <img
                   src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoftsqlserver.svg"
-                  alt="MSSQL" /><span>MsSQL</span>
+                  alt="MSSQL"
+                  class="devicon" /><span>MsSQL</span>
               </div>
               <div class="skill">
                 <img
@@ -958,7 +1000,14 @@
               <div class="skill">
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                  alt="GitHub" /><span>GitHub</span>
+                  alt="GitHub"
+                  class="devicon" /><span>GitHub</span>
+              </div>
+              <div class="skill">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg"
+                  alt="GitHub Actions" />
+                <span>GitHub Actions</span>
               </div>
               <div class="skill">
                 <img
@@ -966,7 +1015,10 @@
                   alt="GCP" /><span>GCP</span>
               </div>
               <div class="skill">
-                <img src="images/aws.svg" alt="AWS" /><span>AWS</span>
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                  alt="AWS" />
+                <span>AWS</span>
               </div>
               <div class="skill">
                 <img

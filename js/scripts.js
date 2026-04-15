@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
 
   let progress = 0;
   const interval = setInterval(() => {
-    progress += Math.random() * 15 + 1; // random 1-5%
+    progress += Math.random() * 5 + 1; // random 1-5%
     if (progress >= 100) {
       progress = 100;
       clearInterval(interval);
@@ -742,7 +742,7 @@ function initPageAnimations() {
     const scrollPosition = window.scrollY + window.innerHeight;
     const pageHeight = document.documentElement.scrollHeight;
 
-    if (scrollPosition >= pageHeight - 200) {
+    if (scrollPosition >= pageHeight - 50) {
       backToTop.classList.add("show");
     } else {
       backToTop.classList.remove("show");
@@ -760,67 +760,119 @@ function initPageAnimations() {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---------------------- custom cursor -----------------------
-
+  // ---------------- Cursor ----------------
   const cursor = document.getElementById("cursor");
   const dot = document.getElementById("cursor-dot");
 
-  let mouseCuX = 0;
-  let mouseCuY = 0;
+  let mCurX = 0;
+  let mCurY = 0;
 
   let cursorX = 0;
   let cursorY = 0;
 
-  /* Track mouse */
-  document.addEventListener("mousemove", (e) => {
-    mouseCuX = e.clientX;
-    mouseCuY = e.clientY;
+  let currentW = 32;
+  let currentH = 32;
+  let currentR = 50;
 
-    dot.style.left = mouseCuX + "px";
-    dot.style.top = mouseCuY + "px";
+  let clickScale = 1;
+  let isMouseDown = false;
+
+  let activeElement = null;
+  let dotHover = false;
+
+  const interactiveSelector =
+    "a, button, input, .view-btn, .read-more-btn, .social-icon";
+
+  // ---------------- mouse tracking ----------------
+  document.addEventListener("mousemove", (e) => {
+    mCurX = e.clientX;
+    mCurY = e.clientY;
+
+    dot.style.left = mCurX + "px";
+    dot.style.top = mCurY + "px";
   });
 
-  /* Smooth follow (Google-like lag) */
-  function animate() {
-    cursorX += (mouseCuX - cursorX) * 0.15;
-    cursorY += (mouseCuY - cursorY) * 0.15;
+  // ---------------- hover tracking ----------------
 
-    cursor.style.left = cursorX + "px";
-    cursor.style.top = cursorY + "px";
+  document.addEventListener("pointerover", (e) => {
+    const el = e.target.closest(interactiveSelector);
+    if (!el) return;
+
+    activeElement = el;
+    dotHover = true;
+  });
+
+  document.addEventListener("pointerout", (e) => {
+    const el = e.target.closest(interactiveSelector);
+    if (!el) return;
+
+    activeElement = null;
+    dotHover = false;
+  });
+
+  // ---------------- click ----------------
+  document.addEventListener("mousedown", () => {
+    isMouseDown = true;
+  });
+
+  document.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
+
+  // ---------------- animation loop ----------------
+  function animate() {
+    let targetX = mCurX;
+    let targetY = mCurY;
+
+    let targetW = 32;
+    let targetH = 32;
+    let targetR = 50;
+
+    // morph into element
+    if (activeElement) {
+      const rect = activeElement.getBoundingClientRect();
+
+      targetX = rect.left + rect.width / 2;
+      targetY = rect.top + rect.height / 2;
+
+      targetW = rect.width;
+      targetH = rect.height;
+
+      targetR =
+        parseFloat(window.getComputedStyle(activeElement).borderRadius) || 0;
+    }
+
+    // smooth position
+    cursorX += (targetX - cursorX) * 0.15;
+    cursorY += (targetY - cursorY) * 0.15;
+
+    // smooth morph size
+    currentW += (targetW - currentW) * 0.15;
+    currentH += (targetH - currentH) * 0.15;
+    currentR += (targetR - currentR) * 0.15;
+
+    // click squash
+    let targetScale = isMouseDown ? 0.85 : 1;
+    clickScale += (targetScale - clickScale) * 0.2;
+
+    // apply cursor
+    cursor.style.width = currentW + "px";
+    cursor.style.height = currentH + "px";
+    cursor.style.borderRadius = currentR + "px";
+
+    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%) scale(${clickScale})`;
+
+    // dot hover color
+    if (dotHover) {
+      dot.classList.add("hover");
+    } else {
+      dot.classList.remove("hover");
+    }
 
     requestAnimationFrame(animate);
   }
 
   animate();
-
-  document.addEventListener("mouseover", (e) => {
-    if (
-      e.target.closest(
-        "a, button, .view-btn, .read-more-btn, .social-icon, .readArticle",
-      )
-    ) {
-      document.body.classList.add("cursor-hover");
-    }
-  });
-
-  document.addEventListener("mouseout", (e) => {
-    if (
-      e.target.closest(
-        "a, button, .view-btn, .read-more-btn, .social-icon, .readArticle",
-      )
-    ) {
-      document.body.classList.remove("cursor-hover");
-    }
-  });
-
-  /* Click effect */
-  document.addEventListener("mousedown", () => {
-    document.body.classList.add("cursor-click");
-  });
-
-  document.addEventListener("mouseup", () => {
-    document.body.classList.remove("cursor-click");
-  });
 
   // ---------------- Unified Scroll Handler ----------------
   window.addEventListener("scroll", () => {

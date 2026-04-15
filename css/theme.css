@@ -1,25 +1,18 @@
 :root {
-  --primary: rgba(255, 255, 255, 1); /* clean Google surface */
-  --secondary: rgba(26, 115, 232, 1); /* Google blue */
-  --accent: rgba(52, 168, 83, 1); /* Google green */
-  --headers: rgba(32, 33, 36, 1); /* Google text black */
+  --primary: rgba(255, 255, 255, 1);
+  --secondary: rgba(26, 115, 232, 1);
+  --accent: rgba(52, 168, 83, 1);
+  --accent-red: rgba(234, 67, 53, 1);
+  --headers: rgba(32, 33, 36, 1);
 
-  --bg-dark: rgba(248, 249, 250, 1); /* Google light background */
-  --bg-darker: rgba(241, 243, 244, 1); /* section shading */
-  --bg-card: rgba(255, 255, 255, 1); /* pure cards */
-  --bg-hover: rgba(26, 115, 232, 0.06); /* subtle blue hover */
+  --bg-dark: rgba(248, 249, 250, 1);
+  --bg-darker: rgba(241, 243, 244, 1);
+  --bg-card: rgba(255, 255, 255, 1);
+  --bg-hover: rgba(26, 115, 232, 0.06);
 
-  --border: rgba(218, 220, 224, 1); /* Google border gray */
+  --border: rgba(218, 220, 224, 1);
 
   --circle: conic-gradient(
-    rgba(26, 115, 232, 0.9),
-    rgba(52, 168, 83, 0.6),
-    rgba(251, 188, 5, 0.6),
-    rgba(234, 67, 53, 0.6)
-  );
-
-  --google-gradient: linear-gradient(
-    135deg,
     rgba(26, 115, 232, 0.9),
     rgba(52, 168, 83, 0.6),
     rgba(251, 188, 5, 0.6),
@@ -35,6 +28,7 @@
   --text-secondary: rgba(95, 99, 104, 1);
   --text-accent: rgba(26, 115, 232, 1);
   --text-muted: rgba(128, 134, 139, 1);
+  --text-highlite: rgba(218, 220, 224, 1);
 
   --timeline-header: rgba(26, 115, 232, 1);
 
@@ -44,7 +38,6 @@
   --canvas-red: rgba(234, 67, 53, 0.6);
   --canvas-muted: rgba(32, 33, 36, 0.4);
 
-  /* Gradients */
   --gradient-1: linear-gradient(
     135deg,
     rgba(26, 115, 232, 1) 0%,
@@ -65,27 +58,39 @@
     rgba(241, 243, 244, 1) 100%
   );
 
-  /* Shadows (very subtle, Material-like) */
+  --google-gradient: linear-gradient(
+    135deg,
+    rgba(26, 115, 232, 0.9),
+    rgba(52, 168, 83, 0.6),
+    rgba(251, 188, 5, 0.6),
+    rgba(234, 67, 53, 0.6)
+  );
+
+  --timeline-before-gradient: linear-gradient(
+    to bottom,
+    rgba(26, 115, 232, 0.7),
+    rgba(52, 168, 83, 0.5),
+    rgba(251, 188, 5, 0.4),
+    rgba(234, 67, 53, 0.4)
+  );
+
   --shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.1);
   --shadow-md: 0 2px 6px rgba(60, 64, 67, 0.15);
   --shadow-lg: 0 6px 16px rgba(60, 64, 67, 0.2);
   --shadow-xl: 0 12px 32px rgba(60, 64, 67, 0.25);
   --shadow-glow: 0 0 18px rgba(26, 115, 232, 0.25);
-  --icon-shadow: rgba(0, 0, 0, 0.35); /* light theme shadow */
+  --icon-shadow: rgba(0, 0, 0, 0.35);
 
-  /* Spacing (unchanged) */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
 
-  /* Transitions (unchanged) */
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Fonts (unchanged) */
   --font-family: system-ui;
 }
 
@@ -93,26 +98,16 @@
   --primary: rgba(32, 33, 36, 1);
   --secondary: rgba(138, 180, 248, 1);
   --accent: rgba(129, 201, 149, 1);
+  --accent-red: rgba(234, 67, 53, 1);
   --headers: rgba(232, 234, 237, 1);
-
   --bg-dark: rgba(18, 18, 18, 1);
   --bg-darker: rgba(10, 10, 10, 1);
   --bg-card: rgba(32, 33, 36, 1);
   --bg-hover: rgba(138, 180, 248, 0.1);
-
   --border: rgba(60, 64, 67, 1);
-
   --circle: conic-gradient(
     rgba(138, 180, 248, 0.9),
     rgba(129, 201, 149, 0.6),
-    rgba(251, 188, 5, 0.6),
-    rgba(234, 67, 53, 0.6)
-  );
-
-  --google-gradient: linear-gradient(
-    135deg,
-    rgba(26, 115, 232, 0.9),
-    rgba(52, 168, 83, 0.6),
     rgba(251, 188, 5, 0.6),
     rgba(234, 67, 53, 0.6)
   );
@@ -126,6 +121,7 @@
   --text-secondary: rgba(154, 160, 166, 1);
   --text-accent: rgba(138, 180, 248, 1);
   --text-muted: rgba(128, 134, 139, 1);
+  --text-highlite: rgba(218, 220, 224, 1);
 
   --timeline-header: rgba(138, 180, 248, 1);
 
@@ -135,7 +131,6 @@
   --canvas-tertiary: rgba(251, 188, 5, 0.6);
   --canvas-muted: rgba(232, 234, 237, 0.3);
 
-  /* Gradients */
   --gradient-1: linear-gradient(
     135deg,
     rgba(32, 33, 36, 1) 0%,
@@ -156,25 +151,37 @@
     rgba(18, 18, 18, 1) 100%
   );
 
-  /* Shadows */
+  --google-gradient: linear-gradient(
+    135deg,
+    rgba(26, 115, 232, 0.9),
+    rgba(52, 168, 83, 0.6),
+    rgba(251, 188, 5, 0.6),
+    rgba(234, 67, 53, 0.6)
+  );
+
+  --timeline-before-gradient: linear-gradient(
+    to bottom,
+    rgba(26, 115, 232, 0.7),
+    rgba(52, 168, 83, 0.5),
+    rgba(251, 188, 5, 0.4),
+    rgba(234, 67, 53, 0.4)
+  );
+
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 6px 18px rgba(0, 0, 0, 0.6);
   --shadow-xl: 0 12px 36px rgba(0, 0, 0, 0.7);
-  --icon-shadow: rgba(255, 255, 255, 0.35); /* glow in dark mode */
+  --icon-shadow: rgba(255, 255, 255, 0.35);
 
-  /* Spacing (unchanged) */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
 
-  /* Transitions (unchanged) */
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Fonts (unchanged) */
   --font-family: system-ui;
 }

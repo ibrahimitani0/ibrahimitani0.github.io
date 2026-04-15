@@ -31,7 +31,6 @@ body {
   padding-top: 60px; /* height of nav */
 }
 
-/* Outer smooth circle */
 #cursor {
   position: fixed;
   top: 0;
@@ -41,23 +40,18 @@ body {
   height: 32px;
 
   border-radius: 50%;
-  border: 1px solid rgba(26, 115, 232, 0.5);
-
+  border: 1px solid var(--border);
   background: rgba(26, 115, 232, 0.08);
-  backdrop-filter: blur(4px);
 
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%) scale(1);
-  transition:
-    transform 0.15s ease,
-    width 0.25s ease,
-    height 0.25s ease,
-    background 0.25s ease,
-    border 0.25s ease;
+
+  transform: translate(-50%, -50%);
+
+  will-change: transform, width, height, border-radius;
 }
 
-/* Inner dot (like Google precision) */
+/* inner dot */
 #cursor-dot {
   position: fixed;
   top: 0;
@@ -65,7 +59,6 @@ body {
 
   width: 6px;
   height: 6px;
-
   border-radius: 50%;
   background: var(--secondary);
 
@@ -75,18 +68,10 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.cursor-hover #cursor {
-  transform: translate(-50%, -50%) scale(1.4);
-  background: var(--cursor-background);
-  border-color: var(--cursor-dot);
-}
-
-.cursor-hover #cursor-dot {
-  background: var(--cursor-dot);
-}
-
-.cursor-click #cursor {
-  transform: translate(-50%, -50%) scale(0.85);
+/* DOT HOVER STATE */
+#cursor-dot.hover {
+  background: rgba(234, 67, 53, 1);
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 main {
@@ -283,12 +268,27 @@ section {
     0 0 12px rgba(26, 115, 232, 0.15);
 }
 
+/* LINE */
 .title-h2::after {
   content: "";
   flex: 1;
   height: 3px;
   border-radius: 2px;
+
   background: var(--google-gradient);
+
+  background-size: 200% 100%;
+  animation: line-shine 2.5s linear infinite;
+}
+
+/* SHINE MOVEMENT */
+@keyframes line-shine {
+  0% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 /* =======================
@@ -306,9 +306,9 @@ section {
 }
 
 .progress-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: 8px;
+  height: 20px;
+  border-radius: 12px;
   background-color: var(--text-muted);
   transition: all 0.3s ease;
 }
@@ -413,7 +413,7 @@ footer small {
 
 #backToTop {
   position: fixed;
-  bottom: 200px;
+  bottom: 180px;
   left: 50%;
   transform: translateX(-50%) translateY(20px) scale(0.9);
 
