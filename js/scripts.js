@@ -874,6 +874,146 @@ function initPageAnimations() {
 
   animate();
 
+  //-----------github contributions ------------------------
+  let githubData = [];
+  let selectedYear = new Date().getFullYear();
+
+  async function loadGitHubContributions() {
+    try {
+      const res = await fetch(
+        "https://github-contributions-api.jogruber.de/v4/ibrahimitani0?y=all",
+      );
+
+      const data = await res.json();
+      githubData = data.contributions || [];
+
+      initYearToggle(githubData);
+      initMonths();
+
+      // default to latest available year (not just current system year)
+      const years = [
+        ...new Set(githubData.map((d) => new Date(d.date).getFullYear())),
+      ].sort((a, b) => b - a);
+
+      selectedYear = years[0] || new Date().getFullYear();
+
+      renderContributions(selectedYear);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function getColor(level) {
+    return (
+      ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"][level] ||
+      "#161b22"
+    );
+  }
+
+  function renderContributions(year) {
+    const container = document.getElementById("ghGrid");
+    const yearLabel = document.getElementById("ghYears");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const filtered = githubData.filter(
+      (d) => new Date(d.date).getFullYear() === year,
+    );
+
+    if (yearLabel) {
+      yearLabel.textContent = year;
+    }
+
+    if (!filtered.length) {
+      container.innerHTML = `<div style="color:var(--text-secondary)">No data</div>`;
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    filtered.forEach((day) => {
+      const cell = document.createElement("div");
+      cell.className = "gh-cell";
+      cell.style.backgroundColor = getColor(day.level);
+      cell.title = `${day.date} — ${day.count} contributions`;
+      fragment.appendChild(cell);
+    });
+
+    container.appendChild(fragment);
+  }
+
+  function initMonths() {
+    const container = document.getElementById("ghMonths");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const now = new Date(selectedYear, 0, 1);
+
+    for (let week = 0; week < 53; week++) {
+      const span = document.createElement("span");
+
+      const date = new Date(now);
+      date.setDate(date.getDate() + week * 7);
+
+      const month = date.getMonth();
+
+      span.textContent = week === 0 || date.getDate() <= 7 ? months[month] : "";
+
+      container.appendChild(span);
+    }
+  }
+
+  function initYearToggle(data) {
+    const container = document.getElementById("ghYearToggle");
+    if (!container) return;
+
+    const years = [
+      ...new Set(data.map((d) => new Date(d.date).getFullYear())),
+    ].sort((a, b) => b - a);
+
+    container.innerHTML = "";
+
+    years.forEach((year) => {
+      const btn = document.createElement("button");
+      btn.className = "gh-year-btn";
+      btn.textContent = year;
+
+      if (year === selectedYear) btn.classList.add("active");
+
+      btn.addEventListener("click", () => {
+        selectedYear = year;
+
+        document
+          .querySelectorAll(".gh-year-btn")
+          .forEach((b) => b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        renderContributions(year);
+      });
+
+      container.appendChild(btn);
+    });
+  }
+  loadGitHubContributions();
   // ---------------- Unified Scroll Handler ----------------
   window.addEventListener("scroll", () => {
     updateHeaderOnScroll();

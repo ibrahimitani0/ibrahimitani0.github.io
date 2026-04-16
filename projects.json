@@ -43,7 +43,7 @@
   },
   {
     "title": "To-Do List",
-    "date": "Nov 2022",
+    "date": "Nov 2023",
     "image": "images/TodoList.jpg",
     "alt": "To-Do List",
     "description": "Responsive To-Do app with add, edit, delete, bulk delete, completion tracking, and dark/light mode toggle.",
@@ -70,7 +70,7 @@
   },
   {
     "title": "Weather App",
-    "date": "Dec 2022",
+    "date": "Oct 2022",
     "image": "images/WeatherApp.png",
     "alt": "Weather App",
     "description": "Weather app with current conditions, and location search using OpenWeatherMap API, with responsive design and dark/light mode toggle.",

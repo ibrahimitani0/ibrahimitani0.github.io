@@ -73,6 +73,10 @@
           <i class="fas fa-pen"></i>
           <span class="nav-text">Publications</span>
         </a>
+        <a href="#contributions" class="nav-link" data-section="contributions">
+          <i class="fab fa-github"></i>
+          <span class="nav-text">Contributions</span>
+        </a>
       </div>
 
       <!-- Controls -->
@@ -125,6 +129,7 @@
       <a href="#projects"><div class="progress-dot"></div></a>
       <a href="#skills"><div class="progress-dot"></div></a>
       <a href="#articles"><div class="progress-dot"></div></a>
+      <a href="#contributions"><div class="progress-dot"></div></a>
     </div>
     <!-- Hero Section -->
     <section id="hero">
@@ -727,6 +732,29 @@
         <!-- Window content -->
         <div class="window-content">
           <div class="window-content" id="articles-container"></div>
+        </div>
+      </section>
+
+      <section id="contributions" class="fade-section">
+        <h2 class="title-h2"><i class="fab fa-github"></i> Contributions</h2>
+
+        <div class="github-chart">
+          <div class="window-header github-header">
+            <h3>GitHub Activity</h3>
+
+            <div class="gh-year-toggle" id="ghYearToggle"></div>
+          </div>
+
+          <div class="github-content">
+            <div class="gh-left">
+              <div class="gh-years" id="ghYears"></div>
+            </div>
+
+            <div class="gh-right">
+              <div class="gh-months" id="ghMonths"></div>
+              <div class="gh-grid" id="ghGrid"></div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

@@ -9,6 +9,7 @@
 @import url("skills.css");
 @import url("publications.css");
 @import url("chat.css");
+@import url("contributions.css");
 
 /* =======================
    Base Reset & Global Styles
@@ -329,6 +330,7 @@ section {
     transform: scale(1);
   }
 }
+
 /* =======================
    Contact Section
 ======================= */
