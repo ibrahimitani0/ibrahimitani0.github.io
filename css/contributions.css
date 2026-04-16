@@ -1,26 +1,27 @@
-/* ---------------- GitHub Window ---------------- */
-.github-chart {
-  padding: 10px;
-  margin: 1.2rem auto;
+/* --- GitHub Contributions Wrapper --- */
+.gh-wrapper {
   width: 100%;
   background-color: var(--bg-dark);
   backdrop-filter: blur(2px);
-  box-shadow: inset 0 0 20px var(--bg-card);
-  border: 1px solid var(--border);
   border-radius: 28px;
-  overflow: hidden;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family);
+  box-sizing: border-box;
 }
 
-.github-chart .window-header {
+.gh-header {
   position: relative;
-  height: 40px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
-  gap: 0.5rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-.github-chart .window-header::after {
+/* Google Gradient Accent Line */
+.gh-header::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -30,224 +31,208 @@
   background: var(--google-gradient);
 }
 
-.github-content {
+.gh-year-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--headers);
+}
+
+/* --- Scaling Logic (No Scroll) --- */
+.gh-graph-outer {
+  width: 100%;
   display: flex;
-  gap: 10px;
-  padding: 10px;
-  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* LEFT SIDE (year labels) */
-.gh-left {
-  width: 30px;
+.gh-graph-scaling-seed {
+  transform-origin: center top;
+  display: inline-block;
 }
 
-/* RIGHT SIDE (months + grid stacked) */
-.gh-right {
+@media (max-width: 850px) {
+  .gh-graph-scaling-seed {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 650px) {
+  .gh-graph-scaling-seed {
+    transform: scale(0.6);
+  }
+}
+@media (max-width: 480px) {
+  .gh-graph-scaling-seed {
+    transform: scale(0.45);
+  }
+}
+
+/* --- Grid & Months Alignment --- */
+.gh-months {
+  display: grid;
+  grid-template-columns: repeat(53, 11px);
+  gap: 3px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  height: 15px;
+  text-align: left;
+}
+
+.gh-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  grid-auto-flow: column;
+  grid-auto-columns: 11px;
+  gap: 3px;
+}
+
+.gh-cell,
+.gh-legend-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+.gh-cell {
+  /* --- Added Animation Logic --- */
+  transition:
+    transform 0.2s var(--transition-smooth),
+    box-shadow 0.2s var(--transition-smooth);
+
+  position: relative; /* Necessary for z-index */
+}
+
+.gh-cell:hover {
+  transform: scale(1.4); /* Grows the cell by 40% */
+  z-index: 10; /* Brings it to the front */
+  box-shadow: 0 0 8px var(--accent); /* Adds a subtle green glow */
+  border-color: var(--accent);
+}
+
+/* --- Legend Styling --- */
+.gh-legend {
   display: flex;
-  flex-direction: column;
-  flex: 1;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-muted);
 }
 
-.github-header {
+.gh-legend-cell.lvl-0 {
+  background: var(--bg-darker);
+}
+.gh-legend-cell.lvl-1 {
+  background: var(--gh-green-1);
+}
+.gh-legend-cell.lvl-2 {
+  background: var(--gh-green-2);
+}
+.gh-legend-cell.lvl-3 {
+  background: var(--gh-green-3);
+}
+.gh-legend-cell.lvl-4 {
+  background: var(--accent);
+}
+
+/* --- Footer & Year Toggle (Google Chip Style) --- */
+.gh-footer {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .gh-year-toggle {
   display: flex;
-  gap: 6px;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .gh-year-btn {
-  padding: 4px 10px;
-  font-size: 0.8rem;
-  border-radius: 999px;
+  background-color: var(--bg-dark);
   border: 1px solid var(--border);
-  background: transparent;
+  border-radius: 28px;
+  box-shadow: inset 0 0 10px var(--bg-card);
   color: var(--text-secondary);
-
-  transition: 0.2s ease;
-}
-
-.gh-year-btn:hover {
-  transform: scale(1.05);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  transition: var(--transition);
 }
 
 .gh-year-btn.active {
-  background: var(--accent);
-  color: white;
+  background-color: var(--accent);
   border-color: var(--accent);
+  color: var(--text-primary);
 }
 
-/* ---------------- Years Column ---------------- */
-.gh-years {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  opacity: 0.7;
-  height: 100%;
-  padding-top: 20px;
-}
-/* ---------------- Months Column ---------------- */
-.gh-months {
-  display: grid;
-  grid-template-columns: repeat(53, 10px);
-  gap: 3px;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  padding: 0 10px;
-  margin-bottom: 6px;
-}
-
-/* ---------------- Grid ---------------- */
-/* Months must align with grid columns */
-.gh-months {
-  display: grid;
-  grid-template-columns: repeat(53, 10px);
-  gap: 3px;
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  padding-left: 0;
-  margin-bottom: 6px;
-  height: 16px;
-}
-
-/* Grid */
-.gh-grid {
-  display: grid;
-  grid-template-columns: repeat(53, 10px);
-  gap: 3px;
-}
-
-/* Cells */
-.gh-cell {
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-  transition: transform 0.15s ease;
-}
-
-.gh-cell:hover {
-  transform: scale(1.5);
-}
-
-/* ============================= */
-/* responsive */
-/* ============================= */
-
-@media (max-width: 768px) {
-  .github-content {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* Stack years on top instead of left column */
-  .gh-left {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .gh-years {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    padding-top: 0;
-    font-size: 0.65rem;
-    opacity: 0.7;
-  }
-
-  /* Make chart scroll horizontally instead of breaking layout */
-  .gh-right {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 8px;
-  }
-
-  .gh-months,
-  .gh-grid {
-    min-width: 650px; /* prevents squishing, enables swipe scroll */
-  }
-
-  /* Center year toggle buttons */
-  .gh-year-toggle {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .gh-year-btn {
-    font-size: 0.75rem;
-    padding: 3px 8px;
-  }
+.gh-year-btn:hover {
+  background-color: var(--secondary);
+  color: var(--text-highlite);
 }
 
 @media (max-width: 480px) {
-  .gh-months,
-  .gh-grid {
-    min-width: 700px; /* slightly wider for readability */
+  .gh-footer {
+    flex-direction: column-reverse;
+    align-items: center; /* Center for a balanced look */
+    text-align: center;
   }
 
-  .gh-year-btn {
-    font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Header stacks cleanly */
-  .github-chart .window-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    height: auto;
-    padding: 10px;
-  }
-
-  /* Title stays clean */
-  .github-chart .window-header h3 {
-    font-size: 1rem;
-    margin: 0;
-  }
-
-  /* Year toggle becomes centered scrollable row */
   .gh-year-toggle {
+    justify-content: center;
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 6px;
-    padding-bottom: 4px;
-
-    /* hide scrollbar (optional clean look) */
-    scrollbar-width: none;
   }
 
-  .gh-year-toggle::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Buttons compact for mobile */
-  .gh-year-btn {
-    flex: 0 0 auto;
-    font-size: 0.7rem;
-    padding: 3px 10px;
-    white-space: nowrap;
+  .gh-legend {
+    width: 100%;
+    justify-content: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--border); /* Subtle separator */
   }
 }
 
-/* Extra small phones */
-@media (max-width: 480px) {
-  .gh-year-btn {
-    font-size: 0.65rem;
-    padding: 3px 8px;
+/* --- Optimized Mobile Logic --- */
+@media (max-width: 600px) {
+  .gh-graph-outer {
+    justify-content: flex-start; /* Align to left so scrolling starts at current date */
+    overflow-x: auto;
+    padding-bottom: 10px; /* Space for a slim scrollbar if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling for iOS */
   }
 
-  .github-chart .window-header {
-    padding: 8px;
+  /* Remove the transform scale for mobile so cells stay touchable size */
+  .gh-graph-scaling-seed {
+    transform: none !important;
+    padding: 0 5px;
+  }
+
+  /* Make the cells slightly larger for fingers */
+  .gh-cell,
+  .gh-months {
+    grid-template-columns: repeat(53, 13px); /* Slightly bigger than 11px */
+    gap: 4px;
+  }
+
+  .gh-grid {
+    grid-auto-columns: 13px;
+    gap: 4px;
+  }
+}
+
+@media (pointer: coarse) {
+  /* For touch screens, grow less so it doesn't overlap the finger too much */
+  .gh-cell:active {
+    transform: scale(1.2);
+    transition: transform 0.1s;
+  }
+
+  /* Optional: hide the hover glow on mobile to keep it clean */
+  .gh-cell:hover {
+    transform: none;
+    box-shadow: none;
   }
 }

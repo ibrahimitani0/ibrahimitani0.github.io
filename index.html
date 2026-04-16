@@ -11,7 +11,7 @@
     <script defer src="js/scripts.js"></script>
     <script defer src="js/fetchSkills.js"></script>
     <script defer src="js/fetchdata.js"></script>
-    <!-- <script defer src="js/chat.js"></script> -->
+    <script defer src="js/fetchContributions.js"></script>
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-G69PD2Q3WQ"></script>
@@ -738,21 +738,27 @@
       <section id="contributions" class="fade-section">
         <h2 class="title-h2"><i class="fab fa-github"></i> Contributions</h2>
 
-        <div class="github-chart">
-          <div class="window-header github-header">
-            <h3>GitHub Activity</h3>
-
-            <div class="gh-year-toggle" id="ghYearToggle"></div>
+        <div class="gh-wrapper">
+          <div class="gh-header">
+            <div id="ghYears" class="gh-year-label">Contributions</div>
           </div>
 
-          <div class="github-content">
-            <div class="gh-left">
-              <div class="gh-years" id="ghYears"></div>
+          <div class="gh-graph-outer">
+            <div class="gh-graph-scaling-seed">
+              <div id="ghMonths" class="gh-months"></div>
+              <div id="ghGrid" class="gh-grid"></div>
             </div>
+          </div>
 
-            <div class="gh-right">
-              <div class="gh-months" id="ghMonths"></div>
-              <div class="gh-grid" id="ghGrid"></div>
+          <div class="gh-footer">
+            <div id="ghYearToggle" class="gh-year-toggle"></div>
+            <div class="gh-legend">
+              <span>Less</span>
+              <div class="gh-legend-cell lvl-0"></div>
+              <div class="gh-legend-cell lvl-1"></div>
+              <div class="gh-legend-cell lvl-2"></div>
+              <div class="gh-legend-cell lvl-3"></div>
+              <span>More</span>
             </div>
           </div>
         </div>
@@ -760,7 +766,6 @@
     </main>
 
     <!-- Footer -->
-    <button id="backToTop" aria-label="Back to top">↑</button>
     <footer>
       <canvas id="footer-canvas"></canvas>
       <div class="footer-links">
@@ -816,28 +821,5 @@
     </div>
     <div id="cursor"></div>
     <div id="cursor-dot"></div>
-
-    <!-- AI Chat Widget -->
-    <!-- <div id="chat-widget">
-      <button id="chat-toggle" title="Chat with AI">
-        <i class="fas fa-robot"></i>
-      </button>
-
-      <div id="chat-box" class="hidden">
-        <div class="chat-header">
-          <span>AI Assistant</span>
-          <button id="chat-close">✕</button>
-        </div>
-
-        <div id="chat-messages"></div>
-
-        <div class="chat-input-area">
-          <input id="chat-input" type="text" placeholder="Ask me anything..." />
-          <button id="chat-send">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-      </div>
-    </div> -->
   </body>
 </html>
