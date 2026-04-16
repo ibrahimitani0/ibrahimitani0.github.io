@@ -34,35 +34,5 @@ function render(id, items) {
   });
 }
 
-// Render ticker
-function renderTicker(data) {
-  const track = document.getElementById("tickerTrack");
-  if (!track) return;
-
-  track.innerHTML = ""; // prevent duplicates
-
-  const allSkills = [
-    ...data.languages,
-    ...data.databases,
-    ...data.frameworks,
-    ...data.tools,
-  ];
-
-  allSkills.forEach((skill) => {
-    const item = document.createElement("span");
-    item.className = "ticker-item";
-
-    item.innerHTML = `
-      <img src="${skill.icon}" alt="${skill.name}">
-      <span class="label">${skill.name}</span>
-    `;
-
-    track.appendChild(item);
-  });
-
-  // duplicate for smooth infinite scroll
-  track.innerHTML += track.innerHTML;
-}
-
 // init
 loadSkills();

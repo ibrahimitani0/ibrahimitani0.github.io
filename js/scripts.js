@@ -56,31 +56,40 @@ window.addEventListener("load", () => {
 });
 
 // ------------------------- Ticker skills --------------------
-const track = document.getElementById("tickerTrack");
 
-// clone content once for seamless loop
-track.innerHTML += track.innerHTML;
+function renderTicker(data) {
+  const track = document.getElementById("tickerTrack");
+  if (!track) return;
 
-let speed = 0.3;
-let position = 0;
+  track.innerHTML = "";
 
-function animate() {
-  position -= speed;
+  const allSkills = [
+    ...data.languages,
+    ...data.databases,
+    ...data.frameworks,
+    ...data.tools,
+  ];
 
-  // reset when half (because we doubled content)
-  if (Math.abs(position) >= track.scrollWidth / 2) {
-    position = 0;
-  }
-  if (window.innerWidth < 768) {
-    speed = 1.5;
-  }
+  allSkills.forEach((skill) => {
+    const item = document.createElement("span");
+    item.className = "ticker-item";
+    item.innerHTML = `
+      <img src="${skill.icon}" alt="${skill.name}">
+      <span class="label">${skill.name}</span>
+    `;
+    track.appendChild(item);
+  });
 
-  track.style.transform = `translateX(${position}px)`;
+  // 1. Triple the content
+  const singleSet = track.innerHTML;
+  track.innerHTML = singleSet + singleSet + singleSet;
 
-  requestAnimationFrame(animate);
+  // 2. KICKSTART the CSS animation
+  // This is the only logic needed for movement now
+  track.style.animation = "none";
+  track.offsetHeight; // Force reflow
+  track.style.animation = "ticker 80s linear infinite";
 }
-
-animate();
 // ------------------------- Time line button --------------------
 function toggleDetails(button) {
   const content = button.closest(".window-content");
@@ -851,6 +860,36 @@ function initPageAnimations() {
   }
 
   animate();
+
+  // ----------------- back to top -------------------------
+  const backToTopBtn = document.getElementById("backToTop");
+  let isScrolling;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.scrollY > 400) {
+        // Morph into the pill immediately
+        backToTopBtn.classList.add("visible");
+        backToTopBtn.classList.add("scrolling");
+      } else {
+        backToTopBtn.classList.remove("visible", "scrolling");
+      }
+
+      window.clearTimeout(isScrolling);
+
+      isScrolling = setTimeout(() => {
+        // Morph back into the circle when movement stops
+        backToTopBtn.classList.remove("scrolling");
+      }, 300); // 300ms feels natural for "stopping"
+    },
+    { passive: true },
+  );
+
+  backToTopBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
   // ---------------- Unified Scroll Handler ----------------
   window.addEventListener("scroll", () => {
