@@ -4,8 +4,8 @@ async function loadSkills() {
     const data = await res.json();
 
     render("languages", data.languages);
-    render("databases", data.databases);
     render("frameworks", data.frameworks);
+    render("databases", data.databases);
     render("tools", data.tools);
 
     renderTicker(data);

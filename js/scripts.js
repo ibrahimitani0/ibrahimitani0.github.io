@@ -65,8 +65,8 @@ function renderTicker(data) {
 
   const allSkills = [
     ...data.languages,
-    ...data.databases,
     ...data.frameworks,
+    ...data.databases,
     ...data.tools,
   ];
 
