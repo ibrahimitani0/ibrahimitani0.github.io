@@ -31,6 +31,7 @@
     "title": "PokeCenter",
     "date": "Apr 2025 - Dec 2025",
     "image": "images/PokeCenter.png",
+    "video": "https://raw.githubusercontent.com/ibrahimitani0/Project-Demos/main/Pokecenter/preview.webm",
     "alt": "PokeCenter App",
     "description": "Modern, responsive Pokédex with dynamic search, type filtering, and detailed Pokémon profiles using Angular & Firebase.",
     "technologies": [
