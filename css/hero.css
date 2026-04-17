@@ -13,12 +13,6 @@
   background-color: var(--bg-dark);
 }
 
-#hero p {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  animation: dropIn 0.8s ease-out 0.2s;
-}
-
 /* Squares background overlay */
 #hero::after {
   content: "";
@@ -215,7 +209,7 @@
    Hero Text
 ======================= */
 .hero-name-typing {
-  font-size: 2.75rem;
+  font-size: 3rem;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
@@ -223,10 +217,33 @@
 }
 
 .hero-title {
-  color: var(--headers);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: flex;
   gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Make grouped word behave like normal text */
+.word {
+  display: inline;
+}
+
+/* Google colors */
+.blue {
+  color: var(--secondary); /* blue */
+}
+
+.green {
+  color: var(--accent); /* green */
+}
+
+.yellow {
+  color: rgba(251, 188, 5, 1); /* Google yellow */
+}
+
+.red {
+  color: var(--accent-red); /* red */
 }
 
 .bounce-up {
@@ -258,9 +275,15 @@
 .cursor {
   display: inline-block;
   font-weight: bold;
-  font-size: 2.75rem;
+  font-size: 3rem;
   color: var(--secondary);
   animation: blink 0.8s steps(1) infinite;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-muted);
+  animation: dropIn 0.8s ease-out 0.2s;
 }
 
 /* =======================
