@@ -255,6 +255,12 @@
   color: #4285f4;
 }
 
+.tech-tags span.godot {
+  background-color: rgba(71, 140, 191, 0.15);
+  border-color: #478cbf;
+  color: #478cbf;
+}
+
 .tech-tags span.opentdb {
   background-color: rgba(52, 168, 83, 0.15);
   border-color: #34a853;
