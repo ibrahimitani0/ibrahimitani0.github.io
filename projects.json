@@ -1,11 +1,17 @@
 [
   {
     "title": "Vertex",
-    "date": "June 2025 - Present",
+    "date": "June 2026 - Present",
     "image": "images/vertex.png",
-    "alt": "2D Point and Click Adventure",
-    "description": "A 2D point-and-click adventure game where you play as Sarah, assistant to Dr. Choi. You investigate temporal anomalies, solve intricate puzzles, and repair fractures in the timeline while uncovering the mystery behind Dr. Choi’s disappearance and working to rescue them.",
-    "technologies": [{ "name": "Godot Engine", "class": "godot" }],
+    "alt": "Business Intelligence & Operations Platform",
+    "description": "Full-stack Business Intelligence & Operations Platform developed using Java, Spring Boot, Angular, and PostgreSQL. Features secure authentication, RESTful APIs, customer and project management, inventory tracking, reporting, and embedded Power BI dashboards that transform operational data into actionable business intelligence.",
+    "technologies": [
+      { "name": "Angular", "class": "angular" },
+      { "name": "Java", "class": "java" },
+      { "name": "Spring Boot", "class": "springboot" },
+      { "name": "PostgreSQL", "class": "postgresql" },
+      { "name": "PowerBI", "class": "powerbi" }
+    ],
     "link": "#"
   },
   {

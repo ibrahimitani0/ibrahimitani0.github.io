@@ -279,6 +279,18 @@
   color: #222c37;
 }
 
+.tech-tags span.powerbi {
+  background-color: rgba(242, 200, 17, 0.1);
+  border-color: #f2c811;
+  color: #f2c811;
+}
+
+.tech-tags span.postgresql {
+  background-color: rgba(51, 103, 145, 0.1);
+  border-color: #336791;
+  color: #336791;
+}
+
 /* =======================
    BUTTON (Labs Pill with Indicator)
 ======================= */
