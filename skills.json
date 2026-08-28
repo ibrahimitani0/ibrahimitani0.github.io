@@ -74,6 +74,10 @@
     {
       "name": "GraphQL",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
+    },
+    {
+      "name": "Chart.js",
+      "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/chartdotjs.svg"
     }
   ],
 
@@ -148,6 +152,14 @@
     {
       "name": "Azure",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
+    },
+    {
+      "name": "Power BI",
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"
+    },
+    {
+      "name": "GitHub Copilot",
+      "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/githubcopilot.svg"
     },
     {
       "name": "Unity",
